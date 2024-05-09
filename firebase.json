@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "idwapp",
+      "target": "pockid",
       "source": ".",
       "frameworksBackend": {}
     }

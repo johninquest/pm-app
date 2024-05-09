@@ -2,7 +2,7 @@
   "targets": {
     "pockid-01": {
       "hosting": {
-        "idwapp": [
+        "pockid": [
           "pockid-01"
         ]
       }

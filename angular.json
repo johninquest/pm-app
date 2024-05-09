@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "idwapp": {
+    "pockid": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "idwapp:build"
+            "buildTarget": "pockid:build"
           }
         },
         "test": {
