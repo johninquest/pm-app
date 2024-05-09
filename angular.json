@@ -24,21 +24,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/idwapp",
+            "outputPath": "dist/pockid",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -69,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "idwapp:build:production"
+              "buildTarget": "pockid:build:production"
             },
             "development": {
-              "buildTarget": "idwapp:build:development"
+              "buildTarget": "pockid:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,19 +79,11 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         },
@@ -109,12 +94,12 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "idwapp:build:production",
-              "serveTarget": "idwapp:serve:production"
+              "buildTarget": "pockid:build:production",
+              "serveTarget": "pockid:serve:production"
             },
             "development": {
-              "buildTarget": "idwapp:build:development",
-              "serveTarget": "idwapp:serve:development"
+              "buildTarget": "pockid:build:development",
+              "serveTarget": "pockid:serve:development"
             }
           },
           "defaultConfiguration": "production"
