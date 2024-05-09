@@ -1,0 +1,38 @@
+<nav>
+  <ul class="desktop-nav">
+    <li class="home">
+      <a routerLink="/">PockID</a>
+    </li>
+
+    <li>
+      <a routerLink="/xxx">ID List</a>
+    </li>
+    <li>
+      <a routerLink="/xxx">New ID</a>
+    </li>
+    <li>
+      <a routerLink="/regulators">User</a>
+    </li>
+  </ul>
+  <mat-menu #menu="matMenu">
+    <!-- <button mat-menu-item routerLink="/home" matTooltip="Home">
+      <mat-icon>home</mat-icon>
+      <span class="btn-txt">home</span>
+    </button> -->
+    <button mat-menu-item routerLink="/xxx">
+      <mat-icon>list</mat-icon>
+      <span class="btn-txt">ID List</span>
+    </button>
+    <button mat-menu-item routerLink="/xxx">
+      <mat-icon>add</mat-icon>
+      <span class="btn-txt">New ID</span>
+    </button>
+    <button mat-menu-item routerLink="/xxx">
+      <mat-icon>person</mat-icon>
+      <span class="btn-txt">User</span>
+    </button>
+  </mat-menu>
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="mobile-nav">
+    <mat-icon>menu</mat-icon>
+  </button>
+</nav>

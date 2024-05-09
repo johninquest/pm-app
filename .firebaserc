@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pockid-01": {
+      "hosting": {
+        "idwapp": [
+          "pockid-01"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pockid-01"
+  }
+}

@@ -1,0 +1,100 @@
+nav {
+  background-color: var(--primary-color);
+  height: 3rem;
+  width: 100%;
+  left: 0;
+  text-align: center;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+nav ul li {
+  margin: 0;
+  padding: 0;
+  float: left;
+  list-style-type: none;
+}
+nav ul li a {
+  text-decoration: none;
+  padding: 1rem;
+  display: block;
+  color: var(--txt-white-color);
+  // font-weight: bold;
+  text-align: center;
+  // text-transform: uppercase;
+}
+
+nav ul li a:focus {
+  color: var(--secondary-color-lighter);
+  font-weight: bold;
+}
+
+nav ul li div {
+  text-decoration: none;
+  padding: 1rem;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+}
+
+nav ul li div mat-select {
+  width: 3rem;
+}
+
+nav ul li div mat-select::-ms-expand {
+  display: none;
+}
+
+nav ul li a:hover {
+  color: var(--secondary-color-lighter);
+  font-weight: bolder;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+.mat-menu-item:hover {
+  background-color: var(--accent-color);
+}
+
+.menu-btn {
+  width: 17rem;
+}
+
+@media screen and (max-width: 768px) {
+  nav ul li a {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  nav ul li:not(:first-child) {
+    display: none;
+  }
+  nav {
+    text-align: left;
+  }
+  nav ul li a {
+    font-size: 0.8rem;
+  }
+
+  .mobile-nav {
+    float: right;
+    display: block;
+    color: white;
+  }
+}
+
+.btn-txt {
+  text-transform: uppercase;
+}
+
+.home a {
+  font-weight: bold;
+  margin-right: 8rem;
+  letter-spacing: 0.1rem;
+}

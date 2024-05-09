@@ -1,0 +1,11 @@
+.options {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  button {
+    width: 13rem;
+    height: 3rem;
+    margin: 1rem;
+  }
+}

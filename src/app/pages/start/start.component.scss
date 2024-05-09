@@ -1,0 +1,24 @@
+.name {
+  text-align: center;
+  margin: 5rem 1rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.desc {
+  text-align: center;
+  margin: 1rem;
+}
+
+.btn {
+  text-align: center;
+  margin: 5rem 1rem 1rem 1rem;
+  button {
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 13rem;
+    height: 3rem;
+  }
+}

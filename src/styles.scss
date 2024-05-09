@@ -1,0 +1,54 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$pockid-primary: mat.define-palette(mat.$pink-palette, 900); // #880E4F
+$pockid-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$pockid-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$pockid-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $pockid-primary,
+      accent: $pockid-accent,
+      warn: $pockid-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+@include mat.all-component-themes($pockid-theme);
+
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,500;1,500&display=swap");
+$myfont: "Work Sans", sans-serif;
+* {
+  font: 100% $myfont;
+}
+
+:root {
+  --primary-color: #880e4f;
+  --secondary-color: #7986cb;
+  --secondary-color-lighter: #c5cae9;
+  --txt-black-color: #212121;
+  --txt-white-color: #f5f5f5;
+  --bg-color: #f5f5f5;
+}
+
+html,
+body {
+  height: 100%;
+}
