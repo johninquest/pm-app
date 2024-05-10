@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAnalytics, provideAnalytics, ScreenTrackingService } from '@angular/fire/analytics';
 import { UserComponent } from './pages/user/user.component';
+import { InfoComponent } from './pages/info/info.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserComponent } from './pages/user/user.component';
     HomeComponent,
     StartComponent,
     NavbarComponent,
-    UserComponent
+    UserComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

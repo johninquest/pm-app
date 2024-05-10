@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { StartComponent } from './pages/start/start.component';
 import { UserComponent } from './pages/user/user.component';
-
-// const routes: Routes = [];
+import { InfoComponent } from './pages/info/info.component';
 
 const routes: Routes = [
   /* { path: '', redirectTo: '/', pathMatch: 'full' }, */
@@ -18,6 +17,13 @@ const routes: Routes = [
     component: HomeComponent,
     data: {
       title: 'Home',
+    },
+  },
+  {
+    path: 'info',
+    component: InfoComponent,
+    data: {
+      title: 'Info | Why PockID ?',
     },
   },
   {

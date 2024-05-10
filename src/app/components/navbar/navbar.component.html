@@ -1,42 +1,45 @@
 <nav>
   <ul class="desktop-nav">
-    <li class="home">
-      <a routerLink="/">PockID</a>
-    </li>
-
     <li>
-      <a routerLink="/xxx">ID List</a>
+      <a routerLink="/home">
+        <mat-icon>home</mat-icon>
+      </a>
     </li>
     <li>
-      <a routerLink="/xxx">New ID</a>
+      <a [matMenuTriggerFor]="menuId">
+        <mat-icon>menu</mat-icon>
+      </a>
     </li>
     <li>
-      <a routerLink="/user">User</a>
+      <a [matMenuTriggerFor]="menuSettings">
+        <mat-icon>settings</mat-icon>
+      </a>
     </li>
   </ul>
-  <mat-menu #menu="matMenu">
-    <!-- <button mat-menu-item routerLink="/home" matTooltip="Home">
-      <mat-icon>home</mat-icon>
-      <span class="btn-txt">home</span>
-    </button> -->
-    <button mat-menu-item routerLink="/xxx">
-      <mat-icon>list</mat-icon>
-      <span class="btn-txt">ID List</span>
-    </button>
-    <button mat-menu-item routerLink="/xxx">
-      <mat-icon>add</mat-icon>
-      <span class="btn-txt">New ID</span>
-    </button>
-    <button mat-menu-item routerLink="/user">
-      <mat-icon>person</mat-icon>
-      <span class="btn-txt">User</span>
-    </button> 
-    <button mat-menu-item routerLink="/xxx">
-      <mat-icon>logout</mat-icon>
-      <span class="btn-txt">#</span>
-    </button>
-  </mat-menu>
-  <button mat-icon-button [matMenuTriggerFor]="menu" class="mobile-nav">
-    <mat-icon>menu</mat-icon>
+</nav> 
+
+<mat-menu #menuId="matMenu">
+  <button mat-menu-item>
+    <mat-icon>list</mat-icon>
+    <span class="btn-txt">id list</span>
   </button>
-</nav>
+  <button mat-menu-item>
+    <mat-icon>add</mat-icon>
+    <span class="btn-txt">new id</span>
+  </button>
+</mat-menu> 
+
+<mat-menu #menuSettings="matMenu">
+  <button mat-menu-item routerLink="/user">
+    <mat-icon>person_outlined</mat-icon>
+    <span class="btn-txt">user</span>
+  </button>
+  <button mat-menu-item routerLink="/info">
+    <mat-icon>info_outlined</mat-icon>
+    <span class="btn-txt">info</span>
+  </button>
+  <button mat-menu-item (click)="onClickLogout()">
+    <mat-icon>logout</mat-icon>
+    <!-- <span class="btn-txt">new id</span> -->
+  </button>
+</mat-menu>

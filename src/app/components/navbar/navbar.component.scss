@@ -3,6 +3,8 @@ nav {
   height: 3rem;
   width: 100%;
   left: 0;
+  top: 0;
+  // position: fixed;
   text-align: center;
 }
 
@@ -12,8 +14,8 @@ nav ul {
   display: inline-block;
 }
 nav ul li {
-  margin: 0;
-  padding: 0;
+  margin: 0 1rem;
+  padding: 0 0.1rem;
   float: left;
   list-style-type: none;
 }
@@ -22,13 +24,12 @@ nav ul li a {
   padding: 1rem;
   display: block;
   color: var(--txt-black-color);
-  // font-weight: bold;
   text-align: center;
-  // text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 nav ul li a:focus {
-  color: var(--secondary-color-lighter);
+  color: var(--primary-contrast-2);
   font-weight: bold;
 }
 
@@ -49,7 +50,7 @@ nav ul li div mat-select::-ms-expand {
 }
 
 nav ul li a:hover {
-  color: var(--secondary-color-lighter);
+  color: var(--primary-contrast-2);
   font-weight: bolder;
 }
 
@@ -58,7 +59,7 @@ nav ul li a:hover {
 }
 
 .mat-menu-item:hover {
-  background-color: var(--accent-color);
+  background-color: var(--primary-contrast-2);
 }
 
 .menu-btn {
@@ -71,30 +72,6 @@ nav ul li a:hover {
   }
 }
 
-@media screen and (max-width: 600px) {
-  nav ul li:not(:first-child) {
-    display: none;
-  }
-  nav {
-    text-align: left;
-  }
-  nav ul li a {
-    font-size: 0.8rem;
-  }
-
-  .mobile-nav {
-    float: right;
-    display: block;
-    color: white;
-  }
-}
-
 .btn-txt {
   text-transform: uppercase;
-}
-
-.home a {
-  font-weight: bold;
-  margin-right: 8rem;
-  letter-spacing: 0.1rem;
 }
