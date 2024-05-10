@@ -11,7 +11,7 @@
       <a routerLink="/xxx">New ID</a>
     </li>
     <li>
-      <a routerLink="/regulators">User</a>
+      <a routerLink="/user">User</a>
     </li>
   </ul>
   <mat-menu #menu="matMenu">
@@ -27,9 +27,13 @@
       <mat-icon>add</mat-icon>
       <span class="btn-txt">New ID</span>
     </button>
-    <button mat-menu-item routerLink="/xxx">
+    <button mat-menu-item routerLink="/user">
       <mat-icon>person</mat-icon>
       <span class="btn-txt">User</span>
+    </button> 
+    <button mat-menu-item routerLink="/xxx">
+      <mat-icon>logout</mat-icon>
+      <span class="btn-txt">#</span>
     </button>
   </mat-menu>
   <button mat-icon-button [matMenuTriggerFor]="menu" class="mobile-nav">

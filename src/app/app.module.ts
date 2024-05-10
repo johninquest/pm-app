@@ -10,13 +10,15 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAnalytics, provideAnalytics, ScreenTrackingService } from '@angular/fire/analytics';
+import { UserComponent } from './pages/user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     StartComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

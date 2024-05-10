@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { StartComponent } from './pages/start/start.component';
+import { UserComponent } from './pages/user/user.component';
 
 // const routes: Routes = [];
 
@@ -19,6 +20,13 @@ const routes: Routes = [
       title: 'Home',
     },
   },
+  {
+    path: 'user',
+    component: UserComponent,
+    data: {
+      title: 'User',
+    },
+  },
   /* {
     path: '**',
     component: PageNotFoundComponent,
@@ -28,6 +36,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

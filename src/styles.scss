@@ -11,8 +11,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$pockid-primary: mat.define-palette(mat.$pink-palette, 900); // #880E4F
-$pockid-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$pockid-primary: mat.define-palette(mat.$indigo-palette, 100); // #880E4F
+$pockid-accent: mat.define-palette(mat.$deep-orange-palette, 100);
 
 // The warn palette is optional (defaults to red).
 $pockid-warn: mat.define-palette(mat.$red-palette);
@@ -40,9 +40,8 @@ $myfont: "Raleway", sans-serif;
 }
 
 :root {
-  --primary-color: #880e4f;
-  --secondary-color: #7986cb;
-  --secondary-color-lighter: #c5cae9;
+  --primary-color: #C5CAE9;
+  --secondary-color: #FFCCBC;
   --txt-black-color: #212121;
   --txt-white-color: #f5f5f5;
   --bg-color: #f5f5f5;
