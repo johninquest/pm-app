@@ -1,5 +1,28 @@
 .title {
-    text-align: center; 
-    text-transform: capitalize; 
-    margin: 3rem 1rem;
+  text-align: center;
+  text-transform: capitalize;
+  margin: 3rem 1rem;
+}
+
+.create-form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  form {
+    margin: 1rem;
+    display: flex;
+    flex-flow: column nowrap;
+    mat-form-field {
+      width: 21rem;
+    }
+    .btns {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-evenly;
+      button {
+        text-transform: uppercase;
+      }
+    }
+  }
 }

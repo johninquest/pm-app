@@ -1,5 +1,36 @@
-<app-navbar/>
-<div class="title">user info</div> 
+<app-navbar />
+<div class="title">user info</div>
 
-<div style="text-align: center; color: tomato; margin: 3rem;">coming soon ...</div>
-
+<div class="create-form">
+  <form [formGroup]="userForm">
+    <mat-form-field appearance="fill">
+      <mat-label>First name</mat-label>
+      <input matInput type="text" formControlName="firstName" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Last name</mat-label>
+      <input matInput type="text" formControlName="lastName" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Date of birth</mat-label>
+      <input matInput type="date" formControlName="dateOfBirth" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Country</mat-label>
+      <mat-select formControlName="country">
+        <mat-option *ngFor="let i of countryList" [value]="i">
+          {{ i }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="btns">
+      <button mat-raised-button (click)="onClickCancel()">cancel</button>
+      <button mat-raised-button color="accent" (click)="onClickEdit()">
+        edit
+      </button>
+      <button mat-raised-button color="primary" (click)="onClickSave()">
+        save
+      </button>
+    </div>
+  </form>
+</div>
