@@ -24,6 +24,9 @@ export class UserComponent {
     firstName: new FormControl<string>(''),
     lastName: new FormControl<string>(''),
     dateOfBirth: new FormControl<string>(''),
+    street: new FormControl<string>(''),
+    postCode: new FormControl<string>(''),
+    city: new FormControl<string>(''),
     country: new FormControl<string>(''),
   });
 

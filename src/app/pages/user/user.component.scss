@@ -16,6 +16,15 @@
     mat-form-field {
       width: 21rem;
     }
+    .row-of-2 {
+      width: 21rem;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      mat-form-field {
+        width: 45%;
+      }
+    }
     .btns {
       display: flex;
       flex-flow: row nowrap;
