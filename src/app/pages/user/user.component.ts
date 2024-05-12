@@ -37,6 +37,7 @@ export class UserComponent {
   }
 
   onClickSave() {
+    console.log('UserData', this.userForm.value)
     alert('Tapped save button!')
   }
 
