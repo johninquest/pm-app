@@ -13,6 +13,10 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAnalytics, provideAnalytics, ScreenTrackingService } from '@angular/fire/analytics';
 import { UserComponent } from './pages/user/user.component';
 import { InfoComponent } from './pages/info/info.component';
+import { IdCreateComponent } from './pages/id/id-create/id-create.component';
+import { IdReadComponent } from './pages/id/id-read/id-read.component';
+import { IdUpdateComponent } from './pages/id/id-update/id-update.component';
+import { IdListComponent } from './pages/id-list/id-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { InfoComponent } from './pages/info/info.component';
     StartComponent,
     NavbarComponent,
     UserComponent,
-    InfoComponent
+    InfoComponent,
+    IdCreateComponent,
+    IdReadComponent,
+    IdUpdateComponent,
+    IdListComponent
   ],
   imports: [
     BrowserModule,

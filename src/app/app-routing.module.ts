@@ -4,6 +4,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { StartComponent } from './pages/start/start.component';
 import { UserComponent } from './pages/user/user.component';
 import { InfoComponent } from './pages/info/info.component';
+import { IdCreateComponent } from './pages/id/id-create/id-create.component';
+import { IdListComponent } from './pages/id-list/id-list.component';
 
 const routes: Routes = [
   /* { path: '', redirectTo: '/', pathMatch: 'full' }, */
@@ -17,6 +19,20 @@ const routes: Routes = [
     component: HomeComponent,
     data: {
       title: 'Home',
+    },
+  },
+  {
+    path: 'id-create',
+    component: IdCreateComponent,
+    data: {
+      title: 'New ID',
+    },
+  },
+  {
+    path: 'id-list',
+    component: IdListComponent,
+    data: {
+      title: 'ID List',
     },
   },
   {
@@ -44,4 +60,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

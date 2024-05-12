@@ -1,0 +1,54 @@
+<app-navbar />
+<div class="title">new id</div>
+
+<div class="create-form">
+  <form [formGroup]="idForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="idCategory">
+        <mat-option *ngFor="let i of categoryList" [value]="i">
+          {{ i }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="idType">
+        <mat-option
+          *ngFor="let i of renderTypeList(idForm.value.idCategory ?? '')"
+          [value]="i"
+        >
+          {{ i }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Issuer</mat-label>
+      <input matInput type="text" formControlName="issuer" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>ID Number</mat-label>
+      <input matInput type="text" formControlName="idNumber" />
+    </mat-form-field>
+    <div class="row-of-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Valid from</mat-label>
+        <input matInput type="date" formControlName="validFrom" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Valid to</mat-label>
+        <input matInput type="date" formControlName="validTo" />
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>Comment</mat-label>
+      <textarea matInput type="text" formControlName="comment"></textarea>
+    </mat-form-field>
+    <div class="btns">
+      <button mat-raised-button (click)="onClickCancel()">cancel</button>
+      <button mat-raised-button color="primary" (click)="onClickSave()">
+        save
+      </button>
+    </div>
+  </form>
+</div>
