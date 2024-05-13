@@ -3,6 +3,9 @@
 ### <div align="center">Pocket Your IDs, Unlock Your Freedom</div>
 
 <!--
+
+Packages -> https://www.npmjs.com/package/idb
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
 
 ## Development server
