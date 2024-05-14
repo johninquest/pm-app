@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { openDB, deleteDB, wrap, unwrap } from 'idb';
+import { openDB } from 'idb';
 
 @Injectable({
   providedIn: 'root'
@@ -9,24 +9,46 @@ export class IdbService {
   constructor() { }
 
   async openIndexedDB() {
-    const dbName = 'myDB'; // Replace with your desired name
-    const dbVersion = 1; // Increment for schema changes
+    const DB_NAME = 'test_db'; // Replace with your desired name
+    // const dbName = 'pockid_db'; // Replace with your desired name
+    const DB_VERSION = 1; // Increment for schema changes
 
-    const dbPromise = await openDB(dbName, dbVersion, {
-      upgrade(db: any) {
-        // Create object stores here
-        const store = db.createObjectStore('myStore', {
-          keyPath: 'id', // Optional: Set a key path for automatic key generation
-          autoIncrement: true // Optional: Generate unique keys automatically
-        });
+    const dbPromise = await openDB(DB_NAME, DB_VERSION, {
+      upgrade(db: any) { 
+          // Create object store for users
+    if (!db.objectStoreNames.contains('user_data')) {
+      const userStore = db.createObjectStore('user_data', { keyPath: 'id' });
+      /* userStore.createIndex('username', 'username', { unique: true });
+      userStore.createIndex('email', 'email', { unique: true }); */
+    } 
 
-        // Create indexes (optional)
-        // store.createIndex('nameIndex', 'name', { unique: false });
+     // Create object store for products
+     if (!db.objectStoreNames.contains('id_data')) {
+      const idStore = db.createObjectStore('id_data', { keyPath: 'id', autoIncrement: true });
+      /* productStore.createIndex('name', 'name', { unique: false });
+      productStore.createIndex('category', 'category', { unique: false }); */
+    }
       },
     });
 
     return dbPromise;
+  } 
+
+/*   async function addUser(user: any) {
+    const db = await dbPromise;
+    const tx = db.transaction('users', 'readwrite');
+    const store = tx.objectStore('users');
+    await store.add(user);
+    await tx.done;
   }
+  
+  async function addId(id: any) {
+    const db = await dbPromise;
+    const tx = db.transaction('products', 'readwrite');
+    const store = tx.objectStore('products');
+    await store.add(product);
+    await tx.done;
+  } */
 
   async addData(data: any) {
     const db = await this.openIndexedDB();
