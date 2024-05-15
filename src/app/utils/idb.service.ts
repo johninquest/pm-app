@@ -2,39 +2,20 @@ import { Injectable } from '@angular/core';
 import { openDB } from 'idb';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class IdbService {
+  constructor() {}
 
-  constructor() { }
-
-  async openIndexedDB() {
+/*   async openIndexedDB() {
     const DB_NAME = 'test_db'; // Replace with your desired name
     // const dbName = 'pockid_db'; // Replace with your desired name
     const DB_VERSION = 1; // Increment for schema changes
+    const USER_STORE = 'user_data';
+    const ID_STORE = 'user_data';
+  } */
 
-    const dbPromise = await openDB(DB_NAME, DB_VERSION, {
-      upgrade(db: any) { 
-          // Create object store for users
-    if (!db.objectStoreNames.contains('user_data')) {
-      const userStore = db.createObjectStore('user_data', { keyPath: 'id' });
-      /* userStore.createIndex('username', 'username', { unique: true });
-      userStore.createIndex('email', 'email', { unique: true }); */
-    } 
-
-     // Create object store for products
-     if (!db.objectStoreNames.contains('id_data')) {
-      const idStore = db.createObjectStore('id_data', { keyPath: 'id', autoIncrement: true });
-      /* productStore.createIndex('name', 'name', { unique: false });
-      productStore.createIndex('category', 'category', { unique: false }); */
-    }
-      },
-    });
-
-    return dbPromise;
-  } 
-
-/*   async function addUser(user: any) {
+  /*   async function addUser(user: any) {
     const db = await dbPromise;
     const tx = db.transaction('users', 'readwrite');
     const store = tx.objectStore('users');
@@ -51,17 +32,23 @@ export class IdbService {
   } */
 
   async addData(data: any) {
-    const db = await this.openIndexedDB();
-    const tx = db.transaction('myStore', 'readwrite');
-    const store = tx.objectStore('myStore');
-    await store.add(data);
-    tx.oncomplete;
+    console.log('Passed data:', data);
+    const db1 = await openDB('db1', 1);
+    db1
+      .put('store1', 'hello again!!', 'new message')
+      .then((result) => {
+        console.log('success!', result);
+      })
+      .catch((err) => {
+        console.error('error: ', err);
+      });
+    db1.close();
   }
-
+  /* 
   async getData(key: string | number) {
     const db = await this.openIndexedDB();
-    const tx = db.transaction('myStore', 'readonly');
-    const store = tx.objectStore('myStore');
+    const tx = db.transaction('user_data', 'readonly');
+    const store = tx.objectStore('user_data');
     const item = await store.get(key);
     return item;
   }
@@ -80,11 +67,5 @@ export class IdbService {
     const store = tx.objectStore('myStore');
     await store.delete(key);
     tx.oncomplete;
-  }
-
-
-
-
-
-
+  } */
 }

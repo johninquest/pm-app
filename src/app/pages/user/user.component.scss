@@ -22,8 +22,11 @@
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-between;
-      mat-form-field {
-        width: 45%;
+      mat-form-field:nth-child(1) {
+        width: 35%;
+      }
+      mat-form-field:nth-child(2) {
+        width: 55%;
       }
     }
     .btns {
