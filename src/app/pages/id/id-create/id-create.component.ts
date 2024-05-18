@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ID_CATEGORY_LIST, SubCategoryEducation, SubCategoryFinance, SubCategoryGovernment, SubCategoryHealth, SubCategoryInsurance, SubCategoryOthers, SubCategoryProfessional, SubCategorySocialMedia, SubCategorySubscription, SubCategoryTravel, SubCategoryUtilities } from '../../../shared/category.list';
+import { IdbService } from '../../../utils/idb.service';
 
 @Component({
   selector: 'app-id-create',
@@ -8,6 +9,7 @@ import { ID_CATEGORY_LIST, SubCategoryEducation, SubCategoryFinance, SubCategory
   styleUrl: './id-create.component.scss'
 })
 export class IdCreateComponent {
+  constructor(private _idbs: IdbService) {}
 
   idForm = new FormGroup({
     idCategory: new FormControl<string>('', Validators.required),
@@ -61,7 +63,8 @@ export class IdCreateComponent {
   }
 
   onClickSave() {
-    console.log('IdData', this.idForm.value)
+    console.log('IdData', this.idForm.value); 
+    this._idbs.saveFormData(this.idForm.value);
     alert('Tapped save button!')
   }
 

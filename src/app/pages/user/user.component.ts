@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { COUNTRIES } from '../../shared/countries.list';
-// import { IdbService } from '../../utils/idb.service';
+import { IdbService } from '../../utils/idb.service';
 
 @Component({
   selector: 'app-user',
@@ -9,10 +9,11 @@ import { COUNTRIES } from '../../shared/countries.list';
   styleUrl: './user.component.scss',
 })
 export class UserComponent {
-  // constructor(private _idb: IdbService) {}
+  constructor(private _idbs: IdbService) {}
 
   ngOnInit(): void {
-    this.getUserData();
+    /* this.getUserData(); */
+    this.getUserDataFromIdb();
     this.userForm.disable();
     this.userForm.patchValue({
       country: 'Germany',
@@ -45,14 +46,14 @@ export class UserComponent {
     // let userData = this.userForm.value;
     let userData = JSON.stringify(this.userForm.value);
     localStorage.setItem('user_data', userData);
-    /* this._idb.addData(userData).then(res => console.log('addResponse:', res)) */
+    this._idbs.saveUserData(this.userForm.value)
     setTimeout(() => this.userForm.disable(), 1000);
   }
 
-  getUserData() {
+/*   getUserData() {
     let storedData = localStorage.getItem('user_data');
     if (storedData) {
-      console.log('Stored data:', storedData);
+      // console.log('Stored data:', storedData);
       let parsedData = JSON.parse(storedData);
       this.userForm.patchValue({
         firstName: parsedData['firstName'],
@@ -66,6 +67,22 @@ export class UserComponent {
     } else {
       console.log('No user data stored!');
     }
+  } */
+
+  getUserDataFromIdb() {
+    this._idbs.fetchUserData().then((data) => {
+      if(data) {
+        this.userForm.patchValue({
+          firstName: data['formData']['firstName'] ?? '',
+          lastName: data['formData']['lastName'] ?? '',
+          dateOfBirth: data['formData']['dateOfBirth'] ?? '',
+          street: data['formData']['street'] ?? '',
+          postCode: data['formData']['postCode'] ?? '',
+          city: data['formData']['city'] ?? '',
+          country: data['formData']['country'] ?? '',
+        });
+      }
+    })
   }
 
   onClickEdit() {

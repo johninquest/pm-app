@@ -1,19 +1,128 @@
 import { Injectable } from '@angular/core';
-import { openDB } from 'idb';
+// import { openDB } from 'idb';
 
 @Injectable({
   providedIn: 'root',
 })
 export class IdbService {
-  constructor() {}
+  constructor() {} 
+  private idDB: string = 'idDB';
+  private userDB: string = 'userDB';
+  /* private dbName = 'pockid_db'; // Replace with your desired name */
+  private dbVersion = 1; // Increment for schema changes
+  private userStore: string = 'userData';
+  private idStore: string = 'idData';
+  
+  
+  openDatabase(): Promise<IDBDatabase> {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(this.idDB, 1);
 
-/*   async openIndexedDB() {
-    const DB_NAME = 'test_db'; // Replace with your desired name
-    // const dbName = 'pockid_db'; // Replace with your desired name
-    const DB_VERSION = 1; // Increment for schema changes
-    const USER_STORE = 'user_data';
-    const ID_STORE = 'user_data';
-  } */
+      request.onerror = () => {
+        console.error('IndexedDB error:', request.error);
+        reject(request.error);
+      };
+
+      request.onsuccess = () => {
+        resolve(request.result);
+      };
+
+      request.onupgradeneeded = (event) => {
+        const db: IDBDatabase = (event.target as any).result;
+        db.createObjectStore(this.idStore, { keyPath: 'id', autoIncrement: true });
+      };
+    });
+  }
+
+  saveFormData(formData: any): Promise<void> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const db = await this.openDatabase();
+        const transaction = db.transaction([this.idStore], 'readwrite');
+        const store = transaction.objectStore(this.idStore);
+        const request = store.add(formData);
+        
+        request.onerror = () => {
+          console.error('Error saving form data:', request.error);
+          reject(request.error);
+        };
+
+        request.onsuccess = () => {
+          resolve();
+        };
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  // User processes 
+  openDatabaseForUser(): Promise<IDBDatabase> {
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(this.userDB, 1);
+
+      request.onerror = () => {
+        console.error('IndexedDB error:', request.error);
+        reject(request.error);
+      };
+
+      request.onsuccess = () => {
+        resolve(request.result);
+      };
+
+      request.onupgradeneeded = (event) => {
+        const db: IDBDatabase = (event.target as any).result;
+        db.createObjectStore(this.userStore, { keyPath: 'key'});
+      };
+    });
+  } 
+
+  saveUserData(formData: any): Promise<void> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const db = await this.openDatabaseForUser();
+        const transaction = db.transaction([this.userStore], 'readwrite');
+        const store = transaction.objectStore(this.userStore);
+        const key = 'userData'; // Use a fixed key instead of auto-generated ID
+        const request = store.put({ key, formData }); // Use put instead of add to overwrite existing data
+        
+        request.onerror = () => {
+          console.error('Error saving form data:', request.error);
+          reject(request.error);
+        };
+  
+        request.onsuccess = () => {
+          resolve();
+        };
+      } catch (error) {
+        reject(error);
+      }
+    });
+  } 
+
+  fetchUserData(): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const db = await this.openDatabaseForUser();
+        const transaction = db.transaction([this.userStore], 'readonly');
+        const store = transaction.objectStore(this.userStore);
+        const request = store.get('userData'); // Fetch the object using the fixed key
+
+        request.onerror = () => {
+          console.error('Error fetching form data:', request.error);
+          reject(request.error);
+        };
+
+        request.onsuccess = () => {
+          resolve(request.result);
+        };
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+
 
   /*   async function addUser(user: any) {
     const db = await dbPromise;
@@ -31,19 +140,6 @@ export class IdbService {
     await tx.done;
   } */
 
-  async addData(data: any) {
-    console.log('Passed data:', data);
-    const db1 = await openDB('db1', 1);
-    db1
-      .put('store1', 'hello again!!', 'new message')
-      .then((result) => {
-        console.log('success!', result);
-      })
-      .catch((err) => {
-        console.error('error: ', err);
-      });
-    db1.close();
-  }
   /* 
   async getData(key: string | number) {
     const db = await this.openIndexedDB();
