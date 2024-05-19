@@ -1,2 +1,14 @@
 <app-navbar />
 <div class="title">id list</div>
+
+<div @if(idbData) style="text-align: center; margin: 3rem">
+  {{ idbData | json }}
+</div>
+
+<!-- <div @if(idbData) style="text-align: center; margin: 3rem">
+  @for (item of idbData; track item) {
+  <li>{{ item | json }}</li>
+  } @empty {
+  <li>There are no items.</li>
+  }
+</div> -->

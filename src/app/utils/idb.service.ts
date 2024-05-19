@@ -5,15 +5,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class IdbService {
-  constructor() {} 
+  constructor() { }
   private idDB: string = 'idDB';
   private userDB: string = 'userDB';
   /* private dbName = 'pockid_db'; // Replace with your desired name */
   private dbVersion = 1; // Increment for schema changes
   private userStore: string = 'userData';
   private idStore: string = 'idData';
-  
-  
+
+
   openDatabase(): Promise<IDBDatabase> {
     return new Promise((resolve, reject) => {
       const request = indexedDB.open(this.idDB, 1);
@@ -41,7 +41,7 @@ export class IdbService {
         const transaction = db.transaction([this.idStore], 'readwrite');
         const store = transaction.objectStore(this.idStore);
         const request = store.add(formData);
-        
+
         request.onerror = () => {
           console.error('Error saving form data:', request.error);
           reject(request.error);
@@ -49,6 +49,28 @@ export class IdbService {
 
         request.onsuccess = () => {
           resolve();
+        };
+      } catch (error) {
+        reject(error);
+      }
+    });
+  }
+
+  fetchIdsAll(): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const db = await this.openDatabase();
+        const transaction = db.transaction([this.idStore], 'readonly');
+        const store = transaction.objectStore(this.idStore);
+        const request = store.getAll(); // Fetch the object using the fixed key
+
+        request.onerror = () => {
+          console.error('Error fetching form data:', request.error);
+          reject(request.error);
+        };
+
+        request.onsuccess = () => {
+          resolve(request.result);
         };
       } catch (error) {
         reject(error);
@@ -72,10 +94,10 @@ export class IdbService {
 
       request.onupgradeneeded = (event) => {
         const db: IDBDatabase = (event.target as any).result;
-        db.createObjectStore(this.userStore, { keyPath: 'key'});
+        db.createObjectStore(this.userStore, { keyPath: 'key' });
       };
     });
-  } 
+  }
 
   saveUserData(formData: any): Promise<void> {
     return new Promise(async (resolve, reject) => {
@@ -85,12 +107,12 @@ export class IdbService {
         const store = transaction.objectStore(this.userStore);
         const key = 'userData'; // Use a fixed key instead of auto-generated ID
         const request = store.put({ key, formData }); // Use put instead of add to overwrite existing data
-        
+
         request.onerror = () => {
           console.error('Error saving form data:', request.error);
           reject(request.error);
         };
-  
+
         request.onsuccess = () => {
           resolve();
         };
@@ -98,7 +120,7 @@ export class IdbService {
         reject(error);
       }
     });
-  } 
+  }
 
   fetchUserData(): Promise<any> {
     return new Promise(async (resolve, reject) => {

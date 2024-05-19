@@ -9,7 +9,7 @@ import { IdbService } from '../../utils/idb.service';
   styleUrl: './user.component.scss',
 })
 export class UserComponent {
-  constructor(private _idbs: IdbService) {}
+  constructor(private _idbs: IdbService) { }
 
   ngOnInit(): void {
     /* this.getUserData(); */
@@ -50,28 +50,28 @@ export class UserComponent {
     setTimeout(() => this.userForm.disable(), 1000);
   }
 
-/*   getUserData() {
-    let storedData = localStorage.getItem('user_data');
-    if (storedData) {
-      // console.log('Stored data:', storedData);
-      let parsedData = JSON.parse(storedData);
-      this.userForm.patchValue({
-        firstName: parsedData['firstName'],
-        lastName: parsedData['lastName'],
-        dateOfBirth: parsedData['dateOfBirth'],
-        street: parsedData['street'],
-        postCode: parsedData['postCode'],
-        city: parsedData['city'],
-        country: parsedData['country'],
-      });
-    } else {
-      console.log('No user data stored!');
-    }
-  } */
+  /*   getUserData() {
+      let storedData = localStorage.getItem('user_data');
+      if (storedData) {
+        // console.log('Stored data:', storedData);
+        let parsedData = JSON.parse(storedData);
+        this.userForm.patchValue({
+          firstName: parsedData['firstName'],
+          lastName: parsedData['lastName'],
+          dateOfBirth: parsedData['dateOfBirth'],
+          street: parsedData['street'],
+          postCode: parsedData['postCode'],
+          city: parsedData['city'],
+          country: parsedData['country'],
+        });
+      } else {
+        console.log('No user data stored!');
+      }
+    } */
 
   getUserDataFromIdb() {
     this._idbs.fetchUserData().then((data) => {
-      if(data) {
+      if (data) {
         this.userForm.patchValue({
           firstName: data['formData']['firstName'] ?? '',
           lastName: data['formData']['lastName'] ?? '',
