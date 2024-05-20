@@ -4,3 +4,47 @@
   margin: 1rem;
   font-weight: bold;
 }
+
+.id-data {
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  th {
+    font-weight: bold;
+  }
+  tr {
+    cursor: pointer;
+  }
+  /* tr:nth-child(even) {
+    background-color: #dddddd;
+  } */
+  @media (max-width: 768px) {
+    /* Styles for screens less than 768px wide */
+    table {
+      font-size: 0.8rem;
+      .id-category {
+        display: none;
+      } /* Reduce font size for mobile */
+    }
+    /* Hide less important columns (optional) */
+  }
+
+  @media (max-width: 480px) {
+    /* Styles for very small screens (less than 480px) */
+    table {
+      /* Single column view or card-based layout (implement logic here) */
+      font-size: 0.875rem;
+      .id-category {
+        display: none;
+      }
+    }
+  }
+}

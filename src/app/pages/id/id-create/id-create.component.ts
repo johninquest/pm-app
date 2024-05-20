@@ -1,15 +1,29 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ID_CATEGORY_LIST, SubCategoryEducation, SubCategoryFinance, SubCategoryGovernment, SubCategoryHealth, SubCategoryInsurance, SubCategoryOthers, SubCategoryProfessional, SubCategorySocialMedia, SubCategorySubscription, SubCategoryTravel, SubCategoryUtilities } from '../../../shared/category.list';
+import {
+  ID_CATEGORY_LIST,
+  SubCategoryEducation,
+  SubCategoryFinance,
+  SubCategoryGovernment,
+  SubCategoryHealth,
+  SubCategoryInsurance,
+  SubCategoryOthers,
+  SubCategoryProfessional,
+  SubCategorySocialMedia,
+  SubCategorySubscription,
+  SubCategoryTravel,
+  SubCategoryUtilities,
+} from '../../../shared/category.list';
 import { IdbService } from '../../../utils/idb.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-id-create',
   templateUrl: './id-create.component.html',
-  styleUrl: './id-create.component.scss'
+  styleUrl: './id-create.component.scss',
 })
 export class IdCreateComponent {
-  constructor(private _idbs: IdbService) {}
+  constructor(private _idbs: IdbService, private _router:Router) {}
 
   idForm = new FormGroup({
     idCategory: new FormControl<string>('', Validators.required),
@@ -31,7 +45,7 @@ export class IdCreateComponent {
         case 'finance':
           return SubCategoryFinance;
         case 'government':
-          return SubCategoryGovernment; // Assuming there's subCategoryGovernment in your category.list 
+          return SubCategoryGovernment; // Assuming there's subCategoryGovernment in your category.list
         case 'health':
           return SubCategoryHealth;
         case 'insurance':
@@ -51,25 +65,28 @@ export class IdCreateComponent {
         default:
           return [];
       }
-    }
-    else {
+    } else {
       return [];
     }
-
   }
 
   onClickCancel() {
-    history.back()
+    history.back();
   }
 
   onClickSave() {
-    console.log('IdData', this.idForm.value); 
-    this._idbs.saveFormData(this.idForm.value);
-    alert('Tapped save button!')
+    console.log('IdData', this.idForm.value);
+    this._idbs
+      .saveFormData(this.idForm.value)
+      .then((data) => {
+        console.log('Success:', data); 
+        this._router.navigateByUrl('/id-list');
+      })
+      .catch((e) => console.log('Error:', e));
+    // alert('Tapped save button!');
   }
 
   onClickEdit() {
-    this.idForm.enable()
+    this.idForm.enable();
   }
-
 }

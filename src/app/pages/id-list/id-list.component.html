@@ -1,9 +1,41 @@
 <app-navbar />
 <div class="title">id list</div>
 
-<div @if(idbData) style="text-align: center; margin: 3rem">
+<div class="id-data"> 
+  <table>
+    <thead>
+      <tr>
+        <th class="id-category">Category</th>
+        <th>Type</th>
+        <th>Issuer</th>
+        <th>ID Number</th>
+<!--         <th>Valid From</th>
+        <th>Valid To</th>
+        <th>Comment</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      @for(i of idbData; track i){
+        <tr>
+        <td class="id-category">{{ i.idCategory }}</td>
+        <td>{{ i.idType }}</td>
+        <td>{{ i.issuer }}</td>
+        <td>{{ i.idNumber }}</td>
+<!--         <td>{{ i.validFrom }}</td>
+        <td>{{ i.validTo }}</td>
+        <td>{{ i.comment }}</td> -->
+      </tr>
+      }@empty {
+        <tr>There are no items.</tr>
+      }
+      
+    </tbody>
+  </table>
+</div> 
+
+<!-- <div @if(idbData) style="text-align: center; margin: 3rem">
   {{ idbData | json }}
-</div>
+</div> -->
 
 <!-- <div @if(idbData) style="text-align: center; margin: 3rem">
   @for (item of idbData; track item) {
@@ -11,4 +43,4 @@
   } @empty {
   <li>There are no items.</li>
   }
-</div> -->
+</div> --> 
