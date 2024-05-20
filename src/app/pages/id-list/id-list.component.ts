@@ -25,4 +25,9 @@ export class IdListComponent {
     })
   }
 
+  onClickRow(rowData: any) {
+    console.log('Row data:', rowData)
+    alert(`Row data: ${JSON.stringify(rowData)}`)
+  }
+
 }
