@@ -1,13 +1,12 @@
 {
-  "name": "pockid",
-  "short_name": "pockid",
-  "theme_color": "#1976d2",
+  "name": "PockID",
+  "short_name": "PockID",
+  "theme_color": "#c5cae9",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
   "icons": [
-   
     {
       "src": "assets/icons/icon-192x192.png",
       "sizes": "192x192",
