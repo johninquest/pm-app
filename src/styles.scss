@@ -33,8 +33,8 @@ $pockid-theme: mat.define-light-theme(
 
 @include mat.all-component-themes($pockid-theme);
 
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,500;1,500&display=swap");
-$myfont: "Raleway", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+$myfont: "Work Sans", sans-serif;
 * {
   font: 100% $myfont;
 }
