@@ -6,11 +6,12 @@ import { UserComponent } from './pages/user/user.component';
 import { InfoComponent } from './pages/info/info.component';
 import { IdCreateComponent } from './pages/id/id-create/id-create.component';
 import { IdListComponent } from './pages/id-list/id-list.component';
+import { WaitlistComponent } from './pages/waitlist/waitlist.component';
 
 const routes: Routes = [
-  /* { path: '', redirectTo: '/', pathMatch: 'full' }, */
+  { path: '', redirectTo: '/waitlist', pathMatch: 'full' },
   {
-    path: '',
+    path: 'start',
     component: StartComponent,
     data: { title: 'PockID' },
   },
@@ -47,6 +48,13 @@ const routes: Routes = [
     component: UserComponent,
     data: {
       title: 'User',
+    },
+  }, 
+  {
+    path: 'waitlist',
+    component: WaitlistComponent,
+    data: {
+      title: 'Waitlist',
     },
   },
   /* {

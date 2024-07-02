@@ -18,6 +18,7 @@ import { IdReadComponent } from './pages/id/id-read/id-read.component';
 import { IdUpdateComponent } from './pages/id/id-update/id-update.component';
 import { IdListComponent } from './pages/id-list/id-list.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { WaitlistComponent } from './pages/waitlist/waitlist.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     IdCreateComponent,
     IdReadComponent,
     IdUpdateComponent,
-    IdListComponent
+    IdListComponent,
+    WaitlistComponent
   ],
   imports: [
     BrowserModule,

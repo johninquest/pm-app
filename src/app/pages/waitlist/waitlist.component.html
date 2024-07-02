@@ -1,0 +1,55 @@
+<div class="title">Why PockID ?</div>
+
+<!-- <div class="desc">
+  <span class="line-1">Tired of searching for passwords and digging through piles of papers?</span><br /><span
+    style="color: var(--primary-color-darker); font-weight: bold"
+    >PockID</span
+  >
+  is here to make your life easier! It's a simple web app aiming to help you
+  keep all your important personal identification information (PII), like social
+  security numbers, logins, and credit cards, neatly organized on your phone. No
+  more hunting for passwords or rummaging through drawers – everything you need
+  is right at your fingertips with PockID, wherever you are. Plus, your info
+  stays secure on your device, accessible only by you.
+</div>  -->
+<div class="desc">Tired of searching for passwords and digging through piles of papers?</div>
+<div class="desc">Simplify your life with <span style="font-weight: bold; color: var(--primary-color-darker);">PockID</span>, an app that organizes your personal identification info, passwords, and more on your phone. Access your data securely anytime, anywhere – no more searching through papers or forgetting login details.  <span style="font-weight: bold; color: var(--primary-color-darker);">PockID</span> keeps your information safe and easily accessible</div>
+
+<div class="newsletter">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title
+          style="
+            font-weight: bold;
+            letter-spacing: 0.1rem;
+            text-transform: uppercase; font-style: italic;
+          "
+          >be the first</mat-card-title
+        >
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Join the waitlist and be the first to get notified when
+          <span style="color: var(--primary-color-darker); font-weight: bold;"
+            >PockID</span
+          >
+          is launched
+          <span
+            ><mat-icon style="transform: rotate(-25deg)">campaign</mat-icon></span
+          >
+        </p>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Enter your e-mail</mat-label>
+          <input matInput type="email" [formControl]="waitlistEmail" />
+          <mat-error *ngIf="waitlistEmail.invalid">{{
+            getErrorMessage()
+          }}</mat-error> 
+        </mat-form-field>
+  
+        <button mat-flat-button color="primary" (click)="onClickSubscribe()">
+          JOIN THE WAITLIST
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
