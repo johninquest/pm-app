@@ -18,7 +18,6 @@ import { IdReadComponent } from './pages/id/id-read/id-read.component';
 import { IdUpdateComponent } from './pages/id/id-update/id-update.component';
 import { IdListComponent } from './pages/id-list/id-list.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { WaitlistComponent } from './pages/waitlist/waitlist.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +31,6 @@ import { WaitlistComponent } from './pages/waitlist/waitlist.component';
     IdReadComponent,
     IdUpdateComponent,
     IdListComponent,
-    WaitlistComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +38,8 @@ import { WaitlistComponent } from './pages/waitlist/waitlist.component';
     MaterialModules,
     FormsModule,
     ReactiveFormsModule,
-    provideFirebaseApp(() => initializeApp({ "projectId": "pockid-01", "appId": "1:1056023789035:web:29adb5a815abf797e62dae", "storageBucket": "pockid-01.appspot.com", "apiKey": "AIzaSyASZ3ZsRDthtEZmT6TIv7799KixO2qTleg", "authDomain": "pockid-01.firebaseapp.com", "messagingSenderId": "1056023789035", "measurementId": "G-JYV1RK4LJN" })),
-    provideAnalytics(() => getAnalytics()),
+    /*    provideFirebaseApp(() => initializeApp({ "projectId": "pockid-01", "appId": "1:1056023789035:web:29adb5a815abf797e62dae", "storageBucket": "pockid-01.appspot.com", "apiKey": "AIzaSyASZ3ZsRDthtEZmT6TIv7799KixO2qTleg", "authDomain": "pockid-01.firebaseapp.com", "messagingSenderId": "1056023789035", "measurementId": "G-JYV1RK4LJN" })),
+       provideAnalytics(() => getAnalytics()), */
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable

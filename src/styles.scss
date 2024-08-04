@@ -11,7 +11,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$pockid-primary: mat.define-palette(mat.$indigo-palette, 100); // #880E4F
+$pockid-primary: mat.define-palette(mat.$green-palette, 100); // #4DB6AC
 $pockid-accent: mat.define-palette(mat.$deep-orange-palette, 100);
 
 // The warn palette is optional (defaults to red).
@@ -40,7 +40,7 @@ $myfont: "Work Sans", sans-serif;
 }
 
 :root {
-  --primary-color: #c5cae9;
+  --primary-color: #c8e6c9;
   --primary-color-darker: #3f51b5;
   --primary-contrast-1: #e8e0c5;
   --primary-contrast-2: #2f3769;

@@ -1,6 +1,6 @@
-# <div align="center">PockID</div>
+# <div align="center">PROMA</div>
 
-### <div align="center">Pocket Your IDs, Unlock Your Freedom</div>
+### <div align="center">A simple property management app</div>
 
 <!--
 
