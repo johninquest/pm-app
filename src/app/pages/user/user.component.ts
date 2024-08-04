@@ -24,9 +24,10 @@ export class UserComponent {
 
   userForm = new FormGroup({
     userId: new FormControl<string>('', Validators.required),
+    userRole: new FormControl<string>(''),
     firstName: new FormControl<string>(''),
     lastName: new FormControl<string>(''),
-    dateOfBirth: new FormControl<string>(''),
+    /*  dateOfBirth: new FormControl<string>(''), */
     street: new FormControl<string>(''),
     postCode: new FormControl<string>(''),
     city: new FormControl<string>(''),
@@ -75,7 +76,7 @@ export class UserComponent {
         this.userForm.patchValue({
           firstName: data['formData']['firstName'] ?? '',
           lastName: data['formData']['lastName'] ?? '',
-          dateOfBirth: data['formData']['dateOfBirth'] ?? '',
+          /* dateOfBirth: data['formData']['dateOfBirth'] ?? '', */
           street: data['formData']['street'] ?? '',
           postCode: data['formData']['postCode'] ?? '',
           city: data['formData']['city'] ?? '',

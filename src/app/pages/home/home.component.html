@@ -5,11 +5,22 @@
   <button mat-flat-button color="primary" routerLink="/id-create">
     New ID
   </button> -->
-  <button mat-flat-button color="primary" routerLink="/id-create">
-    property
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="tappedButton('Collect rent')"
+  >
+    rent
   </button>
-  <button mat-flat-button color="primary" routerLink="/id-create">rent</button>
-  <button mat-flat-button color="primary" routerLink="/id-create">
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="tappedButton('Enter expense')"
+  >
     expense
   </button>
+  <button mat-flat-button color="primary" routerLink="/properties">
+    properties
+  </button>
+  <button mat-flat-button color="primary" routerLink="/tenants">tenants</button>
 </div>

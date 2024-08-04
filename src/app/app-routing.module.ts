@@ -6,6 +6,8 @@ import { UserComponent } from './pages/user/user.component';
 import { InfoComponent } from './pages/info/info.component';
 import { IdCreateComponent } from './pages/id/id-create/id-create.component';
 import { IdListComponent } from './pages/id-list/id-list.component';
+import { PropertyListComponent } from './pages/properties/property-list/property-list.component';
+import { TenantListComponent } from './pages/tenants/tenant-list/tenant-list.component';
 
 
 const routes: Routes = [
@@ -23,26 +25,27 @@ const routes: Routes = [
     },
   },
   {
-    path: 'id-create',
-    component: IdCreateComponent,
-    data: {
-      title: 'New ID',
-    },
-  },
-  {
-    path: 'id-list',
-    component: IdListComponent,
-    data: {
-      title: 'ID List',
-    },
-  },
-  {
     path: 'info',
     component: InfoComponent,
     data: {
-      title: 'Info | Why PockID ?',
+      title: 'Info | Why ProMa?',
     },
   },
+  {
+    path: 'properties',
+    component: PropertyListComponent,
+    data: {
+      title: 'Properties',
+    },
+  },
+  {
+    path: 'tenants',
+    component: TenantListComponent,
+    data: {
+      title: 'Tenants',
+    },
+  },
+
   {
     path: 'user',
     component: UserComponent,

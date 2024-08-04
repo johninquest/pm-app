@@ -4,6 +4,10 @@
 <div class="create-form">
   <form [formGroup]="userForm">
     <mat-form-field appearance="fill">
+      <mat-label>Role</mat-label>
+      <input matInput type="text" formControlName="userRole" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>First name</mat-label>
       <input matInput type="text" formControlName="firstName" />
     </mat-form-field>
@@ -11,10 +15,10 @@
       <mat-label>Last name</mat-label>
       <input matInput type="text" formControlName="lastName" />
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <!--     <mat-form-field appearance="fill">
       <mat-label>Date of birth</mat-label>
       <input matInput type="date" formControlName="dateOfBirth" />
-    </mat-form-field>
+    </mat-form-field> -->
     <mat-form-field appearance="fill">
       <mat-label>Street</mat-label>
       <input matInput type="text" formControlName="street" />

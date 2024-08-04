@@ -18,6 +18,10 @@ import { IdReadComponent } from './pages/id/id-read/id-read.component';
 import { IdUpdateComponent } from './pages/id/id-update/id-update.component';
 import { IdListComponent } from './pages/id-list/id-list.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { PropertyCreateComponent } from './pages/properties/property-create/property-create.component';
+import { PropertyListComponent } from './pages/properties/property-list/property-list.component';
+import { TenantCreateComponent } from './pages/tenants/tenant-create/tenant-create.component';
+import { TenantListComponent } from './pages/tenants/tenant-list/tenant-list.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     IdReadComponent,
     IdUpdateComponent,
     IdListComponent,
+    PropertyCreateComponent,
+    PropertyListComponent,
+    TenantCreateComponent,
+    TenantListComponent,
   ],
   imports: [
     BrowserModule,
