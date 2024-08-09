@@ -17,7 +17,9 @@ import { PropertyListComponent } from './pages/properties/property-list/property
 import { TenantCreateComponent } from './pages/tenants/tenant-create/tenant-create.component';
 import { TenantListComponent } from './pages/tenants/tenant-list/tenant-list.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getAnalytics, provideAnalytics, ScreenTrackingService } from '@angular/fire/analytics';
+import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,12 @@ import { getAnalytics, provideAnalytics, ScreenTrackingService } from '@angular/
   ],
   providers: [
     provideAnimationsAsync(),
-    ScreenTrackingService
+    ScreenTrackingService,
+    provideFirebaseApp(() => initializeApp({"projectId":"popati","appId":"1:472649861457:web:54a3b7267f800b74c1ab70","storageBucket":"popati.appspot.com","apiKey":"AIzaSyD3yJZ55x-1TUNUhgnBSR8CEiM7__LQbXE","authDomain":"popati.firebaseapp.com","messagingSenderId":"472649861457","measurementId":"G-3R8XS9CYYS"})),
+    provideAuth(() => getAuth()),
+    provideAnalytics(() => getAnalytics()),
+    UserTrackingService,
+    provideFirestore(() => getFirestore())
   ],
   bootstrap: [AppComponent]
 })

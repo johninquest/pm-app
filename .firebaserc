@@ -1,14 +1,14 @@
 {
   "targets": {
-    "pockid-01": {
+    "popati": {
       "hosting": {
-        "pockid": [
-          "pockid-01"
+        "popati": [
+          "popati"
         ]
       }
     }
   },
   "projects": {
-    "default": "pockid-01"
+    "default": "popati"
   }
 }
