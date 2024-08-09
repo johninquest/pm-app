@@ -11,7 +11,6 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserComponent } from './pages/user/user.component';
 import { InfoComponent } from './pages/info/info.component';
-import { IdListComponent } from './pages/id-list/id-list.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { PropertyCreateComponent } from './pages/properties/property-create/property-create.component';
 import { PropertyListComponent } from './pages/properties/property-list/property-list.component';
@@ -28,7 +27,6 @@ import { getAnalytics, provideAnalytics, ScreenTrackingService } from '@angular/
     NavbarComponent,
     UserComponent,
     InfoComponent,
-    IdListComponent,
     PropertyCreateComponent,
     PropertyListComponent,
     TenantCreateComponent,
