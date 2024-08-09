@@ -4,10 +4,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { StartComponent } from './pages/start/start.component';
 import { UserComponent } from './pages/user/user.component';
 import { InfoComponent } from './pages/info/info.component';
-import { IdCreateComponent } from './pages/id/id-create/id-create.component';
-import { IdListComponent } from './pages/id-list/id-list.component';
 import { PropertyListComponent } from './pages/properties/property-list/property-list.component';
+import { PropertyCreateComponent } from './pages/properties/property-create/property-create.component';
 import { TenantListComponent } from './pages/tenants/tenant-list/tenant-list.component';
+import { TenantCreateComponent } from './pages/tenants/tenant-create/tenant-create.component';
 
 
 const routes: Routes = [
@@ -37,12 +37,26 @@ const routes: Routes = [
     data: {
       title: 'Properties',
     },
+  }, 
+  {
+    path: 'property-create',
+    component: PropertyCreateComponent,
+    data: {
+      title: 'Add new property',
+    },
   },
   {
     path: 'tenants',
     component: TenantListComponent,
     data: {
       title: 'Tenants',
+    },
+  },
+  {
+    path: 'tenant-create',
+    component: TenantCreateComponent,
+    data: {
+      title: 'Add new tenant',
     },
   },
 

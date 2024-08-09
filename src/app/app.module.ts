@@ -9,19 +9,16 @@ import { HomeComponent } from './pages/home/home.component';
 import { StartComponent } from './pages/start/start.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getAnalytics, provideAnalytics, ScreenTrackingService } from '@angular/fire/analytics';
 import { UserComponent } from './pages/user/user.component';
 import { InfoComponent } from './pages/info/info.component';
-import { IdCreateComponent } from './pages/id/id-create/id-create.component';
-import { IdReadComponent } from './pages/id/id-read/id-read.component';
-import { IdUpdateComponent } from './pages/id/id-update/id-update.component';
 import { IdListComponent } from './pages/id-list/id-list.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { PropertyCreateComponent } from './pages/properties/property-create/property-create.component';
 import { PropertyListComponent } from './pages/properties/property-list/property-list.component';
 import { TenantCreateComponent } from './pages/tenants/tenant-create/tenant-create.component';
 import { TenantListComponent } from './pages/tenants/tenant-list/tenant-list.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAnalytics, provideAnalytics, ScreenTrackingService } from '@angular/fire/analytics';
 
 @NgModule({
   declarations: [
@@ -31,9 +28,6 @@ import { TenantListComponent } from './pages/tenants/tenant-list/tenant-list.com
     NavbarComponent,
     UserComponent,
     InfoComponent,
-    IdCreateComponent,
-    IdReadComponent,
-    IdUpdateComponent,
     IdListComponent,
     PropertyCreateComponent,
     PropertyListComponent,

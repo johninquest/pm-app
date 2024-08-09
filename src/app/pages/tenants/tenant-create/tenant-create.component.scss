@@ -1,0 +1,43 @@
+.title {
+    text-align: center;
+    text-transform: uppercase;
+    margin: 3rem 1rem 1rem 1rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+  } 
+
+  .create-form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    form {
+      margin: 1rem;
+      display: flex;
+      flex-flow: column nowrap;
+      mat-form-field {
+        width: 21rem;
+      }
+      .row-of-2 {
+        width: 21rem;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        mat-form-field:nth-child(1) {
+          width: 35%;
+        }
+        mat-form-field:nth-child(2) {
+          width: 55%;
+        }
+      }
+      .btns {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        button {
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+  

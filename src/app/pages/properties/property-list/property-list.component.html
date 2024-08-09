@@ -1,2 +1,12 @@
 <app-navbar />
 <div class="title">properties</div>
+
+<div class="float" matTooltip="Add new property">
+  <button mat-raised-button color="primary" (click)="onClickAddNewProperty()">
+    +
+  </button>
+</div>
+
+<div style="margin: 5rem; text-align: center; color: red;">
+  {{ listOfPropertiesData ?? 0 }}
+</div>

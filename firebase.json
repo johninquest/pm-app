@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "pockid",
+      "target": "popati",
       "source": ".",
       "frameworksBackend": {}
     }

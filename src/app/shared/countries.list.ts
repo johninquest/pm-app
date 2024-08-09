@@ -1,5 +1,5 @@
 export const COUNTRIES: string[] = [
-  '',
+  '*',
   'Algeria',
   'Angola',
   'Benin',
