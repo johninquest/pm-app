@@ -6,10 +6,10 @@
   letter-spacing: 0.1rem;
 }
 
-:host {
+/* :host {
   display: block;
   padding: 1rem;
-}
+} */
 .tenant-info {
   font-family: Arial, sans-serif;
   max-width: 37.5rem;
@@ -48,7 +48,7 @@ strong {
 }
 .action-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 1.25rem;
 }
 button {
@@ -67,6 +67,6 @@ button {
   .action-buttons {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
 }
