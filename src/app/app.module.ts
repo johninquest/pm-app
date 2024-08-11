@@ -20,6 +20,9 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { RentCollectComponent } from './pages/rents/rent-collect/rent-collect.component';
+import { MaintenanceCreateComponent } from './pages/maintenance/maintenance-create/maintenance-create.component';
+import { TenantInfoComponent } from './pages/tenants/tenant-info/tenant-info.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     PropertyListComponent,
     TenantCreateComponent,
     TenantListComponent,
+    RentCollectComponent,
+    MaintenanceCreateComponent,
+    TenantInfoComponent,
   ],
   imports: [
     BrowserModule,

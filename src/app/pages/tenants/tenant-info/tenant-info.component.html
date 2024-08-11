@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+    <div class="title">Tenant information</div> 
+
+    <div class="tenant-info">
+       <!--  <h1>Tenant Information</h1> -->
+        
+        <div class="info-group">
+          <h2>Personal Information</h2>
+          <p><strong>National ID:</strong> {{tenant.nationalId}}</p>
+          <p><strong>First Name:</strong> {{tenant.firstName}}</p>
+          <p><strong>Last Name:</strong> {{tenant.lastName}}</p>
+        </div>
+        
+        <div class="info-group">
+          <h2>Address</h2>
+          <p><strong>Street:</strong> {{tenant.street}}</p>
+          <p><strong>Postcode:</strong> {{tenant.postCode}}</p>
+          <p><strong>City:</strong> {{tenant.city}}</p>
+          <p><strong>Country:</strong> {{tenant.country}}</p>
+        </div>
+        
+        <div class="info-group">
+          <h2>Rental Information</h2>
+          <p><strong>Property:</strong> {{tenant.property}}</p>
+          <p><strong>Rent Amount:</strong> {{tenant.rentAmount}}</p>
+          <p><strong>Payment Method:</strong> {{tenant.paymentMethod}}</p>
+          <p><strong>Payment Frequency:</strong> {{tenant.paymentFrequency}}</p>
+        </div>
+  
+        <div class="action-buttons">
+          <button mat-raised-button color="warn" (click)="deleteTenant()">DELETE</button>
+          <button mat-raised-button color="primary" (click)="collectRent()">COLLECT RENT</button>
+        </div>
+      </div>

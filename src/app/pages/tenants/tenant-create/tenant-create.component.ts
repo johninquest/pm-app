@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IdbService } from '../../../utils/idb.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { COUNTRIES } from '../../../shared/countries.list';
 import {
   PAYMENT_FREQUENCY,
   PAYMENT_METHOD,
   PROPERTY_LIST,
 } from '../../../shared/dummy.list';
+import { Router } from '@angular/router';
 
 export interface PaymentFrequencyInterface {
   value: number;
@@ -18,24 +22,12 @@ export interface PaymentFrequencyInterface {
   templateUrl: './tenant-create.component.html',
   styleUrl: './tenant-create.component.scss',
 })
-export class TenantCreateComponent {
-  constructor(private _idbs: IdbService) {}
+export class TenantCreateComponent implements OnInit {
 
-  ngOnInit(): void {
-    /*  this.getUserData();
-    this.getUserDataFromIdb();
-    this.tenantForm.patchValue({
-      country: 'Cameroon',
-    }); */
-  }
-
-  userId: any;
-
-  tenantForm = new FormGroup({
+/*   tenantForm = new FormGroup({
     nationalId: new FormControl<string>(''),
     firstName: new FormControl<string>(''),
     lastName: new FormControl<string>('', Validators.required),
-    /*  dateOfBirth: new FormControl<string>(''), */
     street: new FormControl<string>(''),
     postCode: new FormControl<string>(''),
     city: new FormControl<string>(''),
@@ -57,11 +49,72 @@ export class TenantCreateComponent {
 
   onClickSave() {
     alert('Still under construction!');
-    /* console.log('UserData', this.tenantForm.value);
-    console.log('UserData Type', typeof this.tenantForm.value);
-    let userData = JSON.stringify(this.tenantForm.value);
-    localStorage.setItem('user_data', userData);
-    this._idbs.saveUserData(this.tenantForm.value);
-    setTimeout(() => this.tenantForm.disable(), 1000); */
   }
+
+ */ 
+
+  personalInfoForm: FormGroup;
+  addressForm: FormGroup;
+  rentalInfoForm: FormGroup;
+  stepperOrientation: 'horizontal' | 'vertical' = 'horizontal';
+
+  countryList: string[] = COUNTRIES;
+  propertyList: string[] = PROPERTY_LIST;
+  paymentMethodList: string[] = PAYMENT_METHOD;
+  paymentFrequencyList: PaymentFrequencyInterface[] = PAYMENT_FREQUENCY;
+
+  private destroy$ = new Subject<void>();
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private breakpointObserver: BreakpointObserver, private _router: Router
+  ) {
+    this.personalInfoForm = this.formBuilder.group({
+      nationalId: ['', Validators.required],
+      firstName: [''],
+      lastName: ['', Validators.required]
+    });
+
+    this.addressForm = this.formBuilder.group({
+      street: [''],
+      postCode: [''],
+      city: [''],
+      country: ['']
+    });
+
+    this.rentalInfoForm = this.formBuilder.group({
+      propertyId: [''],
+      rentAmount: ['', [Validators.required, Validators.min(1000)]],
+      paymentMethod: [''],
+      paymentFrequency: ['']
+    });
+  }
+
+  ngOnInit() {
+    this.breakpointObserver
+      .observe([Breakpoints.HandsetPortrait])
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(result => {
+        this.stepperOrientation = result.matches ? 'vertical' : 'horizontal';
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  onSubmit() {
+  /*   if (this.personalInfoForm.valid && this.addressForm.valid && this.rentalInfoForm.valid) {
+      const formData = {
+        ...this.personalInfoForm.value,
+        ...this.addressForm.value,
+        ...this.rentalInfoForm.value
+      };
+      console.log(formData);
+      // Here you would typically send the data to your backend
+    } */
+   this._router.navigateByUrl('/tenant-info')
+  }
+
 }

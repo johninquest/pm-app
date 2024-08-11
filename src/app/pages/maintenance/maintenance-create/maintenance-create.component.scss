@@ -1,0 +1,17 @@
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 3rem 1rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+}
+button {
+  margin-top: 20px;
+}

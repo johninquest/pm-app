@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select'; 
 import { MatCardModule } from '@angular/material/card';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatDialogModule } from '@angular/material/dialog';
 
 /*
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -20,8 +22,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
-import { MatStepperModule } from '@angular/material/stepper';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
@@ -38,7 +38,9 @@ import { from } from 'rxjs';
         MatInputModule,
         MatSelectModule, 
         MatCardModule, 
-        MatTooltipModule,
+        MatTooltipModule, 
+        MatStepperModule, 
+        MatDialogModule,
         /*
         MatMenuModule,
         MatProgressSpinnerModule,
@@ -68,7 +70,9 @@ import { from } from 'rxjs';
         MatInputModule,
         MatSelectModule, 
         MatCardModule, 
-        MatTooltipModule,
+        MatTooltipModule, 
+        MatStepperModule, 
+        MatDialogModule,
         /* 
         MatMenuModule,
         MatProgressSpinnerModule,
@@ -83,7 +87,6 @@ import { from } from 'rxjs';
         MatListModule,
         MatTableModule,
         MatStepperModule,
-        MatDialogModule,
         MatTooltipModule,
         MatExpansionModule,
         MatCardModule,

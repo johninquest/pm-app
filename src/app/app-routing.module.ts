@@ -8,6 +8,9 @@ import { PropertyListComponent } from './pages/properties/property-list/property
 import { PropertyCreateComponent } from './pages/properties/property-create/property-create.component';
 import { TenantListComponent } from './pages/tenants/tenant-list/tenant-list.component';
 import { TenantCreateComponent } from './pages/tenants/tenant-create/tenant-create.component';
+import { RentCollectComponent } from './pages/rents/rent-collect/rent-collect.component';
+import { MaintenanceCreateComponent } from './pages/maintenance/maintenance-create/maintenance-create.component';
+import { TenantInfoComponent } from './pages/tenants/tenant-info/tenant-info.component';
 
 
 const routes: Routes = [
@@ -28,9 +31,17 @@ const routes: Routes = [
     path: 'info',
     component: InfoComponent,
     data: {
-      title: 'Info | Why ProMa?',
+      title: 'Info | Why Popati?',
     },
-  },
+  }, 
+
+  {
+    path: 'maintenance-create',
+    component: MaintenanceCreateComponent,
+    data: {
+      title: 'New maintenance',
+    },
+  }, 
   {
     path: 'properties',
     component: PropertyListComponent,
@@ -57,6 +68,20 @@ const routes: Routes = [
     component: TenantCreateComponent,
     data: {
       title: 'Add new tenant',
+    },
+  }, 
+  {
+    path: 'tenant-info',
+    component: TenantInfoComponent,
+    data: {
+      title: 'Tenant information',
+    },
+  },
+  {
+    path: 'rent-collect',
+    component: RentCollectComponent,
+    data: {
+      title: 'Rent collect',
     },
   },
 
