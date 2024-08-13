@@ -1,6 +1,6 @@
 {
-  "name": "POPATI",
-  "short_name": "POPATI",
+  "name": "popati",
+  "short_name": "popati",
   "theme_color": "#c5cae9",
   "background_color": "#fafafa",
   "display": "standalone",
