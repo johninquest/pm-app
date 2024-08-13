@@ -25,7 +25,8 @@ export class TenantInfoComponent {
 
 
   deleteTenant() {
-    // Here you would typically open a confirmation dialog
+    // Here you would typically open a confirmation dialog 
+    alert('Pressed delete tenant!')
     console.log('Delete tenant function called');
     // If confirmed, call your delete service
   }
