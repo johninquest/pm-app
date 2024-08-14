@@ -9,8 +9,9 @@ import { PropertyCreateComponent } from './pages/properties/property-create/prop
 import { TenantListComponent } from './pages/tenants/tenant-list/tenant-list.component';
 import { TenantCreateComponent } from './pages/tenants/tenant-create/tenant-create.component';
 import { RentCollectComponent } from './pages/rents/rent-collect/rent-collect.component';
-import { MaintenanceCreateComponent } from './pages/maintenance/maintenance-create/maintenance-create.component';
 import { TenantInfoComponent } from './pages/tenants/tenant-info/tenant-info.component';
+import { ExpenseCreateComponent } from './pages/expenses/expense-create/expense-create.component';
+import { ExpenseListComponent } from './pages/expenses/expense-list/expense-list.component';
 
 
 const routes: Routes = [
@@ -33,22 +34,28 @@ const routes: Routes = [
     data: {
       title: 'Info | Why Popati?',
     },
-  }, 
-
+  },
   {
-    path: 'maintenance-create',
-    component: MaintenanceCreateComponent,
+    path: 'expense-create',
+    component: ExpenseCreateComponent,
     data: {
-      title: 'New maintenance',
+      title: 'New expense',
     },
-  }, 
+  },
+  {
+    path: 'expenses',
+    component: ExpenseListComponent,
+    data: {
+      title: 'Expenses',
+    },
+  },
   {
     path: 'properties',
     component: PropertyListComponent,
     data: {
       title: 'Properties',
     },
-  }, 
+  },
   {
     path: 'property-create',
     component: PropertyCreateComponent,
@@ -69,7 +76,7 @@ const routes: Routes = [
     data: {
       title: 'Add new tenant',
     },
-  }, 
+  },
   {
     path: 'tenant-info',
     component: TenantInfoComponent,

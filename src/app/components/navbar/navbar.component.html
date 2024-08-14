@@ -19,11 +19,11 @@
 </nav>
 
 <mat-menu #menuId="matMenu">
-  <button mat-menu-item>
+  <button mat-menu-item routerLink="/rent-collect">
     <mat-icon> real_estate_agent </mat-icon>
-    <span class="btn-txt">rent</span>
+    <span class="btn-txt">collect rent</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item routerLink="/expenses">
     <mat-icon>attach_money</mat-icon>
     <span class="btn-txt">expenses</span>
   </button>
@@ -32,7 +32,7 @@
     <span class="btn-txt">properties</span>
   </button>
   <button mat-menu-item routerLink="/tenants">
-    <mat-icon>groups</mat-icon>
+    <mat-icon>group</mat-icon>
     <span class="btn-txt">tenants</span>
   </button>
 </mat-menu>

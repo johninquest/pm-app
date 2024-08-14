@@ -21,8 +21,9 @@ import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingServ
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { RentCollectComponent } from './pages/rents/rent-collect/rent-collect.component';
-import { MaintenanceCreateComponent } from './pages/maintenance/maintenance-create/maintenance-create.component';
 import { TenantInfoComponent } from './pages/tenants/tenant-info/tenant-info.component';
+import { ExpenseCreateComponent } from './pages/expenses/expense-create/expense-create.component';
+import { ExpenseListComponent } from './pages/expenses/expense-list/expense-list.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +38,9 @@ import { TenantInfoComponent } from './pages/tenants/tenant-info/tenant-info.com
     TenantCreateComponent,
     TenantListComponent,
     RentCollectComponent,
-    MaintenanceCreateComponent,
     TenantInfoComponent,
+    ExpenseCreateComponent,
+    ExpenseListComponent,
   ],
   imports: [
     BrowserModule,

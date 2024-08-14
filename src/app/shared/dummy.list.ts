@@ -17,3 +17,7 @@ export const PAYMENT_FREQUENCY = [
   { value: 4, viewValue: 'quarterly' },
   { value: 12, viewValue: 'monthly' },
 ];
+
+export const EXPENSE_TYPE_LIST: string[] = [
+  'tax', 'insurance', 'repairs', 'cleaning', 'legal', 'renovation'
+];
