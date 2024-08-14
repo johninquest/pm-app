@@ -19,5 +19,5 @@ export const PAYMENT_FREQUENCY = [
 ];
 
 export const EXPENSE_TYPE_LIST: string[] = [
-  'tax', 'insurance', 'repairs', 'cleaning', 'legal', 'renovation'
+  'cleaning', 'insurance', 'legal', 'maintenance/repairs', 'improvement/renovation', 'tax'
 ];

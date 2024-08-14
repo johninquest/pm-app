@@ -83,8 +83,9 @@ export class TenantCreateComponent implements OnInit {
     });
 
     this.rentalInfoForm = this.formBuilder.group({
-      propertyId: [''],
-      rentAmount: ['', [Validators.required, Validators.min(1000)]],
+      propertyId: [''], 
+      leaseStartDate: [''],
+      perYearRentAmount: ['', [Validators.required, Validators.min(1000)]],
       paymentMethod: [''],
       paymentFrequency: ['']
     });
