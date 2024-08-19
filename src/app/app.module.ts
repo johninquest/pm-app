@@ -24,6 +24,7 @@ import { RentCollectComponent } from './pages/rents/rent-collect/rent-collect.co
 import { TenantInfoComponent } from './pages/tenants/tenant-info/tenant-info.component';
 import { ExpenseCreateComponent } from './pages/expenses/expense-create/expense-create.component';
 import { ExpenseListComponent } from './pages/expenses/expense-list/expense-list.component';
+import { VersionComponent } from './components/version/version.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ExpenseListComponent } from './pages/expenses/expense-list/expense-list
     TenantInfoComponent,
     ExpenseCreateComponent,
     ExpenseListComponent,
+    VersionComponent,
   ],
   imports: [
     BrowserModule,

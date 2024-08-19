@@ -21,4 +21,14 @@
     width: 13rem;
     height: 3rem;
   }
+} 
+
+app-version {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+  color: #777; /* Adjust color as needed */
 }
