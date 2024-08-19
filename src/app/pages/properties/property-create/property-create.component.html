@@ -1,41 +1,57 @@
 <app-navbar />
-<div class="title">new property</div> 
+<div class="title">new property</div>
 
-    <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
-      <mat-form-field appearance="fill">
-        <mat-label>Property Address</mat-label>
-        <input matInput formControlName="address" required>
-      </mat-form-field>
-      
-      <mat-form-field appearance="fill">
-        <mat-label>Property Type</mat-label>
-        <mat-select formControlName="type" required>
-          <mat-option value="apartment">Apartment</mat-option>
-          <mat-option value="house">House</mat-option>
-          <mat-option value="commercial">Commercial Space</mat-option>
-        </mat-select>
-      </mat-form-field>
-      
-      <mat-form-field appearance="fill">
-        <mat-label>Number of Units</mat-label>
-        <input matInput type="number" formControlName="units" required>
-      </mat-form-field>
-      
-      <mat-form-field appearance="fill">
-        <mat-label>Purchase Date</mat-label>
-        <input matInput type="date" formControlName="purchaseDate">
-      </mat-form-field>
-      
-      <mat-form-field appearance="fill">
-        <mat-label>Purchase Price</mat-label>
-        <input matInput type="number" formControlName="purchasePrice" required>
-      </mat-form-field>
-      
-      <mat-form-field appearance="fill">
-        <mat-label>Current Estimated Value</mat-label>
-        <input matInput type="number" formControlName="currentValue" required>
-      </mat-form-field>
-      
-     <!--  <button mat-raised-button color="primary" type="submit" [disabled]="!propertyForm.valid">Submit</button> --> 
-     <button mat-raised-button color="primary" type="submit">SAVE</button>
-    </form>
+<form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Property name / ID</mat-label>
+    <input matInput type="text" formControlName="propertyId" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Property type</mat-label>
+    <mat-select formControlName="type" required>
+      <mat-option value="apartment">Apartment</mat-option>
+      <mat-option value="house">House</mat-option>
+      <mat-option value="commercial">Commercial building</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Number of units</mat-label>
+    <input matInput type="number" formControlName="numberOfUnits" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Construction year</mat-label>
+    <input
+      matInput
+      type="number"
+      formControlName="constructionYear"
+      min="1900"
+      max="2100"
+    />
+  </mat-form-field>
+
+  <!--   <mat-form-field appearance="fill">
+    <mat-label>Purchase date</mat-label>
+    <input matInput type="date" formControlName="purchaseDate" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Purchase price</mat-label>
+    <input matInput type="number" formControlName="purchasePrice" />
+  </mat-form-field> -->
+
+  <mat-form-field appearance="fill">
+    <mat-label>Current estimated value</mat-label>
+    <input matInput type="number" min="0" formControlName="currentValue" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Address</mat-label>
+    <input matInput formControlName="propertyAddress" />
+  </mat-form-field>
+
+  <!--  <button mat-raised-button color="primary" type="submit" [disabled]="!propertyForm.valid">Submit</button> -->
+  <button mat-raised-button color="primary" type="submit">SAVE</button>
+</form>

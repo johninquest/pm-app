@@ -6,20 +6,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './property-create.component.html',
   styleUrl: './property-create.component.scss'
 })
-export class PropertyCreateComponent { 
-  propertyForm: FormGroup; 
+export class PropertyCreateComponent {
+  propertyForm: FormGroup;
   constructor(private fb: FormBuilder) {
     this.propertyForm = this.fb.group({
-      address: ['', Validators.required],
+      propertyId: [''],
       type: ['', Validators.required],
-      units: [1, [Validators.required, Validators.min(1)]],
-      purchaseDate: ['', Validators.required],
-      purchasePrice: [0, [Validators.required, Validators.min(0)]],
-      currentValue: [0, [Validators.required, Validators.min(0)]]
+      numberOfUnits: [1, [Validators.required, Validators.min(1)]],
+      purchaseDate: [''],
+      purchasePrice: [0],
+      currentValue: [],
+      constructionYear: [''], 
+      propertyAddress: [''],
     });
-  } 
+  }
   onSubmit() {
     if (this.propertyForm.valid) {
+      alert('Tapped save property!');
       console.log(this.propertyForm.value);
       // Here you would typically send the data to your backend
     }
