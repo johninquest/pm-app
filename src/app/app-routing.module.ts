@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { StartComponent } from './pages/start/start.component';
+/* import { StartComponent } from './pages/start/start.component'; */
 import { UserComponent } from './pages/user/user.component';
 import { InfoComponent } from './pages/info/info.component';
 import { PropertyListComponent } from './pages/properties/property-list/property-list.component';
@@ -12,15 +12,21 @@ import { RentCollectComponent } from './pages/rents/rent-collect/rent-collect.co
 import { TenantInfoComponent } from './pages/tenants/tenant-info/tenant-info.component';
 import { ExpenseCreateComponent } from './pages/expenses/expense-create/expense-create.component';
 import { ExpenseListComponent } from './pages/expenses/expense-list/expense-list.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/start', pathMatch: 'full' },
+  { path: '', redirectTo: '/auth', pathMatch: 'full' },
   {
+    path: 'auth',
+    component: AuthComponent,
+    data: { title: 'auth' },
+  },
+/*   {
     path: 'start',
     component: StartComponent,
-    data: { title: 'ProMa' },
-  },
+    data: { title: 'Popati' },
+  }, */
   {
     path: 'home',
     component: HomeComponent,

@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { StartComponent } from './pages/start/start.component';
+/* import { StartComponent } from './pages/start/start.component'; */
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserComponent } from './pages/user/user.component';
@@ -25,12 +25,13 @@ import { TenantInfoComponent } from './pages/tenants/tenant-info/tenant-info.com
 import { ExpenseCreateComponent } from './pages/expenses/expense-create/expense-create.component';
 import { ExpenseListComponent } from './pages/expenses/expense-list/expense-list.component';
 import { VersionComponent } from './components/version/version.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    StartComponent,
+    /* StartComponent, */
     NavbarComponent,
     UserComponent,
     InfoComponent,
@@ -43,6 +44,7 @@ import { VersionComponent } from './components/version/version.component';
     ExpenseCreateComponent,
     ExpenseListComponent,
     VersionComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
