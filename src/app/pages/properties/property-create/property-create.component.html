@@ -7,19 +7,29 @@
     <input matInput type="text" formControlName="propertyId" required />
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+<!--   <mat-form-field appearance="fill">
     <mat-label>Property type</mat-label>
     <mat-select formControlName="type" required>
       <mat-option value="apartment">Apartment</mat-option>
       <mat-option value="house">House</mat-option>
       <mat-option value="commercial">Commercial building</mat-option>
     </mat-select>
+  </mat-form-field>  -->
+  <mat-form-field appearance="fill">
+    <mat-label>Property type</mat-label>
+    <mat-select formControlName="type">
+      @for (pType of propertyCategoryList; track pType.value) {
+        <mat-option [value]="pType.value">
+          {{ pType.viewValue }}
+        </mat-option>
+      }
+    </mat-select>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+<!--   <mat-form-field appearance="fill">
     <mat-label>Number of units</mat-label>
     <input matInput type="number" formControlName="numberOfUnits" />
-  </mat-form-field>
+  </mat-form-field> -->
 
   <mat-form-field appearance="fill">
     <mat-label>Construction year</mat-label>

@@ -9,13 +9,10 @@ import {
   PAYMENT_FREQUENCY,
   PAYMENT_METHOD,
   PROPERTY_LIST,
-} from '../../../shared/dummy.list';
+} from '../../../shared/dummy.list'; 
+import { PaymentFrequencyInterface } from '../../../utils/data.model';
 import { Router } from '@angular/router';
 
-export interface PaymentFrequencyInterface {
-  value: number;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-tenant-create',
