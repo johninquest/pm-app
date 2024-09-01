@@ -31,7 +31,7 @@ export class PropertyCreateComponent {
 
   isMultiUnitProperty(): boolean {
     const propertyType = this.propertyForm.get('type')?.value;
-    return ['multiUnit', 'multiFamily'].includes(propertyType);
+    return ['multiUnit', 'multiFamily', 'mixedUse'].includes(propertyType);
   }
 
 
