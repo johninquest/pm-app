@@ -4,12 +4,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { COUNTRIES } from '../../../shared/countries.list';
+import { COUNTRIES } from '../../../shared/lists/countries.list';
 import {
   PAYMENT_FREQUENCY,
   PAYMENT_METHOD,
   PROPERTY_LIST,
-} from '../../../shared/dummy.list'; 
+} from '../../../shared/lists/dummy.list';
 import { PaymentFrequencyInterface } from '../../../utils/data.model';
 import { Router } from '@angular/router';
 
@@ -21,34 +21,34 @@ import { Router } from '@angular/router';
 })
 export class TenantCreateComponent implements OnInit {
 
-/*   tenantForm = new FormGroup({
-    nationalId: new FormControl<string>(''),
-    firstName: new FormControl<string>(''),
-    lastName: new FormControl<string>('', Validators.required),
-    street: new FormControl<string>(''),
-    postCode: new FormControl<string>(''),
-    city: new FormControl<string>(''),
-    country: new FormControl<string>(''),
-    propertyId: new FormControl<string>(''),
-    rentAmount: new FormControl<string>(''),
-    paymentMethod: new FormControl(<string>''),
-    paymentFrequency: new FormControl<string>(''),
-  });
-
-  countryList: string[] = COUNTRIES;
-  propertyList: string[] = PROPERTY_LIST;
-  paymentMethodList: string[] = PAYMENT_METHOD;
-  paymentFrequencyList: PaymentFrequencyInterface[] = PAYMENT_FREQUENCY;
-
-  onClickCancel() {
-    history.back();
-  }
-
-  onClickSave() {
-    alert('Still under construction!');
-  }
-
- */ 
+  /*   tenantForm = new FormGroup({
+      nationalId: new FormControl<string>(''),
+      firstName: new FormControl<string>(''),
+      lastName: new FormControl<string>('', Validators.required),
+      street: new FormControl<string>(''),
+      postCode: new FormControl<string>(''),
+      city: new FormControl<string>(''),
+      country: new FormControl<string>(''),
+      propertyId: new FormControl<string>(''),
+      rentAmount: new FormControl<string>(''),
+      paymentMethod: new FormControl(<string>''),
+      paymentFrequency: new FormControl<string>(''),
+    });
+  
+    countryList: string[] = COUNTRIES;
+    propertyList: string[] = PROPERTY_LIST;
+    paymentMethodList: string[] = PAYMENT_METHOD;
+    paymentFrequencyList: PaymentFrequencyInterface[] = PAYMENT_FREQUENCY;
+  
+    onClickCancel() {
+      history.back();
+    }
+  
+    onClickSave() {
+      alert('Still under construction!');
+    }
+  
+   */
 
   personalInfoForm: FormGroup;
   addressForm: FormGroup;
@@ -80,11 +80,11 @@ export class TenantCreateComponent implements OnInit {
     });
 
     this.rentalInfoForm = this.formBuilder.group({
-      propertyId: [''], 
+      propertyId: [''],
       leaseStartDate: [''],
       perYearRentAmount: ['', [Validators.required, Validators.min(1000)]],
       paymentMethod: [''],
-      paymentFrequency: ['']
+      paymentFrequency: [12]
     });
   }
 
@@ -94,7 +94,7 @@ export class TenantCreateComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe(result => {
         this.stepperOrientation = result.matches ? 'vertical' : 'horizontal';
-      });
+      }); 
   }
 
   ngOnDestroy() {
@@ -103,16 +103,16 @@ export class TenantCreateComponent implements OnInit {
   }
 
   onSubmit() {
-  /*   if (this.personalInfoForm.valid && this.addressForm.valid && this.rentalInfoForm.valid) {
-      const formData = {
-        ...this.personalInfoForm.value,
-        ...this.addressForm.value,
-        ...this.rentalInfoForm.value
-      };
-      console.log(formData);
-      // Here you would typically send the data to your backend
-    } */
-   this._router.navigateByUrl('/tenant-info')
+    /*   if (this.personalInfoForm.valid && this.addressForm.valid && this.rentalInfoForm.valid) {
+        const formData = {
+          ...this.personalInfoForm.value,
+          ...this.addressForm.value,
+          ...this.rentalInfoForm.value
+        };
+        console.log(formData);
+        // Here you would typically send the data to your backend
+      } */
+    this._router.navigateByUrl('/tenant-info')
   }
 
 }

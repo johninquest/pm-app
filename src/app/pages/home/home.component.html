@@ -1,11 +1,11 @@
 <app-navbar />
 
 <div class="options">
-  <!-- <button mat-flat-button color="primary" routerLink="/id-list">ID List</button>
-  <button mat-flat-button color="primary" routerLink="/id-create">
-    New ID
-  </button> -->
-  <button mat-flat-button color="primary" routerLink="/rent-collect">
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="tappedButton('Rent collection -> still under construction')"
+  >
     collect rent
   </button>
   <button mat-flat-button color="primary" routerLink="/expenses">
@@ -16,4 +16,3 @@
   </button>
   <button mat-flat-button color="primary" routerLink="/tenants">tenants</button>
 </div>
-

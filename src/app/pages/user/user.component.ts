@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { COUNTRIES } from '../../shared/countries.list';
+import { COUNTRIES } from '../../shared/lists/countries.list';
 import { IdbService } from '../../utils/idb.service';
+import { USER_ROLES } from '../../shared/lists/role.list';
+import { UserRoleInterface } from '../../utils/data.model';
 
 @Component({
   selector: 'app-user',
@@ -16,7 +18,7 @@ export class UserComponent {
     this.getUserDataFromIdb();
     this.userForm.disable();
     this.userForm.patchValue({
-      country: 'Germany',
+      country: 'Cameroon',
     });
   }
 
@@ -26,7 +28,9 @@ export class UserComponent {
     userId: new FormControl<string>('', Validators.required),
     userRole: new FormControl<string>(''),
     firstName: new FormControl<string>(''),
-    lastName: new FormControl<string>(''),
+    lastName: new FormControl<string>(''), 
+    phoneNumber: new FormControl<string>(''), 
+    emailAddress: new FormControl<string>(''), 
     /*  dateOfBirth: new FormControl<string>(''), */
     street: new FormControl<string>(''),
     postCode: new FormControl<string>(''),
@@ -35,6 +39,7 @@ export class UserComponent {
   });
 
   countryList: string[] = COUNTRIES;
+  userRoleList: UserRoleInterface[] = USER_ROLES;
 
   onClickCancel() {
     history.back();
@@ -75,7 +80,9 @@ export class UserComponent {
       if (data) {
         this.userForm.patchValue({
           firstName: data['formData']['firstName'] ?? '',
-          lastName: data['formData']['lastName'] ?? '',
+          lastName: data['formData']['lastName'] ?? '', 
+          phoneNumber: data['formData']['phoneNumber'] ?? '', 
+          emailAddress: data['formData']['emailAddress'] ?? '',
           /* dateOfBirth: data['formData']['dateOfBirth'] ?? '', */
           street: data['formData']['street'] ?? '',
           postCode: data['formData']['postCode'] ?? '',

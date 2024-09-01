@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PROPERTY_CATEGORY_LIST } from '../../../shared/dummy.list';
+import { PROPERTY_CATEGORY_LIST } from '../../../shared/lists/dummy.list';
 import { PropertyCategoryInterface } from '../../../utils/data.model';
+import { COUNTRIES } from '../../../shared/lists/countries.list';
 
 @Component({
   selector: 'app-property-create',
@@ -14,14 +15,26 @@ export class PropertyCreateComponent {
     this.propertyForm = this.fb.group({
       propertyId: [''],
       type: ['', Validators.required],
-      /*  numberOfUnits: [1, [Validators.required, Validators.min(1)]], */
-      purchaseDate: [''],
-      purchasePrice: [0],
+      numberOfUnits: [1, [Validators.min(1)]],
+      /*       purchaseDate: [''],
+            purchasePrice: [0], */
       currentValue: [],
       constructionYear: [''],
-      propertyAddress: [''],
+      /* Address */
+      street: [''],
+      city: [''],
+      state: [''],
+      postCode: [''],
+      country: [''],
     });
   }
+
+  isMultiUnitProperty(): boolean {
+    const propertyType = this.propertyForm.get('type')?.value;
+    return ['multiUnit', 'multiFamily'].includes(propertyType);
+  }
+
+
   onSubmit() {
     if (this.propertyForm.valid) {
       alert('Tapped save property!');
@@ -31,4 +44,24 @@ export class PropertyCreateComponent {
   }
 
   propertyCategoryList: PropertyCategoryInterface[] = PROPERTY_CATEGORY_LIST;
+  countryList: string[] = COUNTRIES;
+
+  ngOnInit(): void {
+    this.propertyForm.patchValue({
+      country: 'Cameroon',
+    });
+  }
 }
+
+/*   isMultiUnitProperty(): boolean {
+    let propertyType = this.propertyForm.get('type')?.value; 
+    console.log('Property type', this.propertyForm.get('type')?.value);
+    if (propertyType && propertyType === 'multiUnit') {
+      return true;
+    }
+    if (propertyType && propertyType === 'multiFamily') {
+      return true;
+    } else {
+      return false;
+    }
+  }  */

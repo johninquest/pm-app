@@ -1,48 +1,43 @@
 <app-navbar />
 <div class="title">new property</div>
 
-<form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="fill">
-    <mat-label>Property name / ID</mat-label>
-    <input matInput type="text" formControlName="propertyId" required />
-  </mat-form-field>
-
-<!--   <mat-form-field appearance="fill">
-    <mat-label>Property type</mat-label>
-    <mat-select formControlName="type" required>
-      <mat-option value="apartment">Apartment</mat-option>
-      <mat-option value="house">House</mat-option>
-      <mat-option value="commercial">Commercial building</mat-option>
-    </mat-select>
-  </mat-form-field>  -->
-  <mat-form-field appearance="fill">
-    <mat-label>Property type</mat-label>
-    <mat-select formControlName="type">
-      @for (pType of propertyCategoryList; track pType.value) {
-        <mat-option [value]="pType.value">
-          {{ pType.viewValue }}
-        </mat-option>
+<div class="property-form">
+  <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+      <legend>Property information</legend>
+      <mat-form-field appearance="fill">
+        <mat-label>Property name / ID</mat-label>
+        <input matInput type="text" formControlName="propertyId" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Property type</mat-label>
+        <mat-select formControlName="type">
+          @for (pType of propertyCategoryList; track pType.value) {
+          <mat-option [value]="pType.value">
+            {{ pType.viewValue }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      @if(isMultiUnitProperty()) {
+      <mat-form-field appearance="fill">
+        <mat-label>Number of units</mat-label>
+        <input matInput type="number" formControlName="numberOfUnits" min="1" />
+      </mat-form-field>
       }
-    </mat-select>
-  </mat-form-field>
 
-<!--   <mat-form-field appearance="fill">
-    <mat-label>Number of units</mat-label>
-    <input matInput type="number" formControlName="numberOfUnits" />
-  </mat-form-field> -->
+      <mat-form-field appearance="fill">
+        <mat-label>Construction year</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="constructionYear"
+          min="1900"
+          max="2100"
+        />
+      </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Construction year</mat-label>
-    <input
-      matInput
-      type="number"
-      formControlName="constructionYear"
-      min="1900"
-      max="2100"
-    />
-  </mat-form-field>
-
-  <!--   <mat-form-field appearance="fill">
+      <!--   <mat-form-field appearance="fill">
     <mat-label>Purchase date</mat-label>
     <input matInput type="date" formControlName="purchaseDate" />
   </mat-form-field>
@@ -50,18 +45,47 @@
   <mat-form-field appearance="fill">
     <mat-label>Purchase price</mat-label>
     <input matInput type="number" formControlName="purchasePrice" />
-  </mat-form-field> -->
+  </mat-form-field> 
 
-  <mat-form-field appearance="fill">
-    <mat-label>Current estimated value</mat-label>
-    <input matInput type="number" min="0" formControlName="currentValue" />
-  </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Current estimated value</mat-label>
+        <input matInput type="number" min="0" formControlName="currentValue" />
+      </mat-form-field> -->
+    </fieldset>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Address</mat-label>
-    <input matInput formControlName="propertyAddress" />
-  </mat-form-field>
+    <!-- Address Fieldset -->
+    <fieldset>
+      <legend>Address information</legend>
 
-  <!--  <button mat-raised-button color="primary" type="submit" [disabled]="!propertyForm.valid">Submit</button> -->
-  <button mat-raised-button color="primary" type="submit">SAVE</button>
-</form>
+      <mat-form-field appearance="fill">
+        <mat-label>Street</mat-label>
+        <input matInput type="text" formControlName="street" />
+      </mat-form-field>
+      <div class="row-of-2">
+        <mat-form-field appearance="fill">
+          <mat-label>Post code</mat-label>
+          <input matInput type="text" formControlName="postCode" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>City</mat-label>
+          <input matInput type="text" formControlName="city" />
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>State</mat-label>
+        <input matInput type="text" formControlName="state" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country">
+          <mat-option *ngFor="let i of countryList" [value]="i">
+            {{ i }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </fieldset>
+
+    <!--  <button mat-raised-button color="primary" type="submit" [disabled]="!propertyForm.valid">Submit</button> -->
+    <button mat-raised-button color="primary" type="submit">SAVE</button>
+  </form>
+</div>

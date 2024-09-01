@@ -34,4 +34,9 @@ export const PROPERTY_CATEGORY_LIST = [
   { value: 'commercial', viewValue: 'Commercial' }, 
   { value: 'mixedUse', viewValue: 'Mixed-Use' }, 
   { value: 'industrial', viewValue: 'Industrial' },
+]; 
+
+export const USER_ROLES = [
+  { value: 'propertyManager', viewValue: 'Manager' },
+  { value: 'propertyOwner', viewValue: 'Owner' },
 ];

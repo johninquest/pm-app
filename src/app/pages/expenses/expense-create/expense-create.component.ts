@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EXPENSE_TYPE_LIST } from '../../../shared/dummy.list';
+import { EXPENSE_TYPE_LIST } from '../../../shared/lists/dummy.list';
 
 @Component({
   selector: 'app-expense-create',
