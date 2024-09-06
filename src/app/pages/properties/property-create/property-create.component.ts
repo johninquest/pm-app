@@ -22,10 +22,10 @@ export class PropertyCreateComponent {
       constructionYear: [''],
       /* Address */
       street: [''],
-      city: [''],
+      city: ['', Validators.required],
       state: [''],
       postCode: [''],
-      country: [''],
+      country: ['', Validators.required],
     });
   }
 
@@ -46,11 +46,11 @@ export class PropertyCreateComponent {
   propertyCategoryList: PropertyCategoryInterface[] = PROPERTY_CATEGORY_LIST;
   countryList: string[] = COUNTRIES;
 
-  ngOnInit(): void {
+/*   ngOnInit(): void {
     this.propertyForm.patchValue({
       country: 'Cameroon',
     });
-  }
+  } */
 }
 
 /*   isMultiUnitProperty(): boolean {

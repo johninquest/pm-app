@@ -2,14 +2,15 @@
 <div class="title">Collect rent</div> 
 
 <form [formGroup]="rentForm" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill">
-      <mat-label>Tenant ID</mat-label>
-      <input matInput formControlName="tenantId" required>
-    </mat-form-field>
     
     <mat-form-field appearance="fill">
       <mat-label>Property ID</mat-label>
       <input matInput formControlName="propertyId" required>
+    </mat-form-field> 
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Tenant ID</mat-label>
+      <input matInput formControlName="tenantId" required>
     </mat-form-field>
     
     <mat-form-field appearance="fill">

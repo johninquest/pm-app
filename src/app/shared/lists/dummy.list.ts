@@ -19,11 +19,22 @@ export const PAYMENT_FREQUENCY = [
 ];
 
 export const EXPENSE_TYPE_LIST: string[] = [
-  'cleaning', 'insurance', 'legal', 'maintenance/repairs', 'improvement/renovation', 'tax'
+  'cleaning',
+  'construction',
+  'insurance', 
+  'improvement/renovation',
+  'legal',
+  'maintenance/repairs',
+  'tax',
 ];
 
 export const PROPERTY_TYPE_LIST: string[] = [
-  'single ', 'insurance', 'legal', 'maintenance/repairs', 'improvement/renovation', 'tax'
+  'single ',
+  'insurance',
+  'legal',
+  'maintenance/repairs',
+  'improvement/renovation',
+  'tax',
 ];
 
 export const PROPERTY_CATEGORY_LIST = [
@@ -34,7 +45,7 @@ export const PROPERTY_CATEGORY_LIST = [
   { value: 'commercial', viewValue: 'Commercial' },
   { value: 'mixedUse', viewValue: 'Mixed-Use' },
   { value: 'industrial', viewValue: 'Industrial' },
-  { value: 'land', viewValue: 'Land' }
+  { value: 'land', viewValue: 'Land' },
 ];
 
 export const USER_ROLES = [

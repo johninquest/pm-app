@@ -17,7 +17,7 @@ export class ExpenseCreateComponent {
       expenseDate: [''],
       expenseType: [''],
       description: [''],
-      cost: [0, [Validators.required, Validators.min(0)]],
+      amount: [0, [Validators.required, Validators.min(0)]],
       vendorName: ['']
     });
   }
