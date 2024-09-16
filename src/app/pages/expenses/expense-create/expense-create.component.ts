@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EXPENSE_TYPE_LIST } from '../../../shared/lists/dummy.list';
+import { EXPENSE_TYPE_LIST, PROPERTY_LIST } from '../../../shared/lists/dummy.list';
 
 @Component({
   selector: 'app-expense-create',
@@ -22,7 +22,8 @@ export class ExpenseCreateComponent {
     });
   }
 
-  expenseList: string[] = EXPENSE_TYPE_LIST;
+  expenseList: string[] = EXPENSE_TYPE_LIST; 
+  propertyList: string[] = PROPERTY_LIST;
 
 
   onSubmit() {
