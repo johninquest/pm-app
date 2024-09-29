@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PROPERTY_CATEGORY_LIST } from '../../../shared/lists/dummy.list';
 import { PropertyCategoryInterface } from '../../../utils/data.model';
-import { COUNTRIES } from '../../../shared/lists/countries.list';
+import { COUNTRIES } from '../../../shared/lists/countries.list'; 
+import { UidService } from '../../../utils/uid.service';
 
 @Component({
   selector: 'app-property-create',
@@ -11,7 +12,7 @@ import { COUNTRIES } from '../../../shared/lists/countries.list';
 })
 export class PropertyCreateComponent {
   propertyForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private ids: UidService) {
     this.propertyForm = this.fb.group({
       propertyId: [''],
       type: ['', Validators.required],
@@ -34,7 +35,6 @@ export class PropertyCreateComponent {
     return ['multiUnit', 'multiFamily', 'mixedUse'].includes(propertyType);
   }
 
-
   onSubmit() {
     if (this.propertyForm.valid) {
       alert('Tapped save property!');
@@ -46,11 +46,13 @@ export class PropertyCreateComponent {
   propertyCategoryList: PropertyCategoryInterface[] = PROPERTY_CATEGORY_LIST;
   countryList: string[] = COUNTRIES;
 
-/*   ngOnInit(): void {
+  ngOnInit(): void {
+    const newPropertyId = this.ids.generateCustom(13);
     this.propertyForm.patchValue({
-      country: 'Cameroon',
+      propertyId: newPropertyId,
+      // country: 'Cameroon',
     });
-  } */
+  } 
 }
 
 /*   isMultiUnitProperty(): boolean {

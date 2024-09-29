@@ -1,4 +1,4 @@
-# <div align="center">PROMA</div>
+# <div align="center">Popati</div>
 
 ### <div align="center">A simple property management app</div>
 
