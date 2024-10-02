@@ -3,7 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { COUNTRIES } from '../../shared/lists/countries.list';
 import { IdbService } from '../../utils/idb.service';
 import { USER_ROLES } from '../../shared/lists/role.list';
-import { UserRoleInterface } from '../../utils/data.model';
+import { UserRoleInterface } from '../../utils/data.model'; 
+import { PbService } from '../../utils/pb.service';
 
 @Component({
   selector: 'app-user',
@@ -11,18 +12,19 @@ import { UserRoleInterface } from '../../utils/data.model';
   styleUrl: './user.component.scss',
 })
 export class UserComponent {
-  constructor(private _idbs: IdbService) { }
+  constructor(private _idbs: IdbService, private pbService: PbService) { }
 
   ngOnInit(): void {
-    /* this.getUserData(); */
     this.getUserDataFromIdb();
     this.userForm.disable();
     this.userForm.patchValue({
       country: 'Cameroon',
-    });
+    }); 
+    this.allUsersList = this.pbService.getAllUsersAsList();
   }
 
   userId: any;
+  allUsersList: any;
 
   userForm = new FormGroup({
     userId: new FormControl<string>('', Validators.required),
