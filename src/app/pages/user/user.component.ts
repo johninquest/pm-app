@@ -20,6 +20,7 @@ export class UserComponent {
     this.userForm.patchValue({
       country: 'Cameroon',
     }); 
+    this.pbService.socialAuth();
     this.allUsersList = this.pbService.getAllUsersAsList();
   }
 
