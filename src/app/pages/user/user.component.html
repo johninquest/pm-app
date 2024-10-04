@@ -4,6 +4,10 @@
 <div class="create-form">
   <form [formGroup]="userForm">
     <mat-form-field appearance="fill">
+      <mat-label>User ID</mat-label>
+      <input matInput type="text" formControlName="userId" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>Role</mat-label>
       <!-- <input matInput type="text" formControlName="userRole" /> -->
       <mat-select formControlName="userRole">
@@ -66,4 +70,5 @@
   </form>
 </div> 
 
-<div style="text-align: center; margin: 3rem;">{{allUsersList | json }}</div>
+<!-- <div style="text-align: center; margin: 3rem;">{{allUsersList | json }}</div>
+ -->

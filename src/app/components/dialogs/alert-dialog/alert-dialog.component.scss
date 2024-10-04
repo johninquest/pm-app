@@ -1,0 +1,9 @@
+.dialog {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    mat-icon {
+      color: var(--primary-color);
+      transform: scale(2);
+    }
+  }

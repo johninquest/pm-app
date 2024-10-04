@@ -12,7 +12,8 @@ import { RentCollectComponent } from './pages/rents/rent-collect/rent-collect.co
 import { TenantInfoComponent } from './pages/tenants/tenant-info/tenant-info.component';
 import { ExpenseCreateComponent } from './pages/expenses/expense-create/expense-create.component';
 import { ExpenseListComponent } from './pages/expenses/expense-list/expense-list.component';
-import { AuthComponent } from './pages/auth/auth.component';
+import { AuthComponent } from './pages/auth/auth.component'; 
+import { EmailComponent } from './components/email/email.component';
 
 
 const routes: Routes = [
@@ -22,11 +23,11 @@ const routes: Routes = [
     component: AuthComponent,
     data: { title: 'auth' },
   },
-/*   {
-    path: 'start',
-    component: StartComponent,
-    data: { title: 'Popati' },
-  }, */
+{
+    path: 'auth/email',
+    component: EmailComponent,
+    data: { title: 'Login via Email' },
+  },
   {
     path: 'home',
     component: HomeComponent,

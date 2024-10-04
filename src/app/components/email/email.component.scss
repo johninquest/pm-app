@@ -1,0 +1,40 @@
+.title {
+    text-align: center;
+    // text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin: 3rem auto 2rem auto;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  
+  mat-card {
+    width: 21rem;
+    margin: 0 auto; 
+    padding: 1rem; 
+  
+  }
+  
+  .signin-form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center; 
+  }
+  
+  .signin-form caption {
+    margin: 2rem 1rem 1rem 1rem;
+    font-weight: bold;
+  }
+  
+  .signin-form mat-form-field {
+    width: 18rem;
+    margin: auto 1rem auto 1rem;
+    padding: auto 0.5rem auto 0.5rem;
+  }
+  
+  .signin-form .checkbox {
+    // align-self: flex-start;
+    margin: 0.5rem;
+  }

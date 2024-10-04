@@ -8,7 +8,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatStepperModule } from '@angular/material/stepper';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog'; 
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 /*
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -40,7 +41,8 @@ import { from } from 'rxjs';
         MatCardModule, 
         MatTooltipModule, 
         MatStepperModule, 
-        MatDialogModule,
+        MatDialogModule, 
+        MatCheckboxModule,
         /*
         MatMenuModule,
         MatProgressSpinnerModule,
@@ -72,7 +74,8 @@ import { from } from 'rxjs';
         MatCardModule, 
         MatTooltipModule, 
         MatStepperModule, 
-        MatDialogModule,
+        MatDialogModule, 
+        MatCheckboxModule,
         /* 
         MatMenuModule,
         MatProgressSpinnerModule,

@@ -1,0 +1,46 @@
+<div class="title">Popati</div>
+
+
+<mat-card>
+  <form class="signin-form" [formGroup]="signinForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Email address</mat-label>
+      <input matInput formControlName="userId" type="text" />
+      <!-- <mat-error *ngIf="signinForm.invalid">Required!</mat-error> -->
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        formControlName="userPassword"
+        [type]="hidePassword ? 'password' : 'text'"
+      />
+      <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{
+        hidePassword ? "visibility_off" : "visibility"
+      }}</mat-icon>
+      <!--  <mat-error *ngIf="signinForm.invalid">Required!</mat-error> -->
+    </mat-form-field>
+    <div class="checkbox">
+      <mat-checkbox color="primary" formControlName="rememberMe"
+        >Keep me signed in</mat-checkbox
+      >
+    </div>
+
+    <div class="signin-form-buttons">
+      <button
+        mat-raised-button
+        type="submit"
+        color="primary"
+        (click)="onClickLogin()"
+      >
+        Log in
+      </button>
+    </div>
+  </form>
+</mat-card>
+
+<div style="text-align: center; margin: 3rem" matTooltip="Zurück">
+  <button mat-stroked-button color="primary" (click)="onClickBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</div>

@@ -5,6 +5,7 @@ import { IdbService } from '../../utils/idb.service';
 import { USER_ROLES } from '../../shared/lists/role.list';
 import { UserRoleInterface } from '../../utils/data.model'; 
 import { PbService } from '../../utils/pb.service';
+import { AuthService } from '../../utils/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -12,7 +13,7 @@ import { PbService } from '../../utils/pb.service';
   styleUrl: './user.component.scss',
 })
 export class UserComponent {
-  constructor(private _idbs: IdbService, private pbService: PbService) { }
+  constructor(private _idbService: IdbService, private _pbService: PbService, private _fbAuthService: AuthService ) { }
 
   ngOnInit(): void {
     this.getUserDataFromIdb();
@@ -20,15 +21,24 @@ export class UserComponent {
     this.userForm.patchValue({
       country: 'Cameroon',
     }); 
-    this.pbService.socialAuth();
-    this.allUsersList = this.pbService.getAllUsersAsList();
+    // this._pbService.socialAuth(); 
+    this._fbAuthService
+      .currentlyLoggedUser()
+      .subscribe((res) => {
+        this.userId = res?.email; 
+        this.userForm.patchValue({
+          userId: res?.email,
+        });
+        console.log('Current user:', res?.email)
+      });
+    this.allUsersList = this._pbService.getAllUsersAsList();
   }
 
   userId: any;
   allUsersList: any;
 
   userForm = new FormGroup({
-    userId: new FormControl<string>('', Validators.required),
+    userId: new FormControl<string>(''),
     userRole: new FormControl<string>(''),
     firstName: new FormControl<string>(''),
     lastName: new FormControl<string>(''), 
@@ -42,7 +52,9 @@ export class UserComponent {
   });
 
   countryList: string[] = COUNTRIES;
-  userRoleList: UserRoleInterface[] = USER_ROLES;
+  userRoleList: UserRoleInterface[] = USER_ROLES; 
+
+  currentUser: any;
 
   onClickCancel() {
     history.back();
@@ -55,31 +67,13 @@ export class UserComponent {
     // let userData = this.userForm.value;
     let userData = JSON.stringify(this.userForm.value);
     localStorage.setItem('user_data', userData);
-    this._idbs.saveUserData(this.userForm.value)
+    this._idbService.saveUserData(this.userForm.value)
     setTimeout(() => this.userForm.disable(), 1000);
   }
 
-  /*   getUserData() {
-      let storedData = localStorage.getItem('user_data');
-      if (storedData) {
-        // console.log('Stored data:', storedData);
-        let parsedData = JSON.parse(storedData);
-        this.userForm.patchValue({
-          firstName: parsedData['firstName'],
-          lastName: parsedData['lastName'],
-          dateOfBirth: parsedData['dateOfBirth'],
-          street: parsedData['street'],
-          postCode: parsedData['postCode'],
-          city: parsedData['city'],
-          country: parsedData['country'],
-        });
-      } else {
-        console.log('No user data stored!');
-      }
-    } */
 
   getUserDataFromIdb() {
-    this._idbs.fetchUserData().then((data) => {
+    this._idbService.fetchUserData().then((data) => {
       if (data) {
         this.userForm.patchValue({
           firstName: data['formData']['firstName'] ?? '',
@@ -97,6 +91,7 @@ export class UserComponent {
   }
 
   onClickEdit() {
-    this.userForm.enable();
+    this.userForm.enable(); 
+    this.userForm.get('userId')?.disable();
   }
 }

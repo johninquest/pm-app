@@ -26,6 +26,8 @@ import { ExpenseCreateComponent } from './pages/expenses/expense-create/expense-
 import { ExpenseListComponent } from './pages/expenses/expense-list/expense-list.component';
 import { VersionComponent } from './components/version/version.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { EmailComponent } from './components/email/email.component';
+import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-dialog.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { AuthComponent } from './pages/auth/auth.component';
     ExpenseListComponent,
     VersionComponent,
     AuthComponent,
+    EmailComponent,
+    AlertDialogComponent,
   ],
   imports: [
     BrowserModule,

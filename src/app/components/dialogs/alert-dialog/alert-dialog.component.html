@@ -1,0 +1,12 @@
+<div class="dialog">
+    <div mat-dialog-title><mat-icon>error_outlined</mat-icon></div>
+    <div mat-dialog-content>
+      <p>{{ data }}</p>
+    </div>
+    <div mat-dialog-actions>
+      <!--  <button mat-button (click)="onNoClick()">No Thanks</button> -->
+      <button mat-stroked-button color="primary" (click)="closeDialog()">
+        OK
+      </button>
+    </div>
+  </div>
