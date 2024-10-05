@@ -15,4 +15,13 @@
     properties
   </button>
   <button mat-flat-button color="primary" routerLink="/tenants">tenants</button>
+
+  <div style="text-align: center; margin: 1rem">
+    <ng-container *ngIf="currentUser; else noUser">
+      <mat-icon>account_circle</mat-icon>
+    </ng-container>
+    <ng-template #noUser>
+      <mat-icon>person_off</mat-icon>
+    </ng-template>
+  </div>
 </div>

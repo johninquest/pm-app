@@ -46,5 +46,10 @@ export class PbService {
     const record = await this.pb.collection('popati_user').getOne('RECORD_ID', {
       expand: 'relField1,relField2.subRelField',
     });
+  } 
+
+  async createUser(userData: any) {
+    let record = await this.pb.collection('popati_user').create(userData); 
+    return record;
   }
 }

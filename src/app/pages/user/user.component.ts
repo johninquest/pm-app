@@ -16,16 +16,12 @@ export class UserComponent {
   constructor(private _idbService: IdbService, private _pbService: PbService, private _fbAuthService: AuthService) { }
 
   ngOnInit(): void {
-    this.getUserDataFromIdb();
+    // this.getUserDataFromIdb();
     this.userForm.disable();
-    /*     this.userForm.patchValue({
-          country: 'Cameroon',
-        }); 
-        this._pbService.socialAuth(); */
     this._fbAuthService
       .currentlyLoggedUser()
       .subscribe((res) => {
-        this.userId = res?.email;
+        this.currentUser = res?.email;
         this.userForm.patchValue({
           userId: res?.email,
         });
@@ -34,7 +30,7 @@ export class UserComponent {
     this.allUsersList = this._pbService.getAllUsersAsList();
   }
 
-  userId: any;
+  currentUser: any;
   allUsersList: any;
 
   userForm = new FormGroup({
@@ -54,19 +50,42 @@ export class UserComponent {
   countryList: string[] = COUNTRIES;
   userRoleList: UserRoleInterface[] = USER_ROLES;
 
-  currentUser: any;
-
   onClickCancel() {
     history.back();
   }
 
-  onClickSave() {/* 
+  async onClickSave() {/* 
     console.log('UserData', this.userForm.value);
     console.log('UserData Type', typeof this.userForm.value); */
-    let userData = JSON.stringify(this.userForm.value);
+    /* let userData = JSON.stringify(this.userForm.value);
     localStorage.setItem('user_data', userData);
-    this._idbService.saveUserData(this.userForm.value)
-    setTimeout(() => this.userForm.disable(), 1000);
+    this._idbService.saveUserData(this.userForm.value) */
+    // setTimeout(() => this.userForm.disable(), 1000); 
+    if (!this.currentUser) {
+      console.error('UserId is required');
+      alert('UserId is required')
+      // You can show an error message to the user here
+      // For example, using a snackbar or alert
+      // this.snackBar.open('User ID is required', 'Close', { duration: 3000 });
+      return; // Exit the method early if userId is not present
+    }
+    let pbData = {
+      "first_name": this.userForm.value.firstName ?? "",
+      "last_name": this.userForm.value.lastName ?? "",
+      "phone": this.userForm.value.phoneNumber ?? "",
+      "email": this.userForm.value.emailAddress ?? "",
+      "user_role": this.userForm.value.userRole ?? "",
+      "auth_id": this.currentUser,
+      "address": {
+        "country": this.userForm.value.country ?? "",
+        "postcode": this.userForm.value.postCode ?? "",
+        "city": this.userForm.value.city ?? "",
+        "street": this.userForm.value.street ?? ""
+      }
+    }
+    let _saveRequest = this._pbService.createUser(pbData);
+    _saveRequest.then(res => console.log('Saved data:', res)).catch(err => console.log('Error:', err))
+    // const record = await pb.collection('popati_user').create(data);
   }
 
 
@@ -86,6 +105,12 @@ export class UserComponent {
         });
       }
     })
+  }
+
+  getAuthUserData() {
+    let _req = this._pbService.getSpecificUser();
+    
+
   }
 
   onClickEdit() {
