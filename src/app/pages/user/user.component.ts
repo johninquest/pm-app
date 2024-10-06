@@ -70,11 +70,11 @@ export class UserComponent {
       return; // Exit the method early if userId is not present
     }
     let pbData = {
-      "first_name": this.userForm.value.firstName ?? "",
-      "last_name": this.userForm.value.lastName ?? "",
+      "firstname": this.userForm.value.firstName ?? "",
+      "lastname": this.userForm.value.lastName ?? "",
       "phone": this.userForm.value.phoneNumber ?? "",
       "email": this.userForm.value.emailAddress ?? "",
-      "user_role": this.userForm.value.userRole ?? "",
+      "role": this.userForm.value.userRole ?? "",
       "auth_id": this.currentUser,
       "address": {
         "country": this.userForm.value.country ?? "",
