@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PROPERTY_CATEGORY_LIST } from '../../../shared/lists/dummy.list';
 import { PropertyCategoryInterface } from '../../../utils/data.model';
-import { COUNTRIES } from '../../../shared/lists/countries.list'; 
-import { UidService } from '../../../utils/uid.service';
+import { COUNTRIES } from '../../../shared/lists/countries.list';
+// import { UidService } from '../../../utils/uid.service';
+import { PbService } from '../../../utils/pb.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../utils/auth.service';
 
 @Component({
   selector: 'app-property-create',
@@ -11,35 +14,66 @@ import { UidService } from '../../../utils/uid.service';
   styleUrl: './property-create.component.scss',
 })
 export class PropertyCreateComponent {
+  currentUser: any;
+  currentUserUid: any;
+
   propertyForm: FormGroup;
-  constructor(private fb: FormBuilder, private ids: UidService) {
+  constructor(
+    private fb: FormBuilder,
+    // private ids: UidService,
+    private _fbAuthService: AuthService,
+    private _pbService: PbService,
+    private _router: Router
+  ) {
     this.propertyForm = this.fb.group({
-      propertyId: [''],
-      type: ['', Validators.required],
+      propertyName: ['', Validators.required],
+      propertyType: ['', Validators.required],
       numberOfUnits: [1, [Validators.min(1)]],
-      /*       purchaseDate: [''],
+      /*    purchaseDate: [''],
             purchasePrice: [0], */
       currentValue: [],
       constructionYear: [''],
       /* Address */
       street: [''],
       city: ['', Validators.required],
-      state: [''],
       postCode: [''],
+      state: [''],
       country: ['', Validators.required],
     });
   }
 
   isMultiUnitProperty(): boolean {
-    const propertyType = this.propertyForm.get('type')?.value;
-    return ['multiUnit', 'multiFamily', 'mixedUse'].includes(propertyType);
+    let pType = this.propertyForm.get('propertyType')?.value;
+    return ['multiUnit', 'multiFamily', 'mixedUse'].includes(pType);
   }
 
   onSubmit() {
-    if (this.propertyForm.valid) {
-      alert('Tapped save property!');
-      console.log(this.propertyForm.value);
-      // Here you would typically send the data to your backend
+    if (this.propertyForm.valid && this.currentUserUid) {
+      // alert('Tapped save property!');
+      // console.log(this.propertyForm.value);
+      let propertyData = {
+        name: this.propertyForm.value.propertyName,
+        type: this.propertyForm.value.propertyType,
+        number_of_units: this.propertyForm.value.numberOfUnits,
+        construction_year: this.propertyForm.value.constructionYear,
+        address: {
+          street: this.propertyForm.value.street,
+          postcode: this.propertyForm.value.postCode,
+          city: this.propertyForm.value.city,
+          state: this.propertyForm.value.state,
+          country: this.propertyForm.value.country,
+        },
+        creator_uid: this.currentUserUid
+      };
+      let _saveRequest = this._pbService.createProperty(propertyData);
+      _saveRequest
+        .then((res) => {
+          console.log('Saved data:', res); 
+          this._router.navigateByUrl('properties')
+        })
+        .catch((err) => console.log('Error:', err));
+    }else {
+      alert("There was an issue");
     }
   }
 
@@ -47,12 +81,12 @@ export class PropertyCreateComponent {
   countryList: string[] = COUNTRIES;
 
   ngOnInit(): void {
-    const newPropertyId = this.ids.generateCustom(13);
-    this.propertyForm.patchValue({
-      propertyId: newPropertyId,
-      // country: 'Cameroon',
+    /* const newPropertyId = this.ids.generateCustom(13); */
+    this._fbAuthService.currentlyLoggedUser().subscribe((res) => {
+      this.currentUser = res?.email; 
+      this.currentUserUid = res?.uid;
     });
-  } 
+  }
 }
 
 /*   isMultiUnitProperty(): boolean {

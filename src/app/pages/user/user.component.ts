@@ -25,7 +25,8 @@ export class UserComponent {
         this.userForm.patchValue({
           userId: res?.email,
         });
-        console.log('Current user:', res?.email)
+        console.log('Current user id:', res?.email) 
+        console.log('Current user uid:', res?.uid)
       });
     this.allUsersList = this._pbService.getAllUsersAsList();
   }
@@ -69,7 +70,7 @@ export class UserComponent {
       // this.snackBar.open('User ID is required', 'Close', { duration: 3000 });
       return; // Exit the method early if userId is not present
     }
-    let pbData = {
+    let userData = {
       "firstname": this.userForm.value.firstName ?? "",
       "lastname": this.userForm.value.lastName ?? "",
       "phone": this.userForm.value.phoneNumber ?? "",
@@ -83,9 +84,8 @@ export class UserComponent {
         "street": this.userForm.value.street ?? ""
       }
     }
-    let _saveRequest = this._pbService.createUser(pbData);
-    _saveRequest.then(res => console.log('Saved data:', res)).catch(err => console.log('Error:', err))
-    // const record = await pb.collection('popati_user').create(data);
+    let _saveRequest = this._pbService.createUser(userData);
+    _saveRequest.then(res => console.log('Saved data:', res)).catch(err => console.log('Error:', err));
   }
 
 

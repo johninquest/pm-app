@@ -38,7 +38,7 @@ export class PbService {
       sort: '-created',
     });
     // return records;
-    console.log('Userlist:', records); 
+    console.log('User list:', records); 
     return records;
   }
 
@@ -51,5 +51,20 @@ export class PbService {
   async createUser(userData: any) {
     let record = await this.pb.collection('popati_user').create(userData); 
     return record;
+  }
+
+
+  /* Property operations */
+  async createProperty(propertyData: any) {
+    let record = await this.pb.collection('property').create(propertyData); 
+    return record;
+  } 
+
+  async getAllPropertyAsList() {
+    let records = await this.pb.collection('property').getFullList({
+      sort: '-created',
+    });
+    console.log('Property list:', records); 
+    return records;
   }
 }

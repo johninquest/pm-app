@@ -7,6 +7,27 @@
   </button>
 </div>
 
-<div style="margin: 5rem; text-align: center; color: red;">
-  {{ listOfPropertiesData ?? 0 }}
-</div>
+<!-- <div style="margin: 1rem 3rem; text-align: center;">
+  {{ propertiesData | json }}
+</div>  -->
+
+<table border="1" cellpadding="5" cellspacing="0" *ngIf="propertiesData" class="property-table ">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Construction Year</th>
+      <th>City</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let property of propertiesData">
+      <td>{{ property.name }}</td>
+      <td>{{ property.type }}</td>
+      <td>{{ property.construction_year }}</td>
+      <td>{{ property.address.city }}</td>
+      <td>{{ property.address.city }}, {{ property.address.country }}</td>
+    </tr>
+  </tbody>
+</table>

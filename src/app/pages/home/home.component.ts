@@ -21,6 +21,7 @@ export class HomeComponent {
       .currentlyLoggedUser()
       .subscribe((res) => {
         this.currentUser = res?.email;
+        console.log('Current user:', res)
         console.log('Current user:', res?.email)
       });
   }
