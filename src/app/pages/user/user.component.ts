@@ -28,7 +28,7 @@ export class UserComponent {
         console.log('Current user id:', res?.email) 
         console.log('Current user uid:', res?.uid)
       });
-    this.allUsersList = this._pbService.getAllUsersAsList();
+    // this.allUsersList = this._pbService.getAllUsersAsList();
   }
 
   currentUser: any;
@@ -107,11 +107,10 @@ export class UserComponent {
     })
   }
 
-  getAuthUserData() {
+/*   getAuthUserData() {
     let _req = this._pbService.getSpecificUser();
     
-
-  }
+  } */
 
   onClickEdit() {
     this.userForm.enable();

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import PocketBase from 'pocketbase';
+import { AuthService } from './auth.service';
 
 /* const pb = new PocketBase('http://127.0.0.1:8090'); 
 const authData = await pb.admins.authWithPassword('admin@johnapps.de', '#Johnapps97'); */
@@ -16,7 +17,14 @@ export class PbService {
       '#Pocketbase97'
     ); */
 
-  constructor() { }
+  constructor(private _fbAuth: AuthService) { 
+    this._fbAuth.currentlyLoggedUser().subscribe((res) => {
+      console.log('Current user:', res?.email);
+      this.currentUser = res?.email; 
+    });
+
+  }
+  currentUser: any;
 
   async pbUserAuth(userId: string, userPassword: string) {
     let authData = await this.pb.collection('users').authWithPassword(userId, userPassword);
@@ -27,7 +35,7 @@ export class PbService {
 
   async getAllUsersAsList() {
     let records = await this.pb.collection('popati_user').getFullList({
-      sort: '-created',
+      sort: '-created', filter: `created_by = ${this.currentUser}`
     });
     // return records;
     console.log('User list:', records);
@@ -52,9 +60,9 @@ export class PbService {
     return record;
   }
 
-  async getAllPropertyAsList() {
+  async getAllPropertyAsList(currentUser: string) {
     let records = await this.pb.collection('property').getFullList({
-      sort: '-created',
+      sort: '-created', filter: `created_by = "${currentUser}"`
     });
     console.log('Property list:', records);
     return records;

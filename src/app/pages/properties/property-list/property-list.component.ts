@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PbService } from '../../../utils/pb.service';
+import { AuthService } from '../../../utils/auth.service';
 
 @Component({
   selector: 'app-property-list',
@@ -8,15 +9,21 @@ import { PbService } from '../../../utils/pb.service';
   styleUrl: './property-list.component.scss',
 })
 export class PropertyListComponent {
-  constructor(private _pbService: PbService, private _router: Router) { }
+  constructor(private _pbService: PbService, private _router: Router, private _fbAuth: AuthService) { }
 
   propertiesData: any;
 
   ngOnInit(): void {
     /* const newPropertyId = this.ids.generateCustom(13); */
-    let pData = this._pbService.getAllPropertyAsList();
-    pData.then(data => this.propertiesData = data);
-    // console.log('Data:', this._pbService.getAllPropertyAsList())
+    /* let pData = this._pbService.getAllPropertyAsList();
+    pData.then(data => this.propertiesData = data); */
+    this._fbAuth.currentlyLoggedUser().subscribe((res) => {
+      let currentUser: string = res?.email ?? ''; 
+      if(currentUser) { 
+        let pData = this._pbService.getAllPropertyAsList(currentUser);
+        pData.then(data => this.propertiesData = data);
+      }
+    });
   }
 
   onClickRow(rowData: any) {
