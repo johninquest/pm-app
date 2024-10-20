@@ -4,7 +4,7 @@
   <button
     mat-flat-button
     color="primary"
-    (click)="tappedButton('Rent collection -> still under construction')"
+    (click)="tappedButton('Rent collection -> still under construction')" disabled
   >
     collect rent
   </button>
@@ -14,7 +14,7 @@
   <button mat-flat-button color="primary" routerLink="/properties">
     properties
   </button>
-  <button mat-flat-button color="primary" routerLink="/tenants">tenants</button>
+  <button mat-flat-button color="primary" routerLink="/tenants" disabled>tenants</button>
 
   <div style="text-align: center; margin: 1rem">
     <ng-container *ngIf="currentUser; else noUser">
