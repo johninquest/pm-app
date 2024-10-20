@@ -11,6 +11,10 @@
   {{ propertiesData | json }}
 </div>  -->
 
+<div style="text-align: center; margin: 3rem; color: salmon;" *ngIf="!propertiesData">
+  No properties found
+</div>
+
 <table border="1" cellpadding="5" cellspacing="0" *ngIf="propertiesData" class="property-table ">
   <thead>
     <tr>

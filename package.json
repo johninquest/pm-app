@@ -1,6 +1,6 @@
 {
   "name": "proma",
-  "version": "0.10.6",
+  "version": "0.10.20",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
