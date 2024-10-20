@@ -1,0 +1,42 @@
+<app-navbar />
+<div class="title">property details</div>
+
+
+
+<!-- <div style="text-align: center; margin: 1rem;">{{propertyData | json}}</div>  -->
+
+<div class="property-data" *ngIf="propertyData">
+      <h1></h1>
+      
+      <h2>Basic Information</h2>
+      <ul>
+        <li><strong>Propery name:</strong> {{ propertyData.name || 'Not specified' }}</li>
+        <li><strong>Property type:</strong> {{ propertyData.type || 'Not specified' }}</li>
+        <li><strong>Number of Units:</strong> {{ propertyData.number_of_units || 'Not specified' }}</li>
+        <li><strong>Construction Year:</strong> {{ propertyData.construction_year || 'Not specified' }}</li>
+      </ul>
+
+      <h2>Location</h2>
+      <ul *ngIf="propertyData.address">
+        <li><strong>Street:</strong> {{ propertyData.address.street || 'Not specified' }}</li>
+        <li><strong>City:</strong> {{ propertyData.address.city || 'Not specified' }}</li>
+        <li><strong>State:</strong> {{ propertyData.address.state || 'Not specified' }}</li>
+        <li><strong>Postcode:</strong> {{ propertyData.address.postcode || 'Not specified' }}</li>
+        <li><strong>Country:</strong> {{ propertyData.address.country || 'Not specified' }}</li>
+      </ul>
+
+      <h2>Financial Information</h2>
+      <ul>
+        <li><strong>Purchase Date:</strong> {{ propertyData.purchase_date || 'Not specified' }}</li>
+        <li><strong>Purchase Price:</strong> {{ propertyData.purchase_price || 'Not specified' }}</li>
+        <li><strong>Current Value:</strong> {{ propertyData.current_value || 'Not specified' }}</li>
+      </ul>
+
+      <h2>Metadata</h2>
+      <ul>
+        <li><strong>Created:</strong> {{ propertyData.created || 'Not specified' }}</li>
+        <li><strong>Created By:</strong> {{ propertyData.created_by || 'Not specified' }}</li>
+        <li><strong>Updated:</strong> {{ propertyData.updated || 'Not specified' }}</li>
+        <li><strong>Updated By:</strong> {{ propertyData.updated_by || 'Not specified' }}</li>
+      </ul>
+    </div>

@@ -6,13 +6,14 @@ import { UserComponent } from './pages/user/user.component';
 import { InfoComponent } from './pages/info/info.component';
 import { PropertyListComponent } from './pages/properties/property-list/property-list.component';
 import { PropertyCreateComponent } from './pages/properties/property-create/property-create.component';
+import { PropertyDetailsComponent } from './pages/properties/property-details/property-details.component';
 import { TenantListComponent } from './pages/tenants/tenant-list/tenant-list.component';
 import { TenantCreateComponent } from './pages/tenants/tenant-create/tenant-create.component';
 import { RentCollectComponent } from './pages/rents/rent-collect/rent-collect.component';
 import { TenantInfoComponent } from './pages/tenants/tenant-info/tenant-info.component';
 import { ExpenseCreateComponent } from './pages/expenses/expense-create/expense-create.component';
 import { ExpenseListComponent } from './pages/expenses/expense-list/expense-list.component';
-import { AuthComponent } from './pages/auth/auth.component'; 
+import { AuthComponent } from './pages/auth/auth.component';
 import { EmailComponent } from './components/email/email.component';
 
 
@@ -23,7 +24,7 @@ const routes: Routes = [
     component: AuthComponent,
     data: { title: 'auth' },
   },
-{
+  {
     path: 'auth/email',
     component: EmailComponent,
     data: { title: 'Login via Email' },
@@ -68,6 +69,13 @@ const routes: Routes = [
     component: PropertyCreateComponent,
     data: {
       title: 'Add new property',
+    },
+  },
+  {
+    path: 'property/:id',
+    component: PropertyDetailsComponent,
+    data: {
+      title: 'Property details',
     },
   },
   {

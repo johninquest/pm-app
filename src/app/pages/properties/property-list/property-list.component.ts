@@ -8,9 +8,9 @@ import { PbService } from '../../../utils/pb.service';
   styleUrl: './property-list.component.scss',
 })
 export class PropertyListComponent {
-  constructor(private _pbService: PbService, private _router: Router) {} 
+  constructor(private _pbService: PbService, private _router: Router) { }
 
-  propertiesData: any; 
+  propertiesData: any;
 
   ngOnInit(): void {
     /* const newPropertyId = this.ids.generateCustom(13); */
@@ -19,7 +19,15 @@ export class PropertyListComponent {
     // console.log('Data:', this._pbService.getAllPropertyAsList())
   }
 
+  onClickRow(rowData: any) {
+    console.log('Row data:', rowData);
+    let propertyId: string = rowData['id'];
+    console.log('Id of row data:', propertyId);
+    this._router.navigate(['/property', propertyId]);
+    // alert(`Headed to row: ${JSON.stringify(rowData)}`)
+  }
+
   onClickAddNewProperty() {
-    this._router.navigateByUrl('/property-create'); 
+    this._router.navigateByUrl('/property-create');
   }
 }

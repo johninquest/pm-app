@@ -63,17 +63,18 @@ export class PropertyCreateComponent {
           state: this.propertyForm.value.state,
           country: this.propertyForm.value.country,
         },
+        created_by: this.currentUser,
         creator_uid: this.currentUserUid
       };
       let _saveRequest = this._pbService.createProperty(propertyData);
       _saveRequest
         .then((res) => {
-          console.log('Saved data:', res); 
+          console.log('Saved data:', res);
           this._router.navigateByUrl('properties')
         })
         .catch((err) => console.log('Error:', err));
-    }else {
-      alert("There was an issue");
+    } else {
+      alert("There was an issue. You must be logged in to execute this operation");
     }
   }
 
@@ -83,7 +84,7 @@ export class PropertyCreateComponent {
   ngOnInit(): void {
     /* const newPropertyId = this.ids.generateCustom(13); */
     this._fbAuthService.currentlyLoggedUser().subscribe((res) => {
-      this.currentUser = res?.email; 
+      this.currentUser = res?.email;
       this.currentUserUid = res?.uid;
     });
   }

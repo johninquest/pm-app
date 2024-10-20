@@ -28,6 +28,7 @@ import { VersionComponent } from './components/version/version.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { EmailComponent } from './components/email/email.component';
 import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-dialog.component';
+import { PropertyDetailsComponent } from './pages/properties/property-details/property-details.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-di
     AuthComponent,
     EmailComponent,
     AlertDialogComponent,
+    PropertyDetailsComponent,
   ],
   imports: [
     BrowserModule,
