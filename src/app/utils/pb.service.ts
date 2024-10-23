@@ -9,7 +9,7 @@ const authData = await pb.admins.authWithPassword('admin@johnapps.de', '#Johnapp
   providedIn: 'root',
 })
 export class PbService {
-  pb = new PocketBase('https://api.johnapps.de');
+  pb = new PocketBase('https://api.johnapps.de/v1');
   // pb = new PocketBase('https://popati.web.app'); 
   // authData = this.pb.collection('users').authWithOAuth2({ provider: 'google' });
   /*   authData = this.pb.admins.authWithPassword(
