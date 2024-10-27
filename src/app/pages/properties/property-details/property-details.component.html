@@ -1,42 +1,129 @@
 <app-navbar />
 <div class="title">property details</div>
 
-
-
 <!-- <div style="text-align: center; margin: 1rem;">{{propertyData | json}}</div>  -->
+<!-- Template HTML -->
+<div class="property-card" *ngIf="propertyData">
+  <div class="property-header">
+    <h1 class="property-title">
+      {{ propertyData.name || "Property Details" }}
+    </h1>
+  </div>
 
-<div class="property-data" *ngIf="propertyData">
-      <h1></h1>
-      
-      <h2>Basic Information</h2>
-      <ul>
-        <li><strong>Propery name:</strong> {{ propertyData.name || 'Not specified' }}</li>
-        <li><strong>Property type:</strong> {{ propertyData.type || 'Not specified' }}</li>
-        <li><strong>Number of Units:</strong> {{ propertyData.number_of_units || 'Not specified' }}</li>
-        <li><strong>Construction Year:</strong> {{ propertyData.construction_year || 'Not specified' }}</li>
-      </ul>
-
-      <h2>Location</h2>
-      <ul *ngIf="propertyData.address">
-        <li><strong>Street:</strong> {{ propertyData.address.street || 'Not specified' }}</li>
-        <li><strong>City:</strong> {{ propertyData.address.city || 'Not specified' }}</li>
-        <li><strong>State:</strong> {{ propertyData.address.state || 'Not specified' }}</li>
-        <li><strong>Postcode:</strong> {{ propertyData.address.postcode || 'Not specified' }}</li>
-        <li><strong>Country:</strong> {{ propertyData.address.country || 'Not specified' }}</li>
-      </ul>
-
-      <h2>Financial Information</h2>
-      <ul>
-        <li><strong>Purchase Date:</strong> {{ propertyData.purchase_date || 'Not specified' }}</li>
-        <li><strong>Purchase Price:</strong> {{ propertyData.purchase_price || 'Not specified' }}</li>
-        <li><strong>Current Value:</strong> {{ propertyData.current_value || 'Not specified' }}</li>
-      </ul>
-
-      <h2>Metadata</h2>
-      <ul>
-        <li><strong>Created:</strong> {{ propertyData.created || 'Not specified' }}</li>
-        <li><strong>Created By:</strong> {{ propertyData.created_by || 'Not specified' }}</li>
-        <li><strong>Updated:</strong> {{ propertyData.updated || 'Not specified' }}</li>
-        <li><strong>Updated By:</strong> {{ propertyData.updated_by || 'Not specified' }}</li>
-      </ul>
+  <div class="info-section">
+    <h2 class="section-title">Basic Information</h2>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="label">Property Name</span>
+        <span class="value">{{ propertyData.name || "Not specified" }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Property Type</span>
+        <span class="value">{{ propertyData.type || "Not specified" }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Number of Units</span>
+        <span class="value">{{
+          propertyData.number_of_units || "Not specified"
+        }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Construction Year</span>
+        <span class="value">{{
+          propertyData.construction_year || "Not specified"
+        }}</span>
+      </div>
     </div>
+  </div>
+
+  <div class="info-section">
+    <h2 class="section-title">Location</h2>
+    <div class="info-grid" *ngIf="propertyData.address">
+      <div class="info-item">
+        <span class="label">Street</span>
+        <span class="value">{{
+          propertyData.address.street || "Not specified"
+        }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">City</span>
+        <span class="value">{{
+          propertyData.address.city || "Not specified"
+        }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">State</span>
+        <span class="value">{{
+          propertyData.address.state || "Not specified"
+        }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Postcode</span>
+        <span class="value">{{
+          propertyData.address.postcode || "Not specified"
+        }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Country</span>
+        <span class="value">{{
+          propertyData.address.country || "Not specified"
+        }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <h2 class="section-title">Financial Information</h2>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="label">Purchase Date</span>
+        <span class="value">{{
+          propertyData.purchase_date || "Not specified"
+        }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Purchase Price</span>
+        <span class="value">{{
+          propertyData.purchase_price || "Not specified"
+        }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Current Value</span>
+        <span class="value">{{
+          propertyData.current_value || "Not specified"
+        }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <h2 class="section-title">Metadata</h2>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="label">Created</span>
+        <span class="value">{{ propertyData.created || "" }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Created By</span>
+        <span class="value">{{
+          propertyData.created_by || ""
+        }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Updated</span>
+        <span class="value">{{ propertyData.updated || "" }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Updated By</span>
+        <span class="value">{{
+          propertyData.updated_by || ""
+        }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="btns">
+  <button mat-flat-button color="primary" (click)="onBack()">back</button>
+  <button mat-flat-button color="accent" (click)="onEdit()">edit</button>
+</div>
