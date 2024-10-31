@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PROPERTY_CATEGORY_LIST } from '../../../shared/lists/dummy.list';
+import { PROPERTY_CATEGORY_LIST } from '../../../shared/lists/data.list';
 import { PropertyCategoryInterface } from '../../../utils/data.model';
 import { COUNTRIES } from '../../../shared/lists/countries.list';
 // import { UidService } from '../../../utils/uid.service';

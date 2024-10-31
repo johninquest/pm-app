@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EXPENSE_TYPE_LIST, PROPERTY_LIST } from '../../../shared/lists/dummy.list';
+import { EXPENSE_TYPE_LIST, PROPERTY_LIST } from '../../../shared/lists/data.list';
 import { PbService } from '../../../utils/pb.service';
 import { AuthService } from '../../../utils/auth.service';
 

@@ -29,17 +29,15 @@
     <tr>
       <th>Name</th>
       <th>Type</th>
-      <th>Construction Year</th>
-      <th>City</th>
+      <!-- <th>Construction Year</th> -->
       <th>Location</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let property of propertiesData" (click)="onClickRow(property)">
       <td>{{ property.name }}</td>
-      <td>{{ property.type }}</td>
-      <td>{{ property.construction_year }}</td>
-      <td>{{ property.address.city }}</td>
+      <td>{{ property.type | propertyType }}</td>
+      <!--  <td>{{ property.construction_year }}</td> -->
       <td>{{ property.address.city }}, {{ property.address.country }}</td>
     </tr>
   </tbody>

@@ -19,7 +19,7 @@
       </div>
       <div class="info-item">
         <span class="label">Property Type</span>
-        <span class="value">{{ propertyData.type || "Not specified" }}</span>
+        <span class="value">{{ propertyData.type | propertyType }}</span>
       </div>
       <div class="info-item">
         <span class="label">Number of Units</span>
@@ -125,5 +125,6 @@
 
 <div class="btns">
   <button mat-flat-button color="primary" (click)="onBack()">back</button>
-  <button mat-flat-button color="accent" (click)="onEdit()">edit</button>
+  <button mat-flat-button color="accent" (click)="onEdit()">edit</button> 
+   <button mat-flat-button color="warn" (click)="onDelete()">delete</button>
 </div>

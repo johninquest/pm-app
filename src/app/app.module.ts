@@ -29,6 +29,7 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { EmailComponent } from './components/email/email.component';
 import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-dialog.component';
 import { PropertyDetailsComponent } from './pages/properties/property-details/property-details.component';
+import { PropertyTypePipe } from './shared/pipes/property-type.pipe';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { PropertyDetailsComponent } from './pages/properties/property-details/pr
     EmailComponent,
     AlertDialogComponent,
     PropertyDetailsComponent,
+    PropertyTypePipe,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +78,9 @@ import { PropertyDetailsComponent } from './pages/properties/property-details/pr
     UserTrackingService,
     provideFirestore(() => getFirestore())
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    PropertyTypePipe
+  ]
 })
 export class AppModule { }

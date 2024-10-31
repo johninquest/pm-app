@@ -9,7 +9,7 @@ import {
   PAYMENT_FREQUENCY,
   PAYMENT_METHOD,
   PROPERTY_LIST,
-} from '../../../shared/lists/dummy.list';
+} from '../../../shared/lists/data.list';
 import { PaymentFrequencyInterface } from '../../../utils/data.model';
 import { Router } from '@angular/router';
 
@@ -94,7 +94,7 @@ export class TenantCreateComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe(result => {
         this.stepperOrientation = result.matches ? 'vertical' : 'horizontal';
-      }); 
+      });
   }
 
   ngOnDestroy() {
