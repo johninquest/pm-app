@@ -41,6 +41,10 @@ export class PropertyDetailsComponent {
 
   onDelete() {
     alert('Under construction!')
+  } 
+
+  underConstructionButton() {
+    alert('Under construction!')
   }
 
 }
