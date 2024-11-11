@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EXPENSE_TYPE_LIST, PROPERTY_LIST } from '../../../shared/lists/data.list';
 import { PbService } from '../../../utils/pb.service';
 import { AuthService } from '../../../utils/auth.service';
+import dayjs from 'dayjs';
 
 @Component({
   selector: 'app-expense-create',
@@ -23,9 +24,9 @@ export class ExpenseCreateComponent {
 
   constructor(private fb: FormBuilder, private _pbService: PbService, private _fbAuth: AuthService) {
     this.expenseForm = this.fb.group({
-      propertyId: ['', Validators.required],
+      // propertyId: ['', Validators.required],
       propertyName: ['', Validators.required],
-      expenseDate: [''],
+      expenseDate: [dayjs().format('YYYY-MM-DD')],
       expenseType: [''],
       description: [''],
       amount: [0, [Validators.required, Validators.min(0)]],
@@ -36,7 +37,7 @@ export class ExpenseCreateComponent {
       if (currentUser) {
         let pData = this._pbService.getAllPropertyAsList(currentUser);
         pData.then(data => {
-          console.log('Property data', data)
+          // console.log('Property data', data)
           this.propertiesData = data
         });
       }
@@ -44,9 +45,12 @@ export class ExpenseCreateComponent {
   }
 
   onSubmit() {
+    // console.log('Expense data:', this.expenseForm.value);
     if (this.expenseForm.valid) {
-      console.log(this.expenseForm.value);
+      console.log('Expense data:', this.expenseForm.value);
       // Here you would typically send the data to your backend
+    } else {
+      console.log('Form is not valid')
     }
   }
 

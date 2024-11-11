@@ -7,17 +7,14 @@
       <mat-label>Property ID</mat-label>
       <input matInput formControlName="propertyId" required />
     </mat-form-field>  -->
-     <mat-form-field appearance="fill">
-          <mat-label>Select property</mat-label>
-          <mat-select formControlName="propertyName">
-            <mat-option
-              *ngFor="let property of propertyList"
-              [value]="property"
-            >
-              {{ property }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Select property</mat-label>
+      <mat-select formControlName="propertyName">
+        <mat-option *ngFor="let property of propertyList" [value]="property">
+          {{ property }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Date of expense</mat-label>
@@ -34,7 +31,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Description</mat-label>
-      <textarea matInput formControlName="description" required></textarea>
+      <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -44,7 +41,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Vendor/Contractor name</mat-label>
-      <input matInput formControlName="vendorName" required />
+      <input matInput formControlName="vendorName" />
     </mat-form-field>
 
     <!--   <button
