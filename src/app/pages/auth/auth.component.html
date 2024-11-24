@@ -1,11 +1,22 @@
 <div class="name">Popati</div>
 
-<div class="desc">Manage Your Rentals with Ease</div>
+<div class="desc">Simple and Effective Property Management</div>
 
 <div class="options">
-  <div
+<!--   <div
     class="signin-btn"
     (click)="onClickGoogleAuth()"
+    matTooltip="Sign in with Google"
+  >
+    <button mat-stroked-button>
+      <span class="logo"><img src="assets/logos/google_logo.png" /></span>
+      <span class="txt">Continue with Google</span>
+    </button>
+  </div> -->
+
+  <div
+    class="signin-btn"
+    (click)="onClickGoogleAuth2()"
     matTooltip="Sign in with Google"
   >
     <button mat-stroked-button>
@@ -39,6 +50,14 @@
 
 <div class="btn">
   <button mat-flat-button color="primary" routerLink="/home">demo</button>
+</div>
+
+<div
+  style="text-align: center; margin: 3rem"
+  *ngIf="error"
+  class="error-message"
+>
+  {{ error }}
 </div>
 
 <app-version />

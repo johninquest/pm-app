@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../utils/auth.service';
+import { PbAuthService } from '../../utils/pocketbase/pb-auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,14 +9,14 @@ import { AuthService } from '../../utils/auth.service';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  constructor(private _router: Router, private _fbAuthService: AuthService) {}
+  constructor(private _router: Router, private _fbAuthService: AuthService, private _pbAuthService: PbAuthService) {}
 
 /*   onClickLogout() {
     this._router.navigateByUrl('')
 
   } */
 
-  onClickLogOut() {
+/*   onClickLogOut() {
     let logoutResponse = this._fbAuthService.logUserOut();
     logoutResponse
       .then(() => {
@@ -26,6 +27,10 @@ export class NavbarComponent {
       .catch((e) =>
         console.log('The following error occured during logout =>', e)
       );
+  } */ 
+
+  onClickLogOut() {
+    this._pbAuthService.logout();
   }
 
 }

@@ -30,6 +30,7 @@ import { EmailComponent } from './components/email/email.component';
 import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-dialog.component';
 import { PropertyDetailsComponent } from './pages/properties/property-details/property-details.component';
 import { PropertyTypePipe } from './shared/pipes/property-type.pipe';
+import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { PropertyTypePipe } from './shared/pipes/property-type.pipe';
     AlertDialogComponent,
     PropertyDetailsComponent,
     PropertyTypePipe,
+    PrivacyNoticeComponent,
   ],
   imports: [
     BrowserModule,

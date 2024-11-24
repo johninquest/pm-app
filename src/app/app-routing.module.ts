@@ -15,6 +15,8 @@ import { ExpenseCreateComponent } from './pages/expenses/expense-create/expense-
 import { ExpenseListComponent } from './pages/expenses/expense-list/expense-list.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { EmailComponent } from './components/email/email.component';
+import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.component';
+import { authGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -35,6 +37,7 @@ const routes: Routes = [
     data: {
       title: 'Home',
     },
+    canActivate: [authGuard]
   },
   {
     path: 'info',
@@ -106,12 +109,18 @@ const routes: Routes = [
       title: 'Rent collect',
     },
   },
-
   {
     path: 'user',
     component: UserComponent,
     data: {
       title: 'User',
+    },
+  },
+  {
+    path: 'privacy',
+    component: PrivacyNoticeComponent,
+    data: {
+      title: 'Privacy Notice',
     },
   },
   /* {

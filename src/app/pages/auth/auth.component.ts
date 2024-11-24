@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../utils/auth.service';
+import { AuthService } from '../../utils/auth.service'; 
+import { PbAuthService } from '../../utils/pocketbase/pb-auth.service';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
 })
-export class AuthComponent {
-  constructor(private _router: Router, private _fbAuthService: AuthService) {}
+export class AuthComponent { 
+  error: string = '';
+  constructor(private _router: Router, private _fbAuthService: AuthService, private _pbAuthService: PbAuthService) {}
   onClickGoogleAuth() {
     let googleAuthResponse = this._fbAuthService.googleAuth();
     googleAuthResponse
@@ -22,6 +24,14 @@ export class AuthComponent {
       .catch((e) => {
         console.log('Error => ', e);
       });
+  }
+
+  async onClickGoogleAuth2() {
+    try {
+      await this._pbAuthService.loginWithGoogle();
+    } catch (error: any) {
+      this.error = error?.message;
+    }
   }
 
   onClickFacebookAuth() {

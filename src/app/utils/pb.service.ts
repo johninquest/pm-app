@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'; 
+import { BehaviorSubject, Observable } from 'rxjs';
 import PocketBase from 'pocketbase';
 import { AuthService } from './auth.service';
 
@@ -15,7 +16,9 @@ export class PbService {
   /*   authData = this.pb.admins.authWithPassword(
       'johninquest@gmail.com',
       '#Pocketbase97'
-    ); */
+    ); */ 
+  private pbAuthStore = new BehaviorSubject<boolean>(false);
+  private pbCurrentUser = new BehaviorSubject<any>(null);
 
   constructor(private _fbAuth: AuthService) { 
     this._fbAuth.currentlyLoggedUser().subscribe((res) => {
@@ -31,6 +34,19 @@ export class PbService {
     console.log(this.pb.authStore.isValid);
     console.log(this.pb.authStore.token);
     console.log(this.pb.authStore.model?.['id']);
+  } 
+
+  // Google auth 
+  async pbGoogleSignIn() {
+    const authData = await this.pb.collection('users').authWithOAuth2({ provider: 'google' }); 
+    console.log(this.pb.authStore.isValid);
+    console.log(this.pb.authStore.token);
+    // console.log(this.pb.authStore.record?.['id']);
+  }
+
+  // Log out 
+  pbLogout() {
+    this.pb.authStore.clear();
   }
 
   async getAllUsersAsList() {
