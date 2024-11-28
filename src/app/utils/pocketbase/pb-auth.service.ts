@@ -7,7 +7,6 @@ import PocketBase from 'pocketbase';
   providedIn: 'root'
 })
 export class PbAuthService {
-
   private pb: PocketBase;
   private authStore = new BehaviorSubject<boolean>(false);
   private currentUser = new BehaviorSubject<any>(null);
@@ -26,12 +25,58 @@ export class PbAuthService {
     });
   }
 
+  getPocketBase(): PocketBase {
+    return this.pb;
+  }
+
+  getToken(): string {
+    return this.pb.authStore.token;
+  }
+
+  async isTokenValid(): Promise<boolean> {
+    return await this.pb.authStore.isValid;
+  }
+
+  async refreshAuth(): Promise<void> {
+    if (this.pb.authStore.isValid) {
+      try {
+        await this.pb.collection('users').authRefresh();
+      } catch (err) {
+        this.logout();
+        throw new Error('Session expired. Please login again.');
+      }
+    }
+  }
+
+  async refreshUserProfile() {
+    if (!this.pb.authStore.model?.['id']) return null;
+    
+    try {
+      const user = await this.pb.collection('users').getOne(this.pb.authStore.model?.['id']);
+      this.currentUser.next(user);
+      return user;
+    } catch (err) {
+      console.error('Failed to refresh user profile:', err);
+      return null;
+    }
+  }
+
+  async updateProfile(userId: string, data: any) {
+    try {
+      const updatedUser = await this.pb.collection('users').update(userId, data);
+      this.currentUser.next(updatedUser);
+      return updatedUser;
+    } catch (err: any) {
+      throw new Error(`Failed to update profile: ${err?.message || 'Unknown error'}`);
+    }
+  }
+
   async login(email: string, password: string) {
     try {
       const authData = await this.pb.collection('users').authWithPassword(email, password);
       this.router.navigate(['/home']);
       return authData;
-    } catch (err: any) {  // Type as 'any' since PocketBase error structure might vary
+    } catch (err: any) {
       throw new Error(`Login failed: ${err?.message || 'Unknown error'}`);
     }
   }
@@ -44,9 +89,8 @@ export class PbAuthService {
         passwordConfirm,
       };
       await this.pb.collection('users').create(userData);
-      // Automatically log in after successful registration
       return this.login(email, password);
-    } catch (err: any) {  // Type as 'any' since PocketBase error structure might vary
+    } catch (err: any) {
       throw new Error(`Registration failed: ${err?.message || 'Unknown error'}`);
     }
   }
@@ -72,6 +116,10 @@ export class PbAuthService {
 
   getCurrentUser(): Observable<any> {
     return this.currentUser.asObservable();
+  }
+
+  async getCurrentUserAsync() {
+    return this.pb.authStore.model;
   }
 
   logout(): void {

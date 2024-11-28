@@ -50,11 +50,11 @@ export class PbService {
   }
 
   async getAllUsersAsList() {
-    let records = await this.pb.collection('popati_user').getFullList({
+    let records = await this.pb.collection('users').getFullList({
       sort: '-created', filter: `created_by = ${this.currentUser}`
     });
     // return records;
-    console.log('User list:', records);
+    console.log('AuthUserList:', records);
     return records;
   }
 
@@ -77,7 +77,7 @@ export class PbService {
   }
 
   async getAllPropertyAsList(currentUser: string) {
-    let records = await this.pb.collection('property').getFullList({
+    let records = await this.pb.collection('properties').getFullList({
       sort: '-created', filter: `created_by = "${currentUser}"`
     });
     console.log('Property list:', records);

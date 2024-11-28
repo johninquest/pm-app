@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../../utils/auth.service';
 import { AlertDialogComponent } from '../dialogs/alert-dialog/alert-dialog.component';
+import { PbAuthService } from '../../utils/pocketbase/pb-auth.service';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class EmailComponent {
   constructor(
     private _router: Router,
     private _fbAuthService: AuthService,
-    private _dialog: MatDialog
+    private _dialog: MatDialog, 
+    private _pbAuthService: PbAuthService
   ) { }
 
   ngOnInit(): void { }
@@ -28,7 +30,7 @@ export class EmailComponent {
     rememberMe: new FormControl<true | false>(false),
   });
 
-  onClickLogin() {
+/*   onClickLogin() {
     if (this.signinForm.invalid) {
       this.signinForm.markAllAsTouched();
     } else {
@@ -65,7 +67,37 @@ export class EmailComponent {
           }
         });
     }
-  }
+  } */ 
+
+    async onClickLogin() {
+      if (this.signinForm.invalid) {
+        this.signinForm.markAllAsTouched();
+        return;
+      }
+  
+      try {
+        await this._pbAuthService.login(
+          this.signinForm.value.userId!,
+          this.signinForm.value.userPassword!
+        );
+        // Navigation is handled in the PbAuthService
+      } catch (error: any) {
+        let message: string;
+        
+        // Handle PocketBase specific errors
+        if (error.message.includes('Failed to authenticate')) {
+          message = 'Invalid email or password!';
+        } else if (error.message.includes('validation')) {
+          message = 'Invalid email format!';
+        } else if (error.message.includes('Missing required')) {
+          message = 'Please fill in all required fields!';
+        } else {
+          message = `An error has occurred: ${error.message}`;
+        }
+        
+        this.openDialog(message);
+      }
+    }
 
   openDialog(alertMessage: string) {
     this._dialog.open(AlertDialogComponent, {
