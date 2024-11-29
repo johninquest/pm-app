@@ -41,12 +41,17 @@ export class UserComponent {
     // this.allUsersList = this._pbService.getAllUsersAsList();
     this.currentAuthUser
       .then((res) => {
-        console.log('User response:', res); 
+        console.log('User response:', res);
         this.currentUser = res?.['email'];
         this.userForm.patchValue({
           userId: res?.['email'],
+          userRole: res?.['role'],
+          lastName: res?.['lastname'],
+          firstName: res?.['firstname'],
+          phoneNumber: res?.['phone'],
+          emailAddress: res?.['email'],
+          country: res?.['country'],
         });
-
       })
       .catch((e) => console.log('User error:', e));
   }

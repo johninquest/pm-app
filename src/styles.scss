@@ -11,27 +11,27 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$pockid-primary: mat.define-palette(mat.$green-palette, 100); // #4DB6AC
-$pockid-accent: mat.define-palette(mat.$deep-orange-palette, 100);
+$proma-primary: mat.define-palette(mat.$green-palette, 300); // #4DB6AC
+$proma-accent: mat.define-palette(mat.$deep-orange-palette, 100);
 
 // The warn palette is optional (defaults to red).
-$pockid-warn: mat.define-palette(mat.$red-palette);
+$proma-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$pockid-theme: mat.define-light-theme(
+$proma-theme: mat.define-light-theme(
   (
     color: (
-      primary: $pockid-primary,
-      accent: $pockid-accent,
-      warn: $pockid-warn,
+      primary: $proma-primary,
+      accent: $proma-accent,
+      warn: $proma-warn,
     ),
     typography: mat.define-typography-config(),
     density: 0,
   )
 );
 
-@include mat.all-component-themes($pockid-theme);
+@include mat.all-component-themes($proma-theme);
 
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 $myfont: "Work Sans", sans-serif;
@@ -40,7 +40,8 @@ $myfont: "Work Sans", sans-serif;
 }
 
 :root {
-  --primary-color: #c8e6c9;
+  // --primary-color: #c8e6c9;
+  --primary-color: #81C784
   --primary-color-darker: #3f51b5;
   --primary-contrast-1: #e8e0c5;
   --primary-contrast-2: #2f3769;
