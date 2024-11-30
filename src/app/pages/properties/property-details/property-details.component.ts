@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PbService } from '../../../utils/pb.service';
 import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
   styleUrl: './property-details.component.scss'
 })
 export class PropertyDetailsComponent {
-  constructor(private _aRoute: ActivatedRoute, private _router: Router, private _pbService: PbService, private _pbCrudService: PbCrudService) { }
+  constructor(private _aRoute: ActivatedRoute, private _router: Router, private _pbCrudService: PbCrudService) { }
 
   ngOnInit() {
     this._aRoute.paramMap.subscribe(params => {

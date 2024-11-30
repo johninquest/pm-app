@@ -3,10 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PROPERTY_CATEGORY_LIST } from '../../../shared/lists/data.list';
 import { PropertyCategoryInterface } from '../../../utils/data.model';
 import { COUNTRIES } from '../../../shared/lists/countries.list';
-// import { UidService } from '../../../utils/uid.service';
-import { PbService } from '../../../utils/pb.service';
 import { Router } from '@angular/router';
-// import { AuthService } from '../../../utils/auth.service';
 import { PbAuthService } from '../../../utils/pocketbase/pb-auth.service';
 import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
 
@@ -24,7 +21,6 @@ export class PropertyCreateComponent {
     private fb: FormBuilder,
     // private ids: UidService,
     // private _fbAuthService: AuthService,
-    private _pbService: PbService, 
     private _pbAuthService: PbAuthService,
     private _pbCrudService: PbCrudService,
     private _router: Router

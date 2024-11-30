@@ -4,8 +4,6 @@ import { COUNTRIES } from '../../shared/lists/countries.list';
 import { IdbService } from '../../utils/idb.service';
 import { USER_ROLES } from '../../shared/lists/role.list';
 import { UserRoleInterface } from '../../utils/data.model';
-import { PbService } from '../../utils/pb.service';
-import { AuthService } from '../../utils/auth.service';
 import { PbAuthService } from '../../utils/pocketbase/pb-auth.service';
 
 @Component({
@@ -16,9 +14,7 @@ import { PbAuthService } from '../../utils/pocketbase/pb-auth.service';
 export class UserComponent {
   constructor(
     private _idbService: IdbService,
-    private _pbService: PbService,
     private _pbAuthService: PbAuthService,
-    private _fbAuthService: AuthService
   ) {}
 
   currentUser: any;
@@ -78,19 +74,11 @@ export class UserComponent {
   }
 
   async onClickSave() {
-    /* 
-    console.log('UserData', this.userForm.value);
-    console.log('UserData Type', typeof this.userForm.value); */
-    /* let userData = JSON.stringify(this.userForm.value);
-    localStorage.setItem('user_data', userData);
-    this._idbService.saveUserData(this.userForm.value) */
-    // setTimeout(() => this.userForm.disable(), 1000);
-    if (!this.currentAuthUser) {
+   
+/*     if (!this.currentAuthUser) {
       console.error('UserId is required');
       alert('UserId is required');
-      // You can show an error message to the user here
-      // For example, using a snackbar or alert
-      // this.snackBar.open('User ID is required', 'Close', { duration: 3000 });
+     
       return; // Exit the method early if userId is not present
     }
     let userData = {
@@ -110,7 +98,7 @@ export class UserComponent {
     let _saveRequest = this._pbService.createUser(userData);
     _saveRequest
       .then((res) => console.log('Saved data:', res))
-      .catch((err) => console.log('Error:', err));
+      .catch((err) => console.log('Error:', err)); */
   }
 
   getUserDataFromIdb() {

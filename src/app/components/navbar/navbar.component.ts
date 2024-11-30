@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../utils/auth.service';
 import { PbAuthService } from '../../utils/pocketbase/pb-auth.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { PbAuthService } from '../../utils/pocketbase/pb-auth.service';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  constructor(private _router: Router, private _fbAuthService: AuthService, private _pbAuthService: PbAuthService) {}
+  constructor(private _router: Router, private _pbAuthService: PbAuthService) {}
 
 /*   onClickLogout() {
     this._router.navigateByUrl('')

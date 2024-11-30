@@ -16,10 +16,10 @@ import { PropertyCreateComponent } from './pages/properties/property-create/prop
 import { PropertyListComponent } from './pages/properties/property-list/property-list.component';
 import { TenantCreateComponent } from './pages/tenants/tenant-create/tenant-create.component';
 import { TenantListComponent } from './pages/tenants/tenant-list/tenant-list.component';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+/* import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore'; */
 import { RentCollectComponent } from './pages/rents/rent-collect/rent-collect.component';
 import { TenantInfoComponent } from './pages/tenants/tenant-info/tenant-info.component';
 import { ExpenseCreateComponent } from './pages/expenses/expense-create/expense-create.component';
@@ -72,13 +72,14 @@ import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.co
     })
   ],
   providers: [
-    provideAnimationsAsync(),
+   provideAnimationsAsync(), 
+   /*
     ScreenTrackingService,
     provideFirebaseApp(() => initializeApp({"projectId":"popati","appId":"1:472649861457:web:54a3b7267f800b74c1ab70","storageBucket":"popati.appspot.com","apiKey":"AIzaSyD3yJZ55x-1TUNUhgnBSR8CEiM7__LQbXE","authDomain":"popati.firebaseapp.com","messagingSenderId":"472649861457","measurementId":"G-3R8XS9CYYS"})),
     provideAuth(() => getAuth()),
     provideAnalytics(() => getAnalytics()),
     UserTrackingService,
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()) */
   ],
   bootstrap: [AppComponent],
   exports: [

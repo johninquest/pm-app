@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../utils/auth.service';
+import { PbAuthService } from '../../utils/pocketbase/pb-auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,7 @@ import { AuthService } from '../../utils/auth.service';
 })
 export class HomeComponent {
 
-  constructor(private _fbAuthService: AuthService) {}
+  constructor(private _pbAuth: PbAuthService) {}
 
   tappedButton(message: string) {
     alert(`Tapped: ${message}`);
@@ -17,13 +17,7 @@ export class HomeComponent {
   currentUser: any;
 
   ngOnInit(): void {
-    this._fbAuthService
-      .currentlyLoggedUser()
-      .subscribe((res) => {
-        this.currentUser = res?.email;
-        console.log('Current user:', res)
-        console.log('Current user:', res?.email)
-      });
+      this._pbAuth.getCurrentUser().subscribe(user => this.currentUser = user?.email)
   }
 
 }

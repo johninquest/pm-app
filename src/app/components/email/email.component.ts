@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AuthService } from '../../utils/auth.service';
 import { AlertDialogComponent } from '../dialogs/alert-dialog/alert-dialog.component';
 import { PbAuthService } from '../../utils/pocketbase/pb-auth.service';
 
@@ -15,7 +14,6 @@ import { PbAuthService } from '../../utils/pocketbase/pb-auth.service';
 export class EmailComponent {
   constructor(
     private _router: Router,
-    private _fbAuthService: AuthService,
     private _dialog: MatDialog, 
     private _pbAuthService: PbAuthService
   ) { }
