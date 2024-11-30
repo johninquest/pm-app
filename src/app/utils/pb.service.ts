@@ -22,7 +22,7 @@ export class PbService {
 
   constructor(private _fbAuth: AuthService) { 
     this._fbAuth.currentlyLoggedUser().subscribe((res) => {
-      console.log('Current user:', res?.email);
+      // console.log('Current user:', res?.email);
       this.currentUser = res?.email; 
     });
 

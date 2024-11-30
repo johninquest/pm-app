@@ -1,14 +1,46 @@
 <app-navbar />
 <div class="title">expenses</div>
 
-<div style="margin: 5rem; text-align: center; color: red">
-  {{ expenseData ?? 0 }}
-</div>
+<!-- <div style="margin: 5rem; text-align: center;">
+  {{ expensesData | json }}
+</div> -->
 
 <div class="float" matTooltip="Add new expense">
   <button mat-raised-button color="primary" (click)="onClickAddNewExpense()">
     +
   </button>
 </div> 
+
+<div
+  style="text-align: center; margin: 3rem; color: salmon"
+  *ngIf="!expensesData"
+>
+  No properties found
+</div>
+
+<table
+  border="1"
+  cellpadding="5"
+  cellspacing="0"
+  *ngIf="expensesData"
+  class="property-table"
+>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Property</th>
+      <th>Expense type</th> 
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let expense of expensesData" (click)="onClickRow(expense)">
+      <td>{{ expense.date_of_expense}}</td> 
+      <td>{{ expense.property_name }}</td>
+      <td>{{ expense.expense_type}}</td>
+      <td>{{ expense.amount }}</td>
+    </tr>
+  </tbody>
+</table>
 
 
