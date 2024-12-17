@@ -53,10 +53,14 @@
     <mat-form-field appearance="fill">
       <mat-label>Country</mat-label>
       <mat-select formControlName="country">
-        <mat-option *ngFor="let i of countryList" [value]="i">
-          {{ i }}
+        <mat-option *ngFor="let country of countryCurrencyList" [value]="country.name">
+          {{ country.name }}
         </mat-option>
       </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Currency</mat-label>
+      <input matInput formControlName="currency" readonly />
     </mat-form-field>
     <div class="btns">
       <button mat-raised-button (click)="onClickCancel()">cancel</button>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { COUNTRIES } from '../../shared/lists/countries.list';
+import { COUNTRIES, COUNTRY_CURRENCY_LIST } from '../../shared/lists/countries.list';
 import { IdbService } from '../../utils/idb.service';
 import { USER_ROLES } from '../../shared/lists/role.list';
 import { UserRoleInterface } from '../../utils/data.model';
@@ -15,11 +15,22 @@ export class UserComponent {
   constructor(
     private _idbService: IdbService,
     private _pbAuthService: PbAuthService,
-  ) {}
+  ) {
+    // Subscribe to country changes to update currency
+    this.userForm.get('country')?.valueChanges.subscribe(selectedCountry => {
+      if (selectedCountry) {
+        const currencyData = COUNTRY_CURRENCY_LIST.find(item => item.name === selectedCountry);
+        this.userForm.patchValue({
+          currency: currencyData?.currency || ''
+        }, { emitEvent: false }); // Prevent infinite loop
+      }
+    });
+  }
 
   currentUser: any;
   allUsersList: any;
-  currentAuthUser = this._pbAuthService.getCurrentUserAsync();
+  currentAuthUser = this._pbAuthService.getCurrentUserAsync(); 
+  countryCurrencyList = COUNTRY_CURRENCY_LIST;
 
   ngOnInit(): void {
     // this.getUserDataFromIdb();
@@ -63,7 +74,8 @@ export class UserComponent {
     street: new FormControl<string>(''),
     postCode: new FormControl<string>(''),
     city: new FormControl<string>(''),
-    country: new FormControl<string>(''),
+    country: new FormControl<string>(''), 
+    currency: new FormControl<string>({ value: '', disabled: true })
   });
 
   countryList: string[] = COUNTRIES;

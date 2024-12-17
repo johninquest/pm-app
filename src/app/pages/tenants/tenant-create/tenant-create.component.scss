@@ -1,141 +1,130 @@
-/*  .title {
-      text-align: center;
-      text-transform: uppercase;
-      margin: 3rem 1rem 1rem 1rem;
-      font-weight: bold;
-      letter-spacing: 0.1rem;
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 64px); // subtract navbar height
+  width: 100%;
+  margin-top: 64px; // Add margin to account for fixed navbar
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 2rem 0;
+  font-weight: bold;
+  // font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+  color: rgba(0, 0, 0, 0.87); // ensures good contrast
+  padding: 1rem;
+}
+
+.tenant-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  
+  form {
+    width: 100%;
+    max-width: 21rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    @media screen and (min-width: 481px) {
+      mat-form-field {
+        width: 21rem !important; // Force consistent width on non-mobile
+      }
+
+      fieldset {
+        width: 21rem !important; // Force consistent width on non-mobile
+      }
+
+      .row-of-2 {
+        width: 21rem !important; // Force consistent width on non-mobile
+      }
+
+      button[type="submit"] {
+        width: 21rem !important;
+      }
     }
 
-    .create-form {
+    fieldset {
+      width: 100%;
+      border: 2px solid #ccc;
+      border-radius: 0.5rem;
+      padding: 1.5rem 1rem;
+      margin: 0;
       display: flex;
-      flex-flow: column nowrap;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-    }
+      gap: 1rem;
+      border-right: none;
+      border-bottom: none;
+      border-left: none;
+      box-sizing: border-box;
 
-    form {
-      margin: 1rem;
-      display: flex;
-      flex-flow: column nowrap;
-    }
+      legend {
+        padding: 0 1rem;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
 
-    mat-form-field {
-      width: 21rem;
-    }
-
-    .row-of-2 {
-      width: 21rem;
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-between;
-    }
-
-    .row-of-2 mat-form-field:nth-child(1) {
-      width: 35%;
-    }
-
-    .row-of-2 mat-form-field:nth-child(2) {
-      width: 55%;
-    }
-
-    .btns {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-evenly;
-      margin-top: 1rem;
-    }
-
-    .btns button {
-      text-transform: uppercase;
-    }
-
-    ::ng-deep .mat-horizontal-stepper-header-container {
-      max-width: 21rem;
-      margin: 0 auto;
-    }
-
-    ::ng-deep .mat-horizontal-content-container {
-      padding: 0 !important;
-    } */ 
-
-    .title {
-      text-align: center;
-      text-transform: uppercase;
-      margin: 3rem 1rem 1rem 1rem;
-      font-weight: bold;
-      letter-spacing: 0.1rem;
-    }
-
-    .create-form {
-      display: flex;
-      flex-flow: column nowrap;
-      justify-content: center;
-      align-items: center;
-    }
-
-    form {
-      margin: 1rem;
-      display: flex;
-      flex-flow: column nowrap;
-    }
-
-    mat-form-field {
-      width: 21rem;
-    }
-
-    .row-of-2 {
-      width: 21rem;
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-between;
-    }
-
-    .row-of-2 mat-form-field:nth-child(1) {
-      width: 35%;
-    }
-
-    .row-of-2 mat-form-field:nth-child(2) {
-      width: 55%;
-    }
-
-    .btns {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-evenly;
-      margin-top: 1rem;
-    }
-
-    .btns button {
-      text-transform: uppercase;
-    }
-
-    ::ng-deep .mat-horizontal-stepper-header-container {
-      max-width: 100%;
-      margin: 0 auto;
-    }
-
-    ::ng-deep .mat-horizontal-content-container,
-    ::ng-deep .mat-vertical-content-container {
-      padding: 0 !important;
-    }
-
-    ::ng-deep .mat-horizontal-stepper-content,
-    ::ng-deep .mat-vertical-stepper-content {
-      overflow: visible !important;
-    }
-
-    @media (max-width: 599px) {
       mat-form-field {
         width: 100%;
       }
 
       .row-of-2 {
         width: 100%;
-        flex-direction: column;
-      }
-
-      .row-of-2 mat-form-field:nth-child(1),
-      .row-of-2 mat-form-field:nth-child(2) {
-        width: 100%;
+        display: flex;
+        gap: 1rem;
+        
+        mat-form-field:first-child {
+          width: 35%;
+        }
+        
+        mat-form-field:last-child {
+          width: 65%;
+        }
       }
     }
+
+    button[type="submit"] {
+      width: 100%;
+      margin: 1rem 0 2rem 0;
+    }
+  }
+}
+
+// Mobile styles
+@media screen and (max-width: 480px) {
+  .tenant-form {
+    form {
+      fieldset {
+        padding: 1rem 0.5rem;
+
+        .row-of-2 {
+          flex-direction: column;
+          gap: 0;
+          
+          mat-form-field:first-child,
+          mat-form-field:last-child {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Vertical centering for taller screens
+@media screen and (min-height: 800px) {
+  .tenant-form {
+    justify-content: center;
+  }
+}

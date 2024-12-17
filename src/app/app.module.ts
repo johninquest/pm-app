@@ -31,6 +31,7 @@ import { AlertDialogComponent } from './components/dialogs/alert-dialog/alert-di
 import { PropertyDetailsComponent } from './pages/properties/property-details/property-details.component';
 import { PropertyTypePipe } from './shared/pipes/property-type.pipe';
 import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.component';
+import { ExpenseDetailsComponent } from './pages/expenses/expense-details/expense-details.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.co
     PropertyDetailsComponent,
     PropertyTypePipe,
     PrivacyNoticeComponent,
+    ExpenseDetailsComponent,
   ],
   imports: [
     BrowserModule,

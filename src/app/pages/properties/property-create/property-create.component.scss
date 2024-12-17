@@ -1,20 +1,32 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 64px);
+  width: 100%;
+  margin-top: 64px;
+}
+
 .title {
   text-align: center;
   text-transform: uppercase;
-  margin: 3rem auto 1rem auto;
+  margin: 2rem 0;
   font-weight: bold;
   letter-spacing: 0.1rem;
 }
 
 .property-form {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 100%;
+  padding: 0 1rem;
+  
   form {
     display: flex;
     flex-direction: column;
     max-width: 100%;
+    
     mat-form-field {
       width: 21rem;
     }
@@ -22,31 +34,65 @@
     fieldset {
       border: 2px solid #ccc;
       border-radius: 0.5rem;
-      padding: 10px;
-      margin-bottom: 0.3rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-right: none; /* Hide right border */
-      border-bottom: none; /* Hide bottom border */
-      border-left: none; /* Hide left border */
+      border-right: none;
+      border-bottom: none;
+      border-left: none;
+      
       .row-of-2 {
         width: 21rem;
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
+        
         mat-form-field:nth-child(1) {
           width: 35%;
         }
+        
         mat-form-field:nth-child(2) {
           width: 55%;
         }
       }
     }
   }
+  
   button {
     margin: 0 auto;
     margin-bottom: 3rem; 
     width: 21rem;
+  }
+}
+
+// Responsive styles
+@media screen and (max-width: 600px) {
+  :host {
+    min-height: calc(100vh - 56px);
+    margin-top: 56px;
+  }
+
+  .property-form {
+    form {
+      mat-form-field {
+        width: 100%;
+      }
+
+      .row-of-2 {
+        width: 100%;
+        flex-direction: column;
+        
+        mat-form-field:nth-child(1),
+        mat-form-field:nth-child(2) {
+          width: 100%;
+        }
+      }
+    }
+
+    button {
+      width: 100%;
+    }
   }
 }

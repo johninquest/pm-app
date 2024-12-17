@@ -4,12 +4,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select'; 
+import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatStepperModule } from '@angular/material/stepper';
-import { MatDialogModule } from '@angular/material/dialog'; 
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 /*
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -37,12 +38,13 @@ import { from } from 'rxjs';
         MatMenuModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSelectModule, 
-        MatCardModule, 
-        MatTooltipModule, 
-        MatStepperModule, 
-        MatDialogModule, 
+        MatSelectModule,
+        MatCardModule,
+        MatTooltipModule,
+        MatStepperModule,
+        MatDialogModule,
         MatCheckboxModule,
+        MatToolbarModule
         /*
         MatMenuModule,
         MatProgressSpinnerModule,
@@ -70,12 +72,13 @@ import { from } from 'rxjs';
         MatMenuModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSelectModule, 
-        MatCardModule, 
-        MatTooltipModule, 
-        MatStepperModule, 
-        MatDialogModule, 
+        MatSelectModule,
+        MatCardModule,
+        MatTooltipModule,
+        MatStepperModule,
+        MatDialogModule,
         MatCheckboxModule,
+        MatToolbarModule
         /* 
         MatMenuModule,
         MatProgressSpinnerModule,

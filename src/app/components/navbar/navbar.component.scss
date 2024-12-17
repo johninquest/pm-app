@@ -1,77 +1,162 @@
-nav {
-  background-color: var(--primary-color);
-  height: 3rem;
-  width: 100%;
-  left: 0;
+/* navigation.component.scss */
+:host {
+  display: block;
+}
+
+.nav-toolbar {
+  position: fixed;
   top: 0;
-  // position: fixed;
-  text-align: center;
-}
-
-nav ul {
-  margin: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 64px;
   padding: 0;
-  display: inline-block;
-}
-nav ul li {
-  margin: 0 1rem;
-  padding: 0 0.1rem;
-  float: left;
-  list-style-type: none;
-}
-nav ul li a {
-  text-decoration: none;
-  padding: 1rem;
-  display: block;
-  color: var(--txt-black-color);
-  text-align: center;
-  text-transform: uppercase;
+  background-color: var(--primary-color);
 }
 
-nav ul li a:focus {
-  color: var(--primary-contrast-2);
-  font-weight: bold;
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: 100%;
 }
 
-nav ul li div {
-  text-decoration: none;
-  padding: 1rem;
-  display: block;
-  font-weight: bold;
-  text-align: center;
-}
-
-nav ul li div mat-select {
-  width: 3rem;
-}
-
-nav ul li div mat-select::-ms-expand {
-  display: none;
-}
-
-nav ul li a:hover {
-  color: var(--primary-contrast-2);
-  font-weight: bolder;
-}
-
-.mobile-nav {
-  display: none;
-}
-
-.mat-menu-item:hover {
-  background-color: var(--primary-contrast-2);
-}
-
-.menu-btn {
-  width: 17rem;
-}
-
-@media screen and (max-width: 768px) {
-  nav ul li a {
-    font-size: 0.8rem;
+.logo-section {
+  .home-link {
+    color: white;
+    text-decoration: none;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    mat-icon {
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+    }
   }
 }
 
-.btn-txt {
-  text-transform: uppercase;
+.navigation-section {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .nav-menu-trigger {
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 4px;
+    color: white;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    mat-icon {
+      margin-right: 4px;
+    }
+  }
+
+  .menu-label {
+    display: none;
+    margin-left: 4px;
+    
+    @media (min-width: 768px) {
+      display: inline-block;
+    }
+  }
+}
+
+:host ::ng-deep {
+  // Menu Panel Styles
+  .mat-menu-panel {
+    min-width: 200px;
+
+    .mat-menu-content {
+      padding: 0;
+    }
+  }
+
+  // Menu Item Styles
+  .mat-menu-item {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 16px;
+    
+    mat-icon {
+      margin-right: 12px;
+    }
+
+    .menu-item-text {
+      flex: 1;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+
+    &.active-link {
+      background-color: rgba(0, 0, 0, 0.04);
+      font-weight: 500;
+      
+      mat-icon {
+        color: var(--primary-color);
+      }
+    }
+  }
+}
+
+// Animation for menu items
+.mat-menu-item {
+  position: relative;
+  transition: background-color 200ms ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 200ms ease;
+    transform-origin: left;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+// Custom scrollbar for menu
+.mat-menu-panel {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }

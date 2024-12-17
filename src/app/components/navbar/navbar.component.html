@@ -1,53 +1,81 @@
-<nav>
-  <ul class="desktop-nav">
-    <li>
-      <a routerLink="/home">
-        <mat-icon>home</mat-icon>
+<mat-toolbar color="primary" class="nav-toolbar">
+  <nav class="nav-container">
+    <!-- Logo/Home -->
+    <div class="logo-section">
+      <a mat-icon-button routerLink="/home" matTooltip="Home" class="home-link">
+        <mat-icon class="nav-icon">home</mat-icon>
       </a>
-    </li>
-    <li>
-      <a [matMenuTriggerFor]="menuId">
-        <mat-icon>menu</mat-icon>
-      </a>
-    </li>
-    <li>
-      <a [matMenuTriggerFor]="menuSettings">
-        <mat-icon>settings</mat-icon>
-      </a>
-    </li>
-  </ul>
-</nav>
+    </div>
 
-<mat-menu #menuId="matMenu">
-  <button mat-menu-item routerLink="/rent-collect">
-    <mat-icon> real_estate_agent </mat-icon>
-    <span class="btn-txt">collect rent</span>
-  </button>
-  <button mat-menu-item routerLink="/expenses">
-    <mat-icon>attach_money</mat-icon>
-    <span class="btn-txt">expenses</span>
-  </button>
-  <button mat-menu-item routerLink="/properties">
-    <mat-icon>apartments</mat-icon>
-    <span class="btn-txt">properties</span>
-  </button>
-  <button mat-menu-item routerLink="/tenants">
-    <mat-icon>group</mat-icon>
-    <span class="btn-txt">tenants</span>
-  </button>
-</mat-menu>
+    <!-- Main Navigation Section -->
+    <div class="navigation-section">
+      <div class="desktop-nav">
+        <button
+          mat-button
+          [matMenuTriggerFor]="menuId"
+          class="nav-menu-trigger"
+          aria-label="Main menu"
+        >
+          <mat-icon class="nav-icon">menu</mat-icon>
+          <span class="menu-label">Menu</span>
+        </button>
 
-<mat-menu #menuSettings="matMenu">
-  <button mat-menu-item routerLink="/user">
-    <mat-icon>person_outlined</mat-icon>
-    <span class="btn-txt">user</span>
-  </button>
-  <button mat-menu-item routerLink="/info">
-    <mat-icon>info_outlined</mat-icon>
-    <span class="btn-txt">info</span>
-  </button>
-  <button mat-menu-item (click)="onClickLogOut()">
-    <mat-icon>logout</mat-icon>
-    <!-- <span class="btn-txt">new id</span> -->
-  </button>
-</mat-menu>
+        <mat-menu #menuId="matMenu" class="main-menu">
+          <a
+            mat-menu-item
+            routerLink="/rent-collect"
+            routerLinkActive="active-link"
+          >
+            <mat-icon>real_estate_agent</mat-icon>
+            <span class="menu-item-text">Collect Rent</span>
+          </a>
+          <a
+            mat-menu-item
+            routerLink="/expenses"
+            routerLinkActive="active-link"
+          >
+            <mat-icon>attach_money</mat-icon>
+            <span class="menu-item-text">Expenses</span>
+          </a>
+          <a
+            mat-menu-item
+            routerLink="/properties"
+            routerLinkActive="active-link"
+          >
+            <mat-icon>apartments</mat-icon>
+            <span class="menu-item-text">Properties</span>
+          </a>
+          <a mat-menu-item routerLink="/tenants" routerLinkActive="active-link">
+            <mat-icon>group</mat-icon>
+            <span class="menu-item-text">Tenants</span>
+          </a>
+        </mat-menu>
+
+        <button
+          mat-button
+          [matMenuTriggerFor]="menuSettings"
+          class="nav-menu-trigger"
+          aria-label="Settings menu"
+        >
+          <mat-icon class="nav-icon">settings</mat-icon>
+          <span class="menu-label">Settings</span>
+        </button>
+
+        <mat-menu #menuSettings="matMenu" class="settings-menu">
+          <a mat-menu-item routerLink="/user" routerLinkActive="active-link">
+            <mat-icon>person</mat-icon>
+            <span class="menu-item-text">Profile</span>
+          </a>
+          <a mat-menu-item routerLink="/info" routerLinkActive="active-link">
+            <mat-icon>info</mat-icon>
+            <span class="menu-item-text">Info</span>
+          </a>
+          <button mat-menu-item (click)="onClickLogOut()">
+            <mat-icon>logout</mat-icon>
+            <span class="menu-item-text">Logout</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+  </nav>
+</mat-toolbar>

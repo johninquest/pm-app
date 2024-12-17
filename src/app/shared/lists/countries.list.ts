@@ -55,9 +55,8 @@ export const COUNTRIES: string[] = [
   'Zimbabwe',
 ];
 
-/*
-export const COUNTRIES: { name: string, currency: string }[] = [
-  { name: '', currency: '' },
+
+export const COUNTRY_CURRENCY_LIST: { name: string, currency: string }[] = [
   { name: 'Algeria', currency: 'DZD' },
   { name: 'Angola', currency: 'AOA' },
   { name: 'Benin', currency: 'XOF' },
@@ -113,8 +112,6 @@ export const COUNTRIES: { name: string, currency: string }[] = [
   { name: 'Zambia', currency: 'ZMW' },
   { name: 'Zimbabwe', currency: 'ZWL' },
 ];
-
-*/
 
 
 /* 
