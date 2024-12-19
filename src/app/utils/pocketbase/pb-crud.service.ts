@@ -30,7 +30,7 @@ export class PbCrudService {
 
   async getPropertyById(propertyId: string) {
     let record = await this.pb.collection('properties').getOne(propertyId); 
-    console.log('Fetched property record:', record)
+    // console.log('Fetched property record:', record)
     return record;
   } 
 
@@ -49,7 +49,11 @@ export class PbCrudService {
       return record;
     } 
 
-    async fetchExpenseById(expenseData: any) {} 
+    async getExpenseById(expenseId: string) {
+      let record = await this.pb.collection('expenses').getOne(expenseId);
+      // console.log('Fetched property record:', record)
+      return record;
+    } 
 
     async updateExpense(expenseData: any) {} 
 

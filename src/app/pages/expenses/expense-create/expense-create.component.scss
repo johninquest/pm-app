@@ -1,27 +1,9 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 64px);
-  width: 100%;
-  margin-top: 64px;
-}
-
-.title {
-  text-align: center;
-  text-transform: uppercase;
-  margin: 2rem 0;
-  font-weight: bold;
-  letter-spacing: 0.1rem;
-}
-
 .expense-container {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   padding: 0 1rem;
-  margin: 0 auto;
   box-sizing: border-box;
 
   form {
@@ -30,23 +12,13 @@
     width: 100%;
     max-width: 21rem;
     margin: 0 auto;
-  }
 
-  button {
-    margin-top: 1.25rem;
-    width: 100%;
-  }
-}
+    mat-form-field {
+      width: 100%;
+    }
 
-// Responsive styles
-@media screen and (max-width: 600px) {
-  :host {
-    min-height: calc(100vh - 56px);
-    margin-top: 56px;
-  }
-
-  .expense-container {
-    form {
+    button {
+      margin-top: 1.25rem;
       width: 100%;
     }
   }

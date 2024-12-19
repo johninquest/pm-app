@@ -1,12 +1,8 @@
 <app-navbar />
-<div class="title">new expense</div>
+<app-page-title title="new expense"/>
 
 <div class="expense-container">
   <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Property ID</mat-label>
-      <input matInput formControlName="propertyId" required />
-    </mat-form-field>  -->
     <mat-form-field appearance="fill">
       <mat-label>Select property</mat-label>
       <mat-select formControlName="propertyName">
@@ -43,15 +39,6 @@
       <mat-label>Vendor/Contractor name</mat-label>
       <input matInput formControlName="vendorName" />
     </mat-form-field>
-
-    <!--   <button
-    mat-raised-button
-    color="primary"
-    type="submit"
-    [disabled]="!maintenanceForm.valid"
-  >
-    Submit
-  </button> -->
     <button mat-raised-button color="primary" type="submit">Submit</button>
   </form>
 </div>

@@ -35,11 +35,10 @@ export class ExpenseListComponent {
 
   fetchExpensesData() {} 
   onClickRow(rowData: any) {
-   /*  console.log('Row data:', rowData);
-    let propertyId: string = rowData['id'];
-    console.log('Id of row data:', propertyId);
-    this._router.navigate(['/property', propertyId]); */ 
-    alert('Under construction')
+   console.log('Row data:', rowData);
+    let expenseId: string = rowData['id'];
+    console.log('Id of row data:', expenseId);
+    this._router.navigate(['/expense', expenseId]);
   }
 
   onClickAddNewExpense() {

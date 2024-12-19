@@ -9,7 +9,7 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  height: 64px;
+  height: 3rem;
   padding: 0;
   background-color: var(--primary-color);
 }
@@ -27,7 +27,7 @@
 
 .logo-section {
   .home-link {
-    color: white;
+    color: var(--txt-black-color);
     text-decoration: none;
     
     &:hover {
@@ -57,7 +57,7 @@
     height: 48px;
     padding: 0 16px;
     border-radius: 4px;
-    color: white;
+    color: var(--txt-black-color);
     
     &:hover {
       background-color: rgba(255, 255, 255, 0.1);
@@ -70,7 +70,8 @@
 
   .menu-label {
     display: none;
-    margin-left: 4px;
+    margin-left: 4px; 
+    color: var(--txt-black-color);
     
     @media (min-width: 768px) {
       display: inline-block;

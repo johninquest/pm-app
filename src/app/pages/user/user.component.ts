@@ -35,20 +35,10 @@ export class UserComponent {
   ngOnInit(): void {
     // this.getUserDataFromIdb();
     this.userForm.disable();
-    /* this._fbAuthService
-      .currentlyLoggedUser()
-      .subscribe((res) => {
-        this.currentUser = res?.email;
-        this.userForm.patchValue({
-          userId: res?.email,
-        });
-        console.log('Current user id:', res?.email) 
-        console.log('Current user uid:', res?.uid)
-      }); */
-    // this.allUsersList = this._pbService.getAllUsersAsList();
     this.currentAuthUser
       .then((res) => {
-        console.log('User response:', res);
+        console.log('User response:', res); 
+        console.log('Role from response:', res?.['role']);  
         this.currentUser = res?.['email'];
         this.userForm.patchValue({
           userId: res?.['email'],
@@ -56,8 +46,6 @@ export class UserComponent {
           lastName: res?.['lastname'],
           firstName: res?.['firstname'],
           phoneNumber: res?.['phone'],
-          emailAddress: res?.['email'],
-          country: res?.['country'],
         });
       })
       .catch((e) => console.log('User error:', e));

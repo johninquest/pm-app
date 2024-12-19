@@ -32,6 +32,7 @@ import { PropertyDetailsComponent } from './pages/properties/property-details/pr
 import { PropertyTypePipe } from './shared/pipes/property-type.pipe';
 import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.component';
 import { ExpenseDetailsComponent } from './pages/expenses/expense-details/expense-details.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ExpenseDetailsComponent } from './pages/expenses/expense-details/expens
     PropertyTypePipe,
     PrivacyNoticeComponent,
     ExpenseDetailsComponent,
+    PageTitleComponent,
   ],
   imports: [
     BrowserModule,

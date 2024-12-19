@@ -1,0 +1,15 @@
+// page-title.component.scss
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 1rem;
+  margin: 3.5rem 0 0.5rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .page-title {
+    margin-top: 3.5rem; // was 56px
+  }
+}

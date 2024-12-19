@@ -1,5 +1,6 @@
 <app-navbar />
-<div class="title">property details</div>
+<!-- <div class="title">property details</div> --> 
+ <app-page-title title="property details"/>
 
 <!-- <div style="text-align: center; margin: 1rem;">{{propertyData | json}}</div>  -->
 <!-- Template HTML -->
@@ -125,9 +126,9 @@
 </div> -->
 
 <div class="btns">
-  <button mat-flat-button color="primary" (click)="onBack()">back</button>
-  <button mat-flat-button color="accent" (click)="onEdit()">edit</button>
-  <button mat-flat-button color="warn" (click)="onDelete()">delete</button>
+  <button mat-raised-button (click)="onBack()">back</button>
+  <button mat-raised-button color="primary" (click)="onEdit()">edit</button>
+  <button mat-raised-button color="warn" (click)="onDelete()">delete</button>
 </div> 
 
 <div class="btns">

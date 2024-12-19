@@ -17,6 +17,7 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { EmailComponent } from './components/email/email.component';
 import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.component';
 import { authGuard } from './guards/auth.guard';
+import { ExpenseDetailsComponent } from './pages/expenses/expense-details/expense-details.component';
 
 
 const routes: Routes = [
@@ -58,6 +59,13 @@ const routes: Routes = [
     component: ExpenseListComponent,
     data: {
       title: 'Expenses',
+    },
+  },
+  {
+    path: 'expense/:id',
+    component: ExpenseDetailsComponent,
+    data: {
+      title: 'Expense details',
     },
   },
   {
