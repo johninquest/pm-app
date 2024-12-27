@@ -29,7 +29,8 @@ export class TenantCreateComponent implements OnInit {
     phone: [''],
 
     // Rental Information
-    propertyId: [''],
+    propertyId: [''], 
+    unitId: [''],
     leaseStartDate: [''],
     rentAmount: ['', [Validators.required, Validators.min(1000)]],
     paymentMethod: [''],
