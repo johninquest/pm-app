@@ -1,7 +1,7 @@
 {
   "name": "Popati",
   "short_name": "Popati",
-  "theme_color": "#c5cae9",
+  "theme_color": "#c8e6c9",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
