@@ -20,7 +20,6 @@ import { TenantListComponent } from './pages/tenants/tenant-list/tenant-list.com
 import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore'; */
-import { RentCollectComponent } from './pages/rents/rent-collect/rent-collect.component';
 import { TenantInfoComponent } from './pages/tenants/tenant-info/tenant-info.component';
 import { ExpenseCreateComponent } from './pages/expenses/expense-create/expense-create.component';
 import { ExpenseListComponent } from './pages/expenses/expense-list/expense-list.component';
@@ -33,6 +32,9 @@ import { PropertyTypePipe } from './shared/pipes/property-type.pipe';
 import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.component';
 import { ExpenseDetailsComponent } from './pages/expenses/expense-details/expense-details.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
+import { RentCreateComponent } from './pages/rents/rent-create/rent-create.component';
+import { RentDetailsComponent } from './pages/rents/rent-details/rent-details.component';
+import { RentListComponent } from './pages/rents/rent-list/rent-list.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,6 @@ import { PageTitleComponent } from './components/page-title/page-title.component
     PropertyListComponent,
     TenantCreateComponent,
     TenantListComponent,
-    RentCollectComponent,
     TenantInfoComponent,
     ExpenseCreateComponent,
     ExpenseListComponent,
@@ -59,6 +60,9 @@ import { PageTitleComponent } from './components/page-title/page-title.component
     PrivacyNoticeComponent,
     ExpenseDetailsComponent,
     PageTitleComponent,
+    RentCreateComponent,
+    RentDetailsComponent,
+    RentListComponent,
   ],
   imports: [
     BrowserModule,

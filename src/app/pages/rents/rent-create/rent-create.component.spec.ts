@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RentCollectComponent } from './rent-collect.component';
+import { RentCreateComponent } from './rent-create.component';
 
-describe('RentCollectComponent', () => {
-  let component: RentCollectComponent;
-  let fixture: ComponentFixture<RentCollectComponent>;
+describe('RentCreateComponent', () => {
+  let component: RentCreateComponent;
+  let fixture: ComponentFixture<RentCreateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RentCollectComponent]
+      declarations: [RentCreateComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(RentCollectComponent);
+    fixture = TestBed.createComponent(RentCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
