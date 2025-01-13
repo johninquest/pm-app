@@ -8,6 +8,8 @@ import {
   PROPERTY_LIST,
 } from '../../../shared/lists/data.list';
 import { PaymentFrequencyInterface } from '../../../utils/data.model';
+import { PbAuthService } from '../../../utils/pocketbase/pb-auth.service';
+import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
 
 @Component({
   selector: 'app-tenant-create',
@@ -17,7 +19,7 @@ import { PaymentFrequencyInterface } from '../../../utils/data.model';
 export class TenantCreateComponent implements OnInit {
   tenantForm: FormGroup = this.fb.group({
     // Personal Information
-    nationalId: ['', Validators.required],
+    nationalIdNumber: ['', Validators.required],
     firstName: [''],
     lastName: ['', Validators.required],
 
@@ -25,29 +27,54 @@ export class TenantCreateComponent implements OnInit {
     street: [''],
     postCode: [''],
     city: [''],
-    country: [''], 
+    country: [''],
     phone: [''],
+    email: [''],
 
     // Rental Information
-    propertyId: [''], 
+    propertyId: [''],
     unitId: [''],
     leaseStartDate: [''],
     rentAmount: ['', [Validators.required, Validators.min(1000)]],
     paymentMethod: [''],
-    paymentFrequency: [12]
+    paymentFrequency: [12],
   });
 
   countryList: string[] = COUNTRIES;
-  propertyList: string[] = PROPERTY_LIST;
+  unitList: string[] = PROPERTY_LIST;
   paymentMethodList: string[] = PAYMENT_METHOD;
   paymentFrequencyList: PaymentFrequencyInterface[] = PAYMENT_FREQUENCY;
+  propertiesData: any[] = [];
+  currentUser: string = '';
+
+  // Getter for property names
+  get propertyList(): string[] {
+    return this.propertiesData.map((property) => property.name);
+  }
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
-  ) { }
+    private router: Router,
+    private _pbAuth: PbAuthService,
+    private _pbCrud: PbCrudService
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this._pbAuth.getCurrentUser().subscribe((user) => {
+      // console.log('Current user at expense:', user);
+      this.currentUser = user?.email;
+      this.fetchRelatedProperties(this.currentUser);
+    });
+  }
+
+  fetchRelatedProperties(userId: string) {
+    if (userId) {
+      let pData = this._pbCrud.getAllPropertyAsList(userId);
+      pData.then((data) => {
+        this.propertiesData = data;
+      });
+    }
+  }
 
   onSubmit(): void {
     if (this.tenantForm.valid) {
@@ -59,7 +86,7 @@ export class TenantCreateComponent implements OnInit {
   }
 
   private markFormGroupTouched(formGroup: FormGroup): void {
-    Object.values(formGroup.controls).forEach(control => {
+    Object.values(formGroup.controls).forEach((control) => {
       control.markAsTouched();
       if (control instanceof FormGroup) {
         this.markFormGroupTouched(control);

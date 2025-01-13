@@ -8,14 +8,14 @@
       <legend>Personal Information</legend>
       <mat-form-field appearance="fill">
         <mat-label>National ID number</mat-label>
-        <input matInput formControlName="nationalId" type="text" required />
+        <input matInput formControlName="nationalIdNumber" type="text" required />
         <mat-error
           *ngIf="
-            tenantForm.get('nationalId')?.hasError('required') &&
-            tenantForm.get('nationalId')?.touched
+            tenantForm.get('nationalIdNumber')?.hasError('required') &&
+            tenantForm.get('nationalIdNumber')?.touched
           "
         >
-          National ID is required
+          National ID number required!
         </mat-error>
       </mat-form-field>
 
@@ -69,6 +69,10 @@
       <mat-form-field appearance="fill">
         <mat-label>Phone</mat-label>
         <input matInput formControlName="phone" type="tel" />
+      </mat-form-field> 
+      <mat-form-field appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <input matInput formControlName="email" type="email" />
       </mat-form-field>
     </fieldset>
 
@@ -87,8 +91,8 @@
       <mat-form-field appearance="fill">
         <mat-label>Select unit</mat-label>
         <mat-select formControlName="unitId">
-          <mat-option *ngFor="let property of propertyList" [value]="property">
-            {{ property }}
+          <mat-option *ngFor="let unit of unitList" [value]="unit">
+            {{ unit }}
           </mat-option>
         </mat-select>
       </mat-form-field>
