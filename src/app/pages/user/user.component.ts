@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { COUNTRIES, COUNTRY_CURRENCY_LIST } from '../../shared/lists/countries.list';
-import { IdbService } from '../../utils/idb.service';
 import { USER_ROLES } from '../../shared/lists/role.list';
 import { UserRoleInterface } from '../../utils/data.model';
 import { PbAuthService } from '../../utils/pocketbase/pb-auth.service';
@@ -13,7 +12,6 @@ import { PbAuthService } from '../../utils/pocketbase/pb-auth.service';
 })
 export class UserComponent {
   constructor(
-    private _idbService: IdbService,
     private _pbAuthService: PbAuthService,
   ) {
     // Subscribe to country changes to update currency
@@ -99,24 +97,6 @@ export class UserComponent {
     _saveRequest
       .then((res) => console.log('Saved data:', res))
       .catch((err) => console.log('Error:', err)); */
-  }
-
-  getUserDataFromIdb() {
-    this._idbService.fetchUserData().then((data) => {
-      if (data) {
-        this.userForm.patchValue({
-          firstName: data['formData']['firstName'] ?? '',
-          lastName: data['formData']['lastName'] ?? '',
-          phoneNumber: data['formData']['phoneNumber'] ?? '',
-          emailAddress: data['formData']['emailAddress'] ?? '',
-          /* dateOfBirth: data['formData']['dateOfBirth'] ?? '', */
-          street: data['formData']['street'] ?? '',
-          postCode: data['formData']['postCode'] ?? '',
-          city: data['formData']['city'] ?? '',
-          country: data['formData']['country'] ?? '',
-        });
-      }
-    });
   }
 
   /*   getAuthUserData() {

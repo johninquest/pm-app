@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PbAuthService } from '../../../utils/pocketbase/pb-auth.service';
 import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
+import { PropertyListService } from '../../../utils/services/property-list.service';
 
 @Component({
   selector: 'app-rent-create',
@@ -9,7 +10,7 @@ import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
   styleUrl: './rent-create.component.scss',
 })
 export class RentCreateComponent {
-  rentForm: FormGroup;
+  rentForm!: FormGroup;
   propertiesData: any[] = [];
   currentUser: string = '';
 
@@ -33,39 +34,60 @@ export class RentCreateComponent {
     { value: 12, viewValue: 'December' },
   ];
 
-  constructor(private fb: FormBuilder, private _pbAuth: PbAuthService, private _pbCrud: PbCrudService) {
+  constructor(
+    private fb: FormBuilder,
+    private pbAuth: PbAuthService,
+    private pbCrud: PbCrudService, 
+    private propertyListService: PropertyListService
+  ) {
+    this.initializeForm();
+    this.initializeCurrentUser();
+  }
+
+  /**
+   * Initializes the reactive form with default values and validators.
+   */
+  private initializeForm(): void {
     const currentYear = new Date().getFullYear();
     this.rentForm = this.fb.group({
-      tenantId: ['', Validators.required],
       propertyId: ['', Validators.required],
       unitNumber: [''],
+      tenantId: ['', Validators.required],
       month: ['', Validators.required],
       year: [
         currentYear,
         [Validators.required, Validators.min(2000), Validators.max(2100)],
       ],
       rentAmount: [0, [Validators.required, Validators.min(0)]],
-      rentDueDate: ['', Validators.required],
       paymentStatus: ['', Validators.required],
-      leaseStartDate: ['', Validators.required],
-      leaseEndDate: ['', Validators.required],
+      rentComment: [''],
     });
-    _pbAuth.getCurrentUser().subscribe(user => {
-      // console.log('Current user at expense:', user); 
-      this.currentUser = user?.email; 
-      this.fetchRelatedProperties(this.currentUser);
-    })
   }
 
-  fetchRelatedProperties(userId: string) {
-    if(userId) {
-      let pData = this._pbCrud.getAllPropertyAsList(userId); 
-      pData.then(data => {
-        this.propertiesData = data
-      })
+  /**
+   * Fetches the current user and retrieves related properties.
+   */
+  private initializeCurrentUser(): void {
+    this.pbAuth.getCurrentUser().subscribe((user) => {
+      this.currentUser = user?.email || '';
+      if (this.currentUser) { 
+        // Subscribe to the properties data
+        let relatedPropertyData = this.propertyListService.fetchRelatedProperties(this.currentUser); 
+        relatedPropertyData.subscribe(properties => {
+          this.propertiesData = properties
+        });
+      }
+    });
+  }
 
+/*   fetchRelatedProperties(userId: string) {
+    if (userId) {
+      let pData = this.pbCrud.getAllPropertyAsList(userId);
+      pData.then((data) => {
+        this.propertiesData = data;
+      });
     }
-  }
+  } */
 
   onSubmit() {
     if (this.rentForm.valid) {

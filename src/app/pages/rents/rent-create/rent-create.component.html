@@ -1,72 +1,63 @@
 <app-navbar />
-<!-- <div class="title">Collect rent</div>  --> 
- <app-page-title title="collect rent"/>
+<app-page-title title="collect rent" />
 
 <form [formGroup]="rentForm" (ngSubmit)="onSubmit()">
-    
-    <mat-form-field appearance="fill">
-      <mat-label>Select property</mat-label>
-      <mat-select formControlName="propertyId">
-        <mat-option *ngFor="let property of propertyList" [value]="property">
-          {{ property }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field> 
-    
-    <mat-form-field appearance="fill">
-      <mat-label>Select tenant</mat-label>
-      <input matInput formControlName="tenantId" required>
-    </mat-form-field>
-    
-    <mat-form-field appearance="fill">
-      <mat-label>Unit number</mat-label>
-      <input matInput formControlName="unitNumber">
-    </mat-form-field>
-    
-    <mat-form-field appearance="fill">
-      <mat-label>Rent amount</mat-label>
-      <input matInput type="number" formControlName="rentAmount" required>
-    </mat-form-field>
-    
-<!--     <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill">
+    <mat-label>Select property</mat-label>
+    <mat-select formControlName="propertyId">
+      <mat-option *ngFor="let property of propertyList" [value]="property">
+        {{ property }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Select unit</mat-label>
+    <input matInput formControlName="unitNumber" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Select tenant</mat-label>
+    <input matInput formControlName="tenantId" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Rent amount</mat-label>
+    <input matInput type="number" formControlName="rentAmount" required />
+  </mat-form-field>
+
+  <!--     <mat-form-field appearance="fill">
       <mat-label>Rent due date</mat-label>
       <input matInput type="date" formControlName="rentDueDate" required>
-    </mat-form-field> --> 
-    <mat-form-field appearance="fill">
-        <mat-label>Month</mat-label>
-        <mat-select formControlName="month" required>
-          <mat-option *ngFor="let month of months" [value]="month.value">
-            {{month.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field> 
-
-      <mat-form-field appearance="fill">
-        <mat-label>Year</mat-label>
-        <input matInput type="number" formControlName="year" required>
-      </mat-form-field>
-      
-    
-    <mat-form-field appearance="fill">
-      <mat-label>Payment status</mat-label>
-      <mat-select formControlName="paymentStatus" required>
-        <mat-option value="paid">Paid</mat-option>
-        <mat-option value="partially_paid">Partially paid</mat-option>
-        <mat-option value="unpaid">Unpaid</mat-option>
-      </mat-select>
-    </mat-form-field>
-    
-<!--     <mat-form-field appearance="fill">
-      <mat-label>Lease start date</mat-label>
-      <input matInput type="date" formControlName="leaseStartDate" required>
-    </mat-form-field>
-    
-    <mat-form-field appearance="fill">
-      <mat-label>Lease end date</mat-label>
-      <input matInput type="date" formControlName="leaseEndDate" required>
     </mat-form-field> -->
-    
-   <!--  <button mat-raised-button color="primary" type="submit" [disabled]="!rentForm.valid">Submit</button> --> 
-   <button mat-raised-button color="primary" type="submit" >SAVE</button>
-  </form>
+  <mat-form-field appearance="fill">
+    <mat-label>Month</mat-label>
+    <mat-select formControlName="month" required>
+      <mat-option *ngFor="let month of months" [value]="month.value">
+        {{ month.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
+  <mat-form-field appearance="fill">
+    <mat-label>Year</mat-label>
+    <input matInput type="number" formControlName="year" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Payment status</mat-label>
+    <mat-select formControlName="paymentStatus" required>
+      <mat-option value="paid">Paid</mat-option>
+      <mat-option value="partially_paid">Partially paid</mat-option>
+      <mat-option value="unpaid">Unpaid</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Comment</mat-label>
+    <textarea matInput formControlName="rentComment" required></textarea>
+  </mat-form-field>
+
+  <!--  <button mat-raised-button color="primary" type="submit" [disabled]="!rentForm.valid">Submit</button> -->
+  <button mat-raised-button color="primary" type="submit">SAVE</button>
+</form>
