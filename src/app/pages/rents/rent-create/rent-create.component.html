@@ -5,12 +5,16 @@
 <form [formGroup]="rentForm" (ngSubmit)="onSubmit()">
     
     <mat-form-field appearance="fill">
-      <mat-label>Property ID</mat-label>
-      <input matInput formControlName="propertyId" required>
+      <mat-label>Select property</mat-label>
+      <mat-select formControlName="propertyId">
+        <mat-option *ngFor="let property of propertyList" [value]="property">
+          {{ property }}
+        </mat-option>
+      </mat-select>
     </mat-form-field> 
     
     <mat-form-field appearance="fill">
-      <mat-label>Tenant ID</mat-label>
+      <mat-label>Select tenant</mat-label>
       <input matInput formControlName="tenantId" required>
     </mat-form-field>
     
