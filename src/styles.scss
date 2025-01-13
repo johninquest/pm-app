@@ -15,7 +15,7 @@ $proma-primary: mat.define-palette(mat.$green-palette, 100); // #4DB6AC
 $proma-accent: mat.define-palette(mat.$deep-orange-palette, 100);
 
 // The warn palette is optional (defaults to red).
-$proma-warn: mat.define-palette(mat.$red-palette);
+$proma-warn: mat.define-palette(mat.$red-palette, 300);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".

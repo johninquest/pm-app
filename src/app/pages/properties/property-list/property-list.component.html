@@ -1,5 +1,6 @@
 <app-navbar />
-<div class="title">properties</div>
+<!-- <div class="title">properties</div> --> 
+<app-page-title title="properties"/>
 
 <div class="float" matTooltip="Add new property">
   <button mat-raised-button color="primary" (click)="onClickAddNewProperty()">
@@ -35,10 +36,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let property of propertiesData" (click)="onClickRow(property)">
-      <td>{{ property.name }}</td>
-      <td>{{ property.type | propertyType }}</td>
+      <td>{{ property?.name }}</td>
+      <td>{{ property?.type | propertyType }}</td>
       <!--  <td>{{ property.construction_year }}</td> -->
-      <td>{{ property.address.city }}, {{ property.address.country }}</td>
+      <td>{{ property?.address?.city }}, {{ property?.address?.country }}</td>
     </tr>
   </tbody>
 </table>
