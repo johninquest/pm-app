@@ -4,8 +4,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 0 1rem;
-  margin: 1rem 0;
+  padding: 0 0.5rem;
+  margin: 0.5rem 0;
   box-sizing: border-box;
   
   form {
@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.3rem;
+    // gap: 0.1rem;
 
     @media screen and (min-width: 481px) {
       mat-form-field {
@@ -38,12 +38,12 @@
       width: 100%;
       border: 2px solid #ccc;
       border-radius: 0.5rem;
-      padding: 1.5rem 1rem;
-      margin: 0;
+      // padding: 0.5rem 0.5rem;
+      // margin: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
+      // gap: 0.3rem;
       border-right: none;
       border-bottom: none;
       border-left: none;
@@ -59,25 +59,11 @@
       mat-form-field {
         width: 100%;
       }
-
-      .row-of-2 {
-        width: 100%;
-        display: flex;
-        gap: 1rem;
-        
-        mat-form-field:first-child {
-          width: 35%;
-        }
-        
-        mat-form-field:last-child {
-          width: 65%;
-        }
-      }
     }
 
     button[type="submit"] {
       width: 100%;
-      margin-top: 0.3rem;
+      margin-bottom: 3rem;
     }
   }
 }
