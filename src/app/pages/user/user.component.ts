@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { COUNTRIES, COUNTRY_CURRENCY_LIST } from '../../shared/lists/countries.list';
+import { COUNTRY_CURRENCY_LIST } from '../../shared/lists/countries.list';
 import { USER_ROLES } from '../../shared/lists/role.list';
 import { UserRoleInterface } from '../../utils/data.model';
 import { PbAuthService } from '../../utils/pocketbase/pb-auth.service';
@@ -15,9 +15,9 @@ export class UserComponent {
     private _pbAuthService: PbAuthService,
   ) {
     // Subscribe to country changes to update currency
-    this.userForm.get('country')?.valueChanges.subscribe(selectedCountry => {
-      if (selectedCountry) {
-        const currencyData = COUNTRY_CURRENCY_LIST.find(item => item.name === selectedCountry);
+    this.userForm.get('country')?.valueChanges.subscribe(selectedCountryCode => {
+      if (selectedCountryCode) {
+        const currencyData = COUNTRY_CURRENCY_LIST.find(item => item.code === selectedCountryCode);
         this.userForm.patchValue({
           currency: currencyData?.currency || ''
         }, { emitEvent: false }); // Prevent infinite loop
@@ -28,10 +28,9 @@ export class UserComponent {
   currentUser: any;
   allUsersList: any;
   currentAuthUser = this._pbAuthService.getCurrentUserAsync(); 
-  countryCurrencyList = COUNTRY_CURRENCY_LIST;
+  countryList = COUNTRY_CURRENCY_LIST;
 
   ngOnInit(): void {
-    // this.getUserDataFromIdb();
     this.userForm.disable();
     this.currentAuthUser
       .then((res) => {
@@ -56,56 +55,31 @@ export class UserComponent {
     lastName: new FormControl<string>('', Validators.required),
     phoneNumber: new FormControl<string>(''),
     emailAddress: new FormControl<string>(''),
-    /*  dateOfBirth: new FormControl<string>(''), */
     street: new FormControl<string>(''),
     postCode: new FormControl<string>(''),
     city: new FormControl<string>(''),
-    country: new FormControl<string>(''), 
+    country: new FormControl<string>(''), // This will store the country code
     currency: new FormControl<string>({ value: '', disabled: true })
   });
 
-  countryList: string[] = COUNTRIES;
   userRoleList: UserRoleInterface[] = USER_ROLES;
+
+  getCountryName(code: string): string {
+    const country = COUNTRY_CURRENCY_LIST.find(c => c.code === code);
+    return country ? country.name : code;
+  }
 
   onClickCancel() {
     history.back();
   }
 
-  async onClickSave() {
-   
-/*     if (!this.currentAuthUser) {
-      console.error('UserId is required');
-      alert('UserId is required');
-     
-      return; // Exit the method early if userId is not present
-    }
-    let userData = {
-      firstname: this.userForm.value.firstName ?? '',
-      lastname: this.userForm.value.lastName ?? '',
-      phone: this.userForm.value.phoneNumber ?? '',
-      email: this.userForm.value.emailAddress ?? '',
-      role: this.userForm.value.userRole ?? '',
-      auth_id: this.currentUser,
-      address: {
-        country: this.userForm.value.country ?? '',
-        postcode: this.userForm.value.postCode ?? '',
-        city: this.userForm.value.city ?? '',
-        street: this.userForm.value.street ?? '',
-      },
-    };
-    let _saveRequest = this._pbService.createUser(userData);
-    _saveRequest
-      .then((res) => console.log('Saved data:', res))
-      .catch((err) => console.log('Error:', err)); */
-  }
-
-  /*   getAuthUserData() {
-    let _req = this._pbService.getSpecificUser();
-    
-  } */
-
   onClickEdit() {
     this.userForm.enable();
     this.userForm.get('userId')?.disable();
+    this.userForm.get('currency')?.disable(); // Keep currency disabled as it's derived
+  }
+
+  async onClickSave() {
+    // Your save logic here
   }
 }

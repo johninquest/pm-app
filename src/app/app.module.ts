@@ -35,6 +35,8 @@ import { PageTitleComponent } from './components/page-title/page-title.component
 import { RentCreateComponent } from './pages/rents/rent-create/rent-create.component';
 import { RentDetailsComponent } from './pages/rents/rent-details/rent-details.component';
 import { RentListComponent } from './pages/rents/rent-list/rent-list.component';
+import { CountryPipe } from './shared/pipes/country.pipe';
+import { CurrencyPipe } from './shared/pipes/currency.pipe';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { RentListComponent } from './pages/rents/rent-list/rent-list.component';
     RentCreateComponent,
     RentDetailsComponent,
     RentListComponent,
+    CountryPipe,
+    CurrencyPipe,
   ],
   imports: [
     BrowserModule,

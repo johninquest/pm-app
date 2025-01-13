@@ -39,7 +39,7 @@
       <td>{{ property?.name }}</td>
       <td>{{ property?.type | propertyType }}</td>
       <!--  <td>{{ property.construction_year }}</td> -->
-      <td>{{ property?.address?.city }}, {{ property?.address?.country }}</td>
+      <td>{{ property?.address?.city }}, {{ property?.address?.country | country }}</td>
     </tr>
   </tbody>
 </table>

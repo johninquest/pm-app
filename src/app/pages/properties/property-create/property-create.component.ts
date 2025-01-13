@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PROPERTY_CATEGORY_LIST } from '../../../shared/lists/data.list';
 import { PropertyCategoryInterface } from '../../../utils/data.model';
-import { COUNTRIES } from '../../../shared/lists/countries.list';
+import { COUNTRY_CURRENCY_LIST } from '../../../shared/lists/countries.list';
 import { Router } from '@angular/router';
 import { PbAuthService } from '../../../utils/pocketbase/pb-auth.service';
 import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
@@ -21,9 +21,9 @@ export class PropertyCreateComponent {
     private fb: FormBuilder,
     // private ids: UidService,
     // private _fbAuthService: AuthService,
-    private _pbAuthService: PbAuthService,
-    private _pbCrudService: PbCrudService,
-    private _router: Router
+    private pbAuthService: PbAuthService,
+    private pbCrudService: PbCrudService,
+    private router: Router
   ) {
     this.propertyForm = this.fb.group({
       propertyName: ['', Validators.required],
@@ -66,11 +66,11 @@ export class PropertyCreateComponent {
         created_by: this.currentUser,
         // creator_uid: this.currentUserUid
       };
-      let _saveRequest = this._pbCrudService.createProperty(propertyPayload);
+      let _saveRequest = this.pbCrudService.createProperty(propertyPayload);
       _saveRequest
         .then((res) => {
           console.log('Saved data:', res);
-          this._router.navigateByUrl('properties')
+          this.router.navigateByUrl('properties')
         })
         .catch((err) => console.log('Error:', err));
     } else {
@@ -79,11 +79,11 @@ export class PropertyCreateComponent {
   }
 
   propertyCategoryList: PropertyCategoryInterface[] = PROPERTY_CATEGORY_LIST;
-  countryList: string[] = COUNTRIES;
+  countryList: { name: string; code: string; currency: string; }[] = COUNTRY_CURRENCY_LIST;
 
   ngOnInit(): void {
     /* const newPropertyId = this.ids.generateCustom(13); */
-    this._pbAuthService.getCurrentUser().subscribe((res) => {
+    this.pbAuthService.getCurrentUser().subscribe((res) => {
       this.currentUser = res?.email;
       console.log('Current user on property create page:', this.currentUser);
       // this.currentUserUid = res?.uid;

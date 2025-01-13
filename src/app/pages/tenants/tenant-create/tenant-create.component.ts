@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { COUNTRIES } from '../../../shared/lists/countries.list';
+/* import { COUNTRIES } from '../../../shared/lists/countries.list'; */
 import {
   PAYMENT_FREQUENCY,
   PAYMENT_METHOD,
@@ -40,7 +40,7 @@ export class TenantCreateComponent implements OnInit {
     paymentFrequency: [12],
   });
 
-  countryList: string[] = COUNTRIES;
+ /*  countryList: string[] = COUNTRIES; */
   unitList: string[] = PROPERTY_LIST;
   paymentMethodList: string[] = PAYMENT_METHOD;
   paymentFrequencyList: PaymentFrequencyInterface[] = PAYMENT_FREQUENCY;
