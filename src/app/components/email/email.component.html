@@ -39,8 +39,13 @@
   </form>
 </mat-card>
 
-<div style="text-align: center; margin: 3rem" matTooltip="Zurück">
-  <button mat-stroked-button color="primary" (click)="onClickBack()">
+<div class="back-button-container">
+  <button 
+    mat-button  
+    (click)="onClickBack()" 
+    class="back-button"
+    matTooltip="Back to other login options">
     <mat-icon>arrow_back</mat-icon>
+    <span class="back-button-text">BACK</span>
   </button>
 </div>

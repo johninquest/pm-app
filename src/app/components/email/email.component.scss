@@ -37,4 +37,34 @@
   .signin-form .checkbox {
     // align-self: flex-start;
     margin: 0.5rem;
+  } 
+
+  .back-button-container {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+  
+    @media (min-width: 640px) {
+      justify-content: flex-start;
+      padding-left: calc((100% - 21rem) / 2); // Aligns with card width
+    }
+  }
+  
+  .back-button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    
+    // Enhanced hover state
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  
+    .mat-icon {
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+  }
+  
+  .back-button-text {
+    vertical-align: middle;
   }
