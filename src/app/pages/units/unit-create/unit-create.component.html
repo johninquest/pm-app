@@ -1,2 +1,85 @@
 <app-navbar></app-navbar>
-<app-page-title title="new unit" />
+<app-page-title title="new unit" /> 
+
+<div class="unit-form">
+  <form [formGroup]="unitForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+      <legend>Unit Information</legend> 
+
+      <mat-form-field appearance="fill">
+        <mat-label>Property ID</mat-label>
+        <input matInput type="text" disabled/>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Unit Number</mat-label>
+        <input matInput type="text" formControlName="unitNumber" />
+      </mat-form-field>
+
+    <!--   <mat-form-field appearance="fill">
+        <mat-label>Floor Number</mat-label>
+        <input matInput type="number" formControlName="floorNumber" />
+      </mat-form-field> -->
+
+      <mat-form-field appearance="fill">
+        <mat-label>Size (m²)</mat-label>
+        <input matInput type="number" formControlName="unitSize" min="1" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Number of bedrooms</mat-label>
+        <input matInput type="number" formControlName="bedrooms" min="0" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Number of bathrooms</mat-label>
+        <input matInput type="number" formControlName="bathrooms" min="0" />
+      </mat-form-field> 
+      <mat-form-field appearance="fill">
+        <mat-label>Number of toilets</mat-label>
+        <input matInput type="number" formControlName="toilets" min="0" />
+      </mat-form-field>
+    </fieldset>
+
+    <fieldset>
+      <legend>Unit Features</legend>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Kitchen?</mat-label>
+        <mat-select formControlName="hasKitchen">
+          <mat-option value="yes">Yes</mat-option>
+          <mat-option value="no">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Balcony?</mat-label>
+        <mat-select formControlName="hasBalcony">
+          <mat-option value="yes">Yes</mat-option>
+          <mat-option value="no">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Garden?</mat-label>
+        <mat-select formControlName="hasGarden">
+          <mat-option value="yes">Yes</mat-option>
+          <mat-option value="no">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Parking Space?</mat-label>
+        <mat-select formControlName="hasParking">
+          <mat-option value="yes">Yes</mat-option>
+          <mat-option value="no">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+     <mat-checkbox formControlName="isGated">Is Gated?</mat-checkbox>
+    </fieldset>
+
+   <!--  <button mat-raised-button color="primary" type="submit" [disabled]="!unitForm.valid">SAVE UNIT</button> --> 
+   <button mat-raised-button color="primary" type="submit">SAVE</button>
+  </form>
+</div>

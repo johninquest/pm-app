@@ -1,0 +1,146 @@
+.unit-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+    margin: 1rem 0;
+    box-sizing: border-box;
+  
+    form {
+      width: 100%;
+      max-width: 25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+  
+      @media screen and (min-width: 481px) {
+        input,
+        select,
+        button[type="submit"] {
+          width: 100%;
+          max-width: 25rem;
+        }
+  
+        fieldset {
+          width: 100%;
+          max-width: 25rem;
+        }
+      }
+  
+      fieldset {
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        box-sizing: border-box; 
+        border-right: none;
+        border-bottom: none;
+        border-left: none;
+  
+        legend {
+          padding: 0 0.5rem;
+          color: #444;
+          font-size: 1rem;
+          font-weight: 600;
+        }
+  
+        label {
+          display: flex;
+          flex-direction: column;
+          font-size: 0.9rem;
+          color: #333;
+  
+          input,
+          select {
+            margin-top: 0.4rem;
+            padding: 0.6rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 0.3rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+  
+            &:focus {
+              border-color: #007bff;
+            }
+          }
+        }
+  
+        .checkbox-group {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+  
+          input[type="checkbox"] {
+            width: 1.2rem;
+            height: 1.2rem;
+            accent-color: #007bff;
+          }
+  
+          label {
+            font-size: 0.9rem;
+            color: #333;
+            margin: 0;
+          }
+        }
+      }
+  
+      button[type="submit"] {
+        width: 100%;
+        max-width: 25rem;
+        padding: 0.7rem;
+        font-size: 1rem;
+        // background-color: #007bff;
+        border: none;
+        border-radius: 0.4rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease; 
+        margin-bottom: 3rem;
+  
+      /*   &:hover {
+          background-color: #0056b3;
+        }
+  
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        } */
+      }
+    }
+  
+    // Mobile styles
+    @media screen and (max-width: 480px) {
+      form {
+        fieldset {
+          padding: 0.8rem;
+  
+          label {
+            input,
+            select {
+              font-size: 0.9rem;
+              padding: 0.5rem;
+            }
+          }
+        }
+  
+        button[type="submit"] {
+          font-size: 0.9rem;
+          padding: 0.6rem; 
+          margin-bottom: 3rem;
+        }
+      }
+    }
+  
+    // Vertical centering for taller screens
+    @media screen and (min-height: 800px) {
+      justify-content: center;
+    }
+  } 
+  

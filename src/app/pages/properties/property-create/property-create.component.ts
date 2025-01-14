@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PROPERTY_CATEGORY_LIST } from '../../../shared/lists/data.list';
+import { PROPERTY_TYPE_LIST } from '../../../shared/lists/property-type.list';
 import { PropertyCategoryInterface } from '../../../utils/data.model';
 import { COUNTRY_CURRENCY_LIST } from '../../../shared/lists/countries.list';
 import { Router } from '@angular/router';
@@ -78,7 +78,7 @@ export class PropertyCreateComponent {
     }
   }
 
-  propertyCategoryList: PropertyCategoryInterface[] = PROPERTY_CATEGORY_LIST;
+  propertyCategoryList: PropertyCategoryInterface[] = PROPERTY_TYPE_LIST;
   countryList: { name: string; code: string; currency: string; }[] = COUNTRY_CURRENCY_LIST;
 
   ngOnInit(): void {

@@ -9,16 +9,16 @@ import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
 })
 export class PropertyDetailsComponent {
   constructor(
-    private _aRoute: ActivatedRoute,
-    private _router: Router,
-    private _pbCrudService: PbCrudService
+    private aRoute: ActivatedRoute,
+    private router: Router,
+    private pbCrudService: PbCrudService
   ) {}
 
   ngOnInit() {
-    this._aRoute.paramMap.subscribe((params) => {
+    this.aRoute.paramMap.subscribe((params) => {
       let id: string = params.get('id') ?? '';
       if (id) {
-        this._pbCrudService
+        this.pbCrudService
           .getPropertyById(id)
           .then((data) => (this.propertyData = data))
           .catch((err) => console.log('Error', err));
@@ -32,7 +32,7 @@ export class PropertyDetailsComponent {
 
   getPropertyData(propId: string) {
     if (propId) {
-      let req = this._pbCrudService
+      let req = this.pbCrudService
         .getPropertyById(propId)
         .then()
         .catch((err) =>
@@ -65,15 +65,17 @@ export class PropertyDetailsComponent {
     this.underConstructionButton();
   }
   onAddUnit() {
-    this.underConstructionButton();
+    // this.underConstructionButton(); 
+    this.router.navigateByUrl('/unit-create');
   }
 
   // Tenant actions
   onViewTenants() {
-    this.underConstructionButton();
+    this.underConstructionButton(); 
   }
   onAddTenant() {
-    this.underConstructionButton();
+    // this.underConstructionButton(); 
+    this.router.navigateByUrl('/tenant-create');
   }
 
   private multiUnitTypes = [

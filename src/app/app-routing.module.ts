@@ -9,7 +9,7 @@ import { PropertyCreateComponent } from './pages/properties/property-create/prop
 import { PropertyDetailsComponent } from './pages/properties/property-details/property-details.component';
 import { TenantListComponent } from './pages/tenants/tenant-list/tenant-list.component';
 import { TenantCreateComponent } from './pages/tenants/tenant-create/tenant-create.component';
-import { TenantInfoComponent } from './pages/tenants/tenant-info/tenant-info.component';
+import { TenantDetailsComponent } from './pages/tenants/tenant-details/tenant-details.component';
 import { ExpenseCreateComponent } from './pages/expenses/expense-create/expense-create.component';
 import { ExpenseListComponent } from './pages/expenses/expense-list/expense-list.component';
 import { AuthComponent } from './pages/auth/auth.component';
@@ -18,7 +18,10 @@ import { PrivacyNoticeComponent } from './pages/privacy-notice/privacy-notice.co
 import { authGuard } from './guards/auth.guard';
 import { ExpenseDetailsComponent } from './pages/expenses/expense-details/expense-details.component'; 
 import { RentListComponent } from './pages/rents/rent-list/rent-list.component'; 
-import { RentCreateComponent } from './pages/rents/rent-create/rent-create.component';
+import { RentCreateComponent } from './pages/rents/rent-create/rent-create.component'; 
+import { RentDetailsComponent } from './pages/rents/rent-details/rent-details.component';
+import { UnitCreateComponent } from './pages/units/unit-create/unit-create.component'; 
+import { UnitDetailsComponent } from './pages/units/unit-details/unit-details.component';
 
 
 const routes: Routes = [
@@ -105,8 +108,8 @@ const routes: Routes = [
     },
   },
   {
-    path: 'tenant-info',
-    component: TenantInfoComponent,
+    path: 'tenant/:id',
+    component: TenantDetailsComponent,
     data: {
       title: 'Tenant information',
     },
@@ -124,12 +127,33 @@ const routes: Routes = [
     data: {
       title: 'Rent collect',
     },
+  }, 
+  {
+    path: 'rent/:id',
+    component: RentDetailsComponent,
+    data: {
+      title: 'Rent details',
+    },
   },
   {
     path: 'user',
     component: UserComponent,
     data: {
       title: 'User',
+    },
+  }, 
+  {
+    path: 'unit-create',
+    component: UnitCreateComponent,
+    data: {
+      title: 'New Unit',
+    },
+  }, 
+  {
+    path: 'unit/:id',
+    component: UnitDetailsComponent,
+    data: {
+      title: 'New Unit',
     },
   },
   {
