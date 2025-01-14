@@ -37,6 +37,8 @@ import { RentDetailsComponent } from './pages/rents/rent-details/rent-details.co
 import { RentListComponent } from './pages/rents/rent-list/rent-list.component';
 import { CountryPipe } from './shared/pipes/country.pipe';
 import { CurrencyPipe } from './shared/pipes/currency.pipe';
+import { UnitCreateComponent } from './pages/units/unit-create/unit-create.component';
+import { UnitDetailsComponent } from './pages/units/unit-details/unit-details.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +69,8 @@ import { CurrencyPipe } from './shared/pipes/currency.pipe';
     RentListComponent,
     CountryPipe,
     CurrencyPipe,
+    UnitCreateComponent,
+    UnitDetailsComponent,
   ],
   imports: [
     BrowserModule,

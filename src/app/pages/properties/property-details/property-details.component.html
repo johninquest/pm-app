@@ -125,18 +125,37 @@
   </div>
 </div>
 
-<!-- <div class="btns">
-  <button mat-flat-button color="primary" (click)="underConstructionButton()">add unit</button>
-  <button mat-flat-button color="primary" (click)="underConstructionButton()">add tenant</button>
-</div> -->
-
 <div class="btns">
   <button mat-raised-button (click)="onBack()">back</button>
   <button mat-raised-button color="primary" (click)="onEdit()">edit</button>
   <button mat-raised-button color="warn" (click)="onDelete()">delete</button>
 </div> 
 
-<div class="btns">
+<!-- <div class="btns">
   <button mat-raised-button (click)="underConstructionButton()">add unit</button>
   <button mat-raised-button (click)="underConstructionButton()">add tenant</button>
+</div> --> 
+
+<div class="info-section" *ngIf="isMultiUnitProperty()">
+  <h2 class="section-title">Units</h2>
+  <div class="list-container">
+    <!-- Unit list will go here -->
+    <div class="placeholder-text">No units added yet</div>
+  </div>
+  <div class="section-actions">
+    <button mat-raised-button (click)="onViewUnits()">View Units</button>
+    <button mat-raised-button color="primary" (click)="onAddUnit()">Add Unit</button>
+  </div>
+</div>
+
+<div class="info-section">
+  <h2 class="section-title">Tenant(s)</h2>
+  <div class="list-container">
+    <!-- Tenant list will go here -->
+    <div class="placeholder-text">No tenants added yet</div>
+  </div>
+  <div class="section-actions">
+    <button mat-raised-button (click)="onViewTenants()">View Tenants</button>
+    <button mat-raised-button color="primary" (click)="onAddTenant()">Add Tenant</button>
+  </div>
 </div>

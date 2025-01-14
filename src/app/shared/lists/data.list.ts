@@ -28,15 +28,6 @@ export const EXPENSE_TYPE_LIST: string[] = [
   'tax',
 ];
 
-export const PROPERTY_TYPE_LIST: string[] = [
-  'single ',
-  'insurance',
-  'legal',
-  'maintenance/repairs',
-  'improvement/renovation',
-  'tax',
-];
-
 export const PROPERTY_CATEGORY_LIST = [
   { value: 'singleUnit', viewValue: 'Single Apartment' },
   { value: 'multiUnit', viewValue: 'Multi-Unit' },

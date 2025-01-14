@@ -5,16 +5,23 @@ import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
 @Component({
   selector: 'app-property-details',
   templateUrl: './property-details.component.html',
-  styleUrl: './property-details.component.scss'
+  styleUrl: './property-details.component.scss',
 })
 export class PropertyDetailsComponent {
-  constructor(private _aRoute: ActivatedRoute, private _router: Router, private _pbCrudService: PbCrudService) { }
+  constructor(
+    private _aRoute: ActivatedRoute,
+    private _router: Router,
+    private _pbCrudService: PbCrudService
+  ) {}
 
   ngOnInit() {
-    this._aRoute.paramMap.subscribe(params => {
+    this._aRoute.paramMap.subscribe((params) => {
       let id: string = params.get('id') ?? '';
       if (id) {
-        this._pbCrudService.getPropertyById(id).then(data => this.propertyData = data).catch(err => console.log('Error', err))
+        this._pbCrudService
+          .getPropertyById(id)
+          .then((data) => (this.propertyData = data))
+          .catch((err) => console.log('Error', err));
       }
       // console.log('Complete row data:', params.get('created_by'))
       // Use the id to fetch property details
@@ -25,9 +32,13 @@ export class PropertyDetailsComponent {
 
   getPropertyData(propId: string) {
     if (propId) {
-      let req = this._pbCrudService.getPropertyById(propId).then().catch(err => console.log('Error while fetching property details:', err))
-     }
-
+      let req = this._pbCrudService
+        .getPropertyById(propId)
+        .then()
+        .catch((err) =>
+          console.log('Error while fetching property details:', err)
+        );
+    }
   }
 
   onBack() {
@@ -37,16 +48,44 @@ export class PropertyDetailsComponent {
 
   onEdit() {
     // Add your edit logic here, for example:
-    // this.router.navigate(['edit'], { relativeTo: this.route }); 
-    alert('Under construction!')
+    // this.router.navigate(['edit'], { relativeTo: this.route });
+    alert('Under construction!');
   }
 
   onDelete() {
-    alert('Under construction!')
-  } 
-
-  underConstructionButton() {
-    alert('Under construction!')
+    alert('Under construction!');
   }
 
+  underConstructionButton() {
+    alert('Under construction!');
+  }
+
+  // Unit actions
+  onViewUnits() {
+    this.underConstructionButton();
+  }
+  onAddUnit() {
+    this.underConstructionButton();
+  }
+
+  // Tenant actions
+  onViewTenants() {
+    this.underConstructionButton();
+  }
+  onAddTenant() {
+    this.underConstructionButton();
+  }
+
+  private multiUnitTypes = [
+    'multiUnit',
+    'multiFamily',
+    'commercial',
+    'mixedUse',
+  ];
+
+  isMultiUnitProperty(): boolean {
+    return (
+      this.propertyData && this.multiUnitTypes.includes(this.propertyData.type)
+    );
+  }
 }
