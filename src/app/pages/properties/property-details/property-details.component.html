@@ -1,5 +1,5 @@
 <app-navbar />
- <app-page-title title="property details"/>
+<app-page-title title="property details" />
 
 <!-- <div style="text-align: center; margin: 1rem;">{{propertyData | json}}</div>  -->
 <!-- Template HTML -->
@@ -54,26 +54,22 @@
       <div class="info-item">
         <span class="label">State</span>
         <span class="value">{{
-          propertyData.address.state || "Not specified"
+          propertyData.address.state || ""
         }}</span>
       </div>
       <div class="info-item">
         <span class="label">Postcode</span>
         <span class="value">{{
-          propertyData.address.postcode || "Not specified"
+          propertyData.address.postcode || ""
         }}</span>
       </div>
       <div class="info-item">
         <span class="label">Country</span>
-        <span class="value">{{
-          propertyData.address.country | country
-        }}</span>
-      </div> 
+        <span class="value">{{ propertyData.address.country | country }}</span>
+      </div>
       <div class="info-item">
         <span class="label">Currency</span>
-        <span class="value">{{
-          propertyData.address.country | currency
-        }}</span>
+        <span class="value">{{ propertyData.address.country | currency }}</span>
       </div>
     </div>
   </div>
@@ -129,12 +125,7 @@
   <button mat-raised-button (click)="onBack()">back</button>
   <button mat-raised-button color="primary" (click)="onEdit()">edit</button>
   <button mat-raised-button color="warn" (click)="onDelete()">delete</button>
-</div> 
-
-<!-- <div class="btns">
-  <button mat-raised-button (click)="underConstructionButton()">add unit</button>
-  <button mat-raised-button (click)="underConstructionButton()">add tenant</button>
-</div> --> 
+</div>
 
 <div class="info-section" *ngIf="isMultiUnitProperty()">
   <h2 class="section-title">Units</h2>
@@ -144,18 +135,53 @@
   </div>
   <div class="section-actions">
     <button mat-raised-button (click)="onViewUnits()">View Units</button>
-    <button mat-raised-button color="primary" (click)="onAddUnit()">Add Unit</button>
+    <button mat-raised-button color="primary" (click)="onAddUnit()">
+      Add Unit
+    </button>
   </div>
 </div>
-
+<!-- 
 <div class="info-section">
   <h2 class="section-title">Tenant(s)</h2>
   <div class="list-container">
-    <!-- Tenant list will go here -->
-    <div class="placeholder-text">No tenants added yet</div>
+    <div class="placeholder-text">No tenant(s) added yet</div>
   </div>
   <div class="section-actions">
-    <button mat-raised-button (click)="onViewTenants()">View Tenants</button>
-    <button mat-raised-button color="primary" (click)="onAddTenant()">Add Tenant</button>
+    <button mat-raised-button (click)="onViewTenants()">View Tenant(s)</button>
+    <button mat-raised-button color="primary" (click)="onAddTenant()">
+      Add Tenant
+    </button>
   </div>
-</div>
+</div> 
+
+<div class="info-section">
+  <h2 class="section-title">Rents</h2>
+  <div class="list-container">
+    <div class="placeholder-text">No rents collected</div>
+  </div>
+  <div class="section-actions">
+    <button mat-raised-button (click)="onViewTenants()">view rents</button>
+    <button mat-raised-button color="primary" (click)="onCollectRent()">
+      collect rent
+    </button>
+  </div>
+</div> 
+ -->
+<app-property-related
+  title="Tenant(s)"
+  placeholderText="No tenant(s) added yet"
+  viewButtonText="View Tenant(s)"
+  addButtonText="Add Tenant"
+  [onView]="onViewTenants"
+  [onAdd]="onAddTenant.bind(this)">
+</app-property-related>
+
+<app-property-related
+  title="Rents"
+  placeholderText="No rents added yet"
+  viewButtonText="View rents"
+  addButtonText="add rent"
+  [onView]="onViewRents"
+  [onAdd]="onAddRent.bind(this)">
+</app-property-related>
+

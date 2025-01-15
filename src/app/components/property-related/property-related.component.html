@@ -1,0 +1,11 @@
+<div class="info-section">
+  <h2 class="section-title">{{ title }}</h2>
+  <div class="list-container">
+    <ng-content></ng-content>
+    <div class="placeholder-text">{{ placeholderText }}</div>
+  </div>
+  <div class="section-actions">
+    <button mat-raised-button (click)="onView()">{{ viewButtonText }}</button>
+    <button mat-raised-button color="primary" (click)="onAdd()">{{ addButtonText }}</button>
+  </div>
+</div>

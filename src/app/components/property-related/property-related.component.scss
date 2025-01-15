@@ -1,0 +1,30 @@
+.property-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.property-title {
+  color: var(--txt-black-color);
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.info-section {
+  background: white;
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  
+  button {
+    text-transform: uppercase;
+  }
+}

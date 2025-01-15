@@ -8,7 +8,12 @@
       <legend>Personal Information</legend>
       <mat-form-field appearance="fill">
         <mat-label>National ID number</mat-label>
-        <input matInput formControlName="nationalIdNumber" type="text" required />
+        <input
+          matInput
+          formControlName="nationalIdNumber"
+          type="text"
+          required
+        />
         <mat-error
           *ngIf="
             tenantForm.get('nationalIdNumber')?.hasError('required') &&
@@ -69,7 +74,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Phone</mat-label>
         <input matInput formControlName="phone" type="tel" />
-      </mat-form-field> 
+      </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>E-mail</mat-label>
         <input matInput formControlName="email" type="email" />
@@ -81,7 +86,7 @@
       <legend>Rental Information</legend>
       <mat-form-field appearance="fill">
         <mat-label>Select property</mat-label>
-        <mat-select formControlName="propertyId">
+        <mat-select formControlName="propertyName">
           <mat-option *ngFor="let property of propertyList" [value]="property">
             {{ property }}
           </mat-option>
@@ -146,4 +151,8 @@
 
     <button mat-raised-button color="primary" type="submit">SAVE</button>
   </form>
+</div>
+
+<div style="text-align: center; margin: 1rem">
+  {{ passedPropertyData | json }}
 </div>

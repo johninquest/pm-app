@@ -10,6 +10,7 @@ import {
 import { PaymentFrequencyInterface } from '../../../utils/data.model';
 import { PbAuthService } from '../../../utils/pocketbase/pb-auth.service';
 import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
+import { SharedDataService } from '../../../utils/services/shared-data.service';
 
 @Component({
   selector: 'app-tenant-create',
@@ -32,7 +33,7 @@ export class TenantCreateComponent implements OnInit {
     email: [''],
 
     // Rental Information
-    propertyId: [''],
+    propertyName: [''],
     unitId: [''],
     leaseStartDate: [''],
     rentAmount: ['', [Validators.required, Validators.min(1000)]],
@@ -40,12 +41,13 @@ export class TenantCreateComponent implements OnInit {
     paymentFrequency: [12],
   });
 
- /*  countryList: string[] = COUNTRIES; */
+  /*  countryList: string[] = COUNTRIES; */
   unitList: string[] = PROPERTY_LIST;
   paymentMethodList: string[] = PAYMENT_METHOD;
   paymentFrequencyList: PaymentFrequencyInterface[] = PAYMENT_FREQUENCY;
   propertiesData: any[] = [];
   currentUser: string = '';
+  passedPropertyData: any;
 
   // Getter for property names
   get propertyList(): string[] {
@@ -55,21 +57,25 @@ export class TenantCreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private _pbAuth: PbAuthService,
-    private _pbCrud: PbCrudService
-  ) {}
+    private pbAuth: PbAuthService,
+    private pbCrud: PbCrudService, 
+    private sharedDataService: SharedDataService
+  ) { }
 
   ngOnInit(): void {
-    this._pbAuth.getCurrentUser().subscribe((user) => {
+    this.pbAuth.getCurrentUser().subscribe((user) => {
       // console.log('Current user at expense:', user);
       this.currentUser = user?.email;
       this.fetchRelatedProperties(this.currentUser);
-    });
+    }); 
+    this.passedPropertyData = this.sharedDataService.getData();
+    console.log('Retrieved property data from shared service:', this.passedPropertyData); 
+    this.tenantForm.patchValue({propertyName: this.passedPropertyData?.name});
   }
 
   fetchRelatedProperties(userId: string) {
     if (userId) {
-      let pData = this._pbCrud.getAllPropertyAsList(userId);
+      let pData = this.pbCrud.getAllPropertyAsList(userId);
       pData.then((data) => {
         this.propertiesData = data;
       });

@@ -40,6 +40,7 @@ import { CurrencyPipe } from './shared/pipes/currency.pipe';
 import { UnitCreateComponent } from './pages/units/unit-create/unit-create.component';
 import { UnitDetailsComponent } from './pages/units/unit-details/unit-details.component';
 import { TenantDetailsComponent } from './pages/tenants/tenant-details/tenant-details.component';
+import { PropertyRelatedComponent } from './components/property-related/property-related.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { TenantDetailsComponent } from './pages/tenants/tenant-details/tenant-de
     UnitCreateComponent,
     UnitDetailsComponent,
     TenantDetailsComponent,
+    PropertyRelatedComponent,
   ],
   imports: [
     BrowserModule,
