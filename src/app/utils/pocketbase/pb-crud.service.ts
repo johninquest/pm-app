@@ -7,7 +7,7 @@ import PocketBase from 'pocketbase';
 })
 export class PbCrudService {
   private pb: PocketBase;
-  
+
   constructor() {
     this.pb = new PocketBase('https://api.johnapps.de/v1');
   }
@@ -29,34 +29,49 @@ export class PbCrudService {
   }
 
   async getPropertyById(propertyId: string) {
-    let record = await this.pb.collection('properties').getOne(propertyId); 
+    let record = await this.pb.collection('properties').getOne(propertyId);
     // console.log('Fetched property record:', record)
     return record;
-  } 
+  }
 
-    /* Expense operations */ 
-    async getAllExpensesAsList(currentUser: string) {
-      let expenseCollectionName = 'expenses';
-      let records = await this.pb.collection(expenseCollectionName).getFullList({
-        sort: '-created',
-        filter: `created_by = "${currentUser}"`,
-      });
-      return records;
-    }  
+  /* Expense operations */
+  async getAllExpensesAsList(currentUser: string) {
+    let expenseCollectionName = 'expenses';
+    let records = await this.pb.collection(expenseCollectionName).getFullList({
+      sort: '-created',
+      filter: `created_by = "${currentUser}"`,
+    });
+    return records;
+  }
 
-    async createExpense(expenseData: any) {
-      let record = await this.pb.collection('expenses').create(expenseData);
-      return record;
-    } 
+  async createExpense(expenseData: any) {
+    let record = await this.pb.collection('expenses').create(expenseData);
+    return record;
+  }
 
-    async getExpenseById(expenseId: string) {
-      let record = await this.pb.collection('expenses').getOne(expenseId);
-      // console.log('Fetched property record:', record)
-      return record;
-    } 
+  async getExpenseById(expenseId: string) {
+    let record = await this.pb.collection('expenses').getOne(expenseId);
+    // console.log('Fetched property record:', record)
+    return record;
+  }
 
-    async updateExpense(expenseData: any) {} 
+  async updateExpense(expenseData: any) {}
 
-    async deleteExpense(expenseId: string) {} 
+  async deleteExpense(expenseId: string) {}
 
+  
+    /* Tenant operations */
+  async getAllTenantsAsList(currentUser: string) {
+    let expenseCollectionName = 'tenants';
+    let records = await this.pb.collection(expenseCollectionName).getFullList({
+      sort: '-created',
+      filter: `created_by = "${currentUser}"`,
+    });
+    return records;
+  }
+
+  async createTenant(expenseData: any) {
+    let record = await this.pb.collection('tenants').create(expenseData);
+    return record;
+  }
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
+import { PbAuthService } from '../../../utils/pocketbase/pb-auth.service';
 
 @Component({
   selector: 'app-tenant-list',
@@ -8,9 +10,22 @@ import { Router } from '@angular/router';
 })
 export class TenantListComponent {
 
-  constructor(private _router: Router) {}
+  constructor(private _router: Router, private pbAuth: PbAuthService, private pbCrud: PbCrudService) {}
 
-  tenantData: any;
+  currentUser: string = '';
+  tenantsData: any; 
+
+  ngOnInit() {
+    this.pbAuth.getCurrentUser().subscribe((res) => {
+      this.currentUser = res?.email;
+      console.log('Current user on tenant list page:', this.currentUser);
+      // this.currentUserUid = res?.uid;
+    });
+    // Fetch tenants data
+    this.pbCrud.getAllTenantsAsList(this.currentUser).then((tenants) => {
+      this.tenantsData = tenants;
+    });
+  }
 
   onClickAddNewTenant() {
     this._router.navigateByUrl('/tenant-create');

@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 /* import { COUNTRIES } from '../../../shared/lists/countries.list'; */
 import {
-  PAYMENT_FREQUENCY,
+  PAYMENT_FREQUENCY, 
   PAYMENT_METHOD,
   PROPERTY_LIST,
-} from '../../../shared/lists/data.list';
+} from '../../../shared/lists/data.list'; 
+// import { PAYMENT_METHOD } from '../../../shared/lists/payment-methods.list';
 import { PaymentFrequencyInterface } from '../../../utils/data.model';
 import { PbAuthService } from '../../../utils/pocketbase/pb-auth.service';
 import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
@@ -35,7 +36,7 @@ export class TenantCreateComponent implements OnInit {
     // Rental Information
     propertyName: [''],
     unitId: [''],
-    leaseStartDate: [''],
+    leaseStartDate: ['', Validators.required],
     rentAmount: ['', [Validators.required, Validators.min(1000)]],
     paymentMethod: [''],
     paymentFrequency: [12],
@@ -64,7 +65,7 @@ export class TenantCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.pbAuth.getCurrentUser().subscribe((user) => {
-      // console.log('Current user at expense:', user);
+      console.log('Current user at tenant create:', user?.email);
       this.currentUser = user?.email;
       this.fetchRelatedProperties(this.currentUser);
     }); 
@@ -74,27 +75,65 @@ export class TenantCreateComponent implements OnInit {
   }
 
   fetchRelatedProperties(userId: string) {
-    if (userId) {
-      let pData = this.pbCrud.getAllPropertyAsList(userId);
-      pData.then((data) => {
-        this.propertiesData = data;
-      });
+    if (!userId?.trim()) {
+      console.error('Invalid user ID');
+      return;
     }
+    
+    this.pbCrud.getAllPropertyAsList(userId)
+      .then((data) => {
+        this.propertiesData = data || [];
+      })
+      .catch(err => {
+        console.error('Failed to fetch properties:', err);
+        this.propertiesData = [];
+      });
   }
 
   onSubmit(): void {
-    if (this.tenantForm.valid) {
-      console.log('Form data:', this.tenantForm.value);
-      this.router.navigateByUrl('/tenant-info');
-    } else {
-      this.markFormGroupTouched(this.tenantForm);
-    }
-  }
+  if (this.tenantForm.valid && this.passedPropertyData?.id) {
+    console.log('Tenant form data:', this.tenantForm.value);
+    const formValue = this.tenantForm.value;
 
-  private markFormGroupTouched(formGroup: FormGroup): void {
-    Object.values(formGroup.controls).forEach((control) => {
+    const tenantPayload = {
+      national_id_number: formValue.nationalIdNumber,
+      first_name: formValue.firstName,
+      last_name: formValue.lastName,
+      address: JSON.stringify({
+        street: formValue.street ?? '',
+        postCode: formValue.postCode ?? '',
+        city: formValue.city ?? '',
+        country: formValue.country ?? '',
+      }),
+      property_id: this.passedPropertyData?.id,
+      unit_id: formValue.unitId,
+      lease_start_date: formValue.leaseStartDate,
+      /* lease_end_date: formValue.leaseEndDate, */
+      rent_amount: formValue.rentAmount,
+      payment_frequency: formValue.paymentFrequency,
+      payment_method: formValue.paymentMethod,
+    }; 
+
+    let _saveRequest = this.pbCrud.createTenant(tenantPayload);
+    _saveRequest
+      .then((res) => {
+        console.log('Saved data:', res);
+        this.router.navigateByUrl('/tenants');
+      })
+      .catch((err) => {
+        console.log('Error:', err);
+        alert("There was an issue. You must be logged in to execute this operation");
+      });
+  } else {
+    this.markFormGroupTouched(this.tenantForm);
+  }
+}
+
+  markFormGroupTouched(formGroup: FormGroup) {
+    (Object as any).values(formGroup.controls).forEach((control: any) => {
       control.markAsTouched();
-      if (control instanceof FormGroup) {
+
+      if (control.controls) {
         this.markFormGroupTouched(control);
       }
     });

@@ -102,6 +102,7 @@ export class PbAuthService {
       });
 
       if (authData) {
+        console.log('Google login successful for:', authData),
         this.router.navigate(['/home']);
       }
       return authData;
@@ -119,6 +120,7 @@ export class PbAuthService {
   }
 
   async getCurrentUserAsync() {
+    console.log(this.pb.authStore.model)
     return this.pb.authStore.model;
   }
 

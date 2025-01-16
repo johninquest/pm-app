@@ -8,5 +8,5 @@
 </div>
 
 <div style="margin: 5rem; text-align: center; color: red">
-  {{ tenantData ?? 0 }}
+  {{ tenantsData ? (tenantsData | json) : 0 }}
 </div>
