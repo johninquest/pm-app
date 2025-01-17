@@ -76,7 +76,7 @@ export class PropertyDetailsComponent {
 
   // Tenant actions
   onViewTenants() {
-    this.underConstructionButton();
+   this.router.navigateByUrl('/tenants');
   }
   onAddTenant() {
     // this.underConstructionButton(); 

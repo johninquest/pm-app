@@ -105,13 +105,15 @@ export class TenantCreateComponent implements OnInit {
         city: formValue.city ?? '',
         country: formValue.country ?? '',
       }),
-      property_id: this.passedPropertyData?.id,
+      property_id: this.passedPropertyData?.id, 
+      property_name: this.passedPropertyData?.name,
       unit_id: formValue.unitId,
       lease_start_date: formValue.leaseStartDate,
       /* lease_end_date: formValue.leaseEndDate, */
       rent_amount: formValue.rentAmount,
       payment_frequency: formValue.paymentFrequency,
       payment_method: formValue.paymentMethod,
+      created_by: this.currentUser,
     }; 
 
     let _saveRequest = this.pbCrud.createTenant(tenantPayload);

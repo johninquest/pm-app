@@ -34,11 +34,13 @@ export class UserComponent {
     this.userForm.disable();
     this.currentAuthUser
       .then((res) => {
-        console.log('User response:', res); 
-        console.log('Role from response:', res?.['role']);  
-        this.currentUser = res?.['email'];
+        /* console.log('User auth data:', res); 
+        console.log('User role from response:', res?.['role']);  
+        console.log('Username from response:', res?.['username']);  */
+        this.currentUser = res?.['username'];
         this.userForm.patchValue({
-          userId: res?.['email'],
+          userId: res?.['username'], 
+          emailAddress: res?.['email'],
           userRole: res?.['role'],
           lastName: res?.['lastname'],
           firstName: res?.['firstname'],

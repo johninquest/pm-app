@@ -172,7 +172,7 @@
   placeholderText="No tenant(s) added yet"
   viewButtonText="View Tenant(s)"
   addButtonText="Add Tenant"
-  [onView]="onViewTenants"
+  [onView]="onViewTenants.bind(this)"
   [onAdd]="onAddTenant.bind(this)">
 </app-property-related>
 

@@ -29,6 +29,11 @@ export class TenantListComponent {
 
   onClickAddNewTenant() {
     this._router.navigateByUrl('/tenant-create');
+  } 
+
+  onClickRow(tenant: any){
+    console.log('Tapped: ', tenant);
+    alert('Tapped: ' + tenant?.first_name + ' ' + tenant?.last_name);
   }
 
 }
