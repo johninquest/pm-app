@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PbAuthService } from '../../../utils/pocketbase/pb-auth.service';
 import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
 import { PropertyListService } from '../../../utils/services/property-list.service';
+import { SharedDataService } from '../../../utils/services/shared-data.service';
 
 @Component({
   selector: 'app-rent-create',
@@ -12,7 +13,8 @@ import { PropertyListService } from '../../../utils/services/property-list.servi
 export class RentCreateComponent {
   rentForm!: FormGroup;
   propertiesData: any[] = [];
-  currentUser: string = '';
+  currentUser: string = ''; 
+  passedPropertyData: any;
 
   // Getter for property names
   get propertyList(): string[] {
@@ -38,10 +40,22 @@ export class RentCreateComponent {
     private fb: FormBuilder,
     private pbAuth: PbAuthService,
     private pbCrud: PbCrudService, 
-    private propertyListService: PropertyListService
+    private propertyListService: PropertyListService, 
+    private sharedDataService: SharedDataService
   ) {
     this.initializeForm();
     this.initializeCurrentUser();
+  } 
+
+  ngOnInit(): void {
+    // Fetch data from the shared service
+    this.passedPropertyData = this.sharedDataService.getData();
+    console.log('Retrieved property data from shared service:', this.passedPropertyData);
+
+    // Pre-fill form with shared data if available
+    if (this.passedPropertyData) {
+      this.rentForm.patchValue({ propertyName: this.passedPropertyData.name });
+    }
   }
 
   /**
@@ -50,7 +64,7 @@ export class RentCreateComponent {
   private initializeForm(): void {
     const currentYear = new Date().getFullYear();
     this.rentForm = this.fb.group({
-      propertyId: ['', Validators.required],
+      propertyName: [{ value: '', disabled: true }, Validators.required],
       unitNumber: [''],
       tenantId: ['', Validators.required],
       month: ['', Validators.required],
@@ -80,19 +94,10 @@ export class RentCreateComponent {
     });
   }
 
-/*   fetchRelatedProperties(userId: string) {
-    if (userId) {
-      let pData = this.pbCrud.getAllPropertyAsList(userId);
-      pData.then((data) => {
-        this.propertiesData = data;
-      });
-    }
-  } */
-
   onSubmit() {
     if (this.rentForm.valid) {
       console.log(this.rentForm.value);
       // Here you would typically send the data to your backend
     }
-  }
+  } 
 }

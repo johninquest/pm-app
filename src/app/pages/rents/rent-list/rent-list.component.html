@@ -2,8 +2,13 @@
 
 <app-page-title title="rents"/> 
 
-<div class="float" matTooltip="Add new rent">
+<!-- <div class="float" matTooltip="Add new rent">
     <button mat-raised-button color="primary" (click)="onClickAddNewRent()">
       +
     </button>
   </div>
+ --> 
+
+ <div style="margin: 3rem; text-align: center; color: tomato">
+  {{ collectedRentsData | json }}
+</div>

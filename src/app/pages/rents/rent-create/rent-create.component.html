@@ -4,7 +4,7 @@
 <form [formGroup]="rentForm" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="fill">
     <mat-label>Select property</mat-label>
-    <mat-select formControlName="propertyId">
+    <mat-select formControlName="propertyName">
       <mat-option *ngFor="let property of propertyList" [value]="property">
         {{ property }}
       </mat-option>

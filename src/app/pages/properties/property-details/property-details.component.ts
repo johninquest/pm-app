@@ -80,7 +80,7 @@ export class PropertyDetailsComponent {
   }
   onAddTenant() {
     // this.underConstructionButton(); 
-    console.log('Property data passed:', this.propertyData); 
+    // console.log('Property data passed:', this.propertyData); 
     this.sharedDataService.setData(this.propertyData);
     // let navigationExtras: NavigationExtras = { state: { passedData: this.propertyData } };
     this.router.navigate(['/tenant-create']);
@@ -92,8 +92,9 @@ export class PropertyDetailsComponent {
   }
   onAddRent() {
     // this.underConstructionButton(); 
-    let navigationExtras: NavigationExtras = {};
-    this.router.navigate(['/rent-create'], navigationExtras);
+    // let navigationExtras: NavigationExtras = {}; 
+    this.sharedDataService.setData(this.propertyData);
+    this.router.navigate(['/rent-create']);
   }
 
   private multiUnitTypes = [

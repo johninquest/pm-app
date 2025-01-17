@@ -12,6 +12,30 @@ export class PbCrudService {
     this.pb = new PocketBase('https://api.johnapps.de/v1');
   }
 
+  /* Generic CRUD operations */
+  async createRecord(collectionName: string, data: any) {
+    return await this.pb.collection(collectionName).create(data);
+  }
+
+  async getRecordById(collectionName: string, recordId: string) {
+    return await this.pb.collection(collectionName).getOne(recordId);
+  }
+
+  async getAllRecordsAsList(
+    collectionName: string,
+    query: { sort?: string; filter?: string } = {}
+  ) {
+    return await this.pb.collection(collectionName).getFullList(query);
+  }
+
+  async updateRecord(collectionName: string, recordId: string, data: any) {
+    return await this.pb.collection(collectionName).update(recordId, data);
+  }
+
+  async deleteRecord(collectionName: string, recordId: string) {
+    return await this.pb.collection(collectionName).delete(recordId);
+  }
+
   /* Property operations */
   propertiesCollection: string = 'properties';
   async createProperty(propertyData: any) {
@@ -59,8 +83,7 @@ export class PbCrudService {
 
   async deleteExpense(expenseId: string) {}
 
-  
-    /* Tenant operations */
+  /* Tenant operations */
   async getAllTenantsAsList(currentUser: string) {
     let expenseCollectionName = 'tenants';
     let records = await this.pb.collection(expenseCollectionName).getFullList({
