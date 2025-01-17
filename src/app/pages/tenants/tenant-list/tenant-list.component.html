@@ -27,7 +27,7 @@
 >
   <thead>
     <tr>
-      <th>Date</th>
+      <!-- <th>Date</th> -->
       <th>Property</th>
       <th>Tenant</th> 
       <th>Rent</th>
@@ -35,10 +35,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let tenant of tenantsData" (click)="onClickRow(tenant)">
-      <td>{{ tenant.created | date}}</td> 
+      <!-- <td>{{ tenant.created | date}}</td>  -->
       <td>{{ tenant.property_name }}</td>
       <td>{{ tenant.last_name}}, {{ tenant.first_name}}</td>
-      <td>{{ tenant.rent_amount }} / {{ tenant.payment_frequency }}</td>
+      <td>{{ tenant.rent_amount }} / {{ tenant.payment_frequency | paymentFrequency}}</td>
     </tr>
   </tbody>
 </table>
