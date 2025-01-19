@@ -93,7 +93,8 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field appearance="fill">
+      <!-- Only show unit ID field for multi-unit properties -->
+      <mat-form-field appearance="fill" *ngIf="isUnitIdRequired()">
         <mat-label>Select unit</mat-label>
         <mat-select formControlName="unitId">
           <mat-option *ngFor="let unit of unitList" [value]="unit">
