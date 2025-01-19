@@ -18,7 +18,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Select tenant</mat-label>
-    <input matInput formControlName="tenantId" required />
+    <input matInput formControlName="tenantName" required />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
@@ -60,4 +60,8 @@
 
   <!--  <button mat-raised-button color="primary" type="submit" [disabled]="!rentForm.valid">Submit</button> -->
   <button mat-raised-button color="primary" type="submit">SAVE</button>
-</form>
+</form> 
+
+<div style="margin: 5rem; text-align: center; color: red">
+  {{ passedPropertyData | json }}
+</div> 

@@ -13,8 +13,10 @@ import { SharedDataService } from '../../../utils/services/shared-data.service';
 export class RentCreateComponent {
   rentForm!: FormGroup;
   propertiesData: any[] = [];
-  currentUser: string = ''; 
+  currentUser: string = '';
   passedPropertyData: any;
+  propertyId: string = '';
+  tenantId: string = '';
 
   // Getter for property names
   get propertyList(): string[] {
@@ -39,13 +41,13 @@ export class RentCreateComponent {
   constructor(
     private fb: FormBuilder,
     private pbAuth: PbAuthService,
-    private pbCrud: PbCrudService, 
-    private propertyListService: PropertyListService, 
+    private pbCrud: PbCrudService,
+    private propertyListService: PropertyListService,
     private sharedDataService: SharedDataService
   ) {
     this.initializeForm();
     this.initializeCurrentUser();
-  } 
+  }
 
   ngOnInit(): void {
     // Fetch data from the shared service
@@ -54,8 +56,13 @@ export class RentCreateComponent {
 
     // Pre-fill form with shared data if available
     if (this.passedPropertyData) {
-      this.rentForm.patchValue({ propertyName: this.passedPropertyData.name });
-    }; 
+      console.log('Passed property data:', this.passedPropertyData);
+      this.rentForm.patchValue({ propertyName: this.passedPropertyData?.name });
+      this.propertyId = this.passedPropertyData?.id; 
+      if (this.propertyId) {
+        this.fetchTenant(this.passedPropertyData?.id);
+      }
+    }
 
     // If unit ID is not required, remove the validator
     if (!this.isUnitNumberRequired()) {
@@ -72,7 +79,7 @@ export class RentCreateComponent {
     this.rentForm = this.fb.group({
       propertyName: [{ value: '', disabled: true }, Validators.required],
       unitNumber: [''],
-      tenantId: ['', Validators.required],
+      tenantName: ['', Validators.required],
       month: ['', Validators.required],
       year: [
         currentYear,
@@ -90,26 +97,44 @@ export class RentCreateComponent {
   private initializeCurrentUser(): void {
     this.pbAuth.getCurrentUser().subscribe((user) => {
       this.currentUser = user?.email || '';
-      if (this.currentUser) { 
+      if (this.currentUser) {
         // Subscribe to the properties data
-        let relatedPropertyData = this.propertyListService.fetchRelatedProperties(this.currentUser); 
-        relatedPropertyData.subscribe(properties => {
-          this.propertiesData = properties
+        let relatedPropertyData =
+          this.propertyListService.fetchRelatedProperties(this.currentUser);
+        relatedPropertyData.subscribe((properties) => {
+          this.propertiesData = properties;
         });
       }
     });
-  } 
+  }
 
-    // Add this method to TenantCreateComponent class
-    isUnitNumberRequired(): boolean {
-      const requiredTypes = ['multiUnit', 'multiFamily', 'mixedUse'];
-      return requiredTypes.includes(this.passedPropertyData?.type);
+  // Add this method to TenantCreateComponent class
+  isUnitNumberRequired(): boolean {
+    const requiredTypes = ['multiUnit', 'multiFamily', 'mixedUse'];
+    return requiredTypes.includes(this.passedPropertyData?.type);
+  }
+
+  private async fetchTenant(propertyId: string) {
+    try {
+      let tenant = await this.pbCrud.getPropertyTenant(propertyId);
+      if (tenant) {
+        console.log('Fetched tenant:', tenant);
+        this.tenantId = tenant.id;
+        // Update the form with the tenant's full name
+        const fullName = `${tenant['first_name']} ${tenant['last_name']}`.trim();
+        this.rentForm.patchValue({ 
+          tenantName: fullName
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching tenant:', error);
     }
+  }
 
   onSubmit() {
     if (this.rentForm.valid) {
       console.log(this.rentForm.value);
       // Here you would typically send the data to your backend
     }
-  } 
+  }
 }

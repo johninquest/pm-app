@@ -97,4 +97,34 @@ export class PbCrudService {
     let record = await this.pb.collection('tenants').create(expenseData);
     return record;
   }
+
+  // Custom methods to fetch tenant related to property
+  /*   async getPropertyTenants(propertyId: string) {
+    try {
+      const records = await this.pb.collection('tenants').getList(1, 50, {
+        filter: `property_id = "${propertyId}"`,
+        fields: 'id,first_name,last_name',
+        sort: '-created'
+      });
+  
+      return records.items;
+    } catch (error) {
+      console.error('Error fetching property tenants:', error);
+      throw error;
+    }
+  } */
+  async getPropertyTenant(propertyId: string) {
+    try {
+      const record = await this.pb
+        .collection('tenants')
+        .getFirstListItem(`property_id = "${propertyId}"`, {
+          fields: 'id,first_name,last_name',
+        });
+
+      return record;
+    } catch (error) {
+      console.error('Error fetching property tenant:', error);
+      throw error;
+    }
+  }
 }
