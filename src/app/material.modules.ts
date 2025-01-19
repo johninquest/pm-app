@@ -10,7 +10,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar'; 
+import { MatExpansionModule } from '@angular/material/expansion';
 
 /*
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -44,7 +45,8 @@ import { from } from 'rxjs';
         MatStepperModule,
         MatDialogModule,
         MatCheckboxModule,
-        MatToolbarModule
+        MatToolbarModule, 
+        MatExpansionModule
         /*
         MatMenuModule,
         MatProgressSpinnerModule,
@@ -78,7 +80,8 @@ import { from } from 'rxjs';
         MatStepperModule,
         MatDialogModule,
         MatCheckboxModule,
-        MatToolbarModule
+        MatToolbarModule, 
+        MatExpansionModule
         /* 
         MatMenuModule,
         MatProgressSpinnerModule,

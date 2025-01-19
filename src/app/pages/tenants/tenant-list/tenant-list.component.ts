@@ -31,9 +31,16 @@ export class TenantListComponent {
     this._router.navigateByUrl('/tenant-create');
   } 
 
-  onClickRow(tenant: any){
+/*   onClickRow(tenant: any){
     console.log('Tapped: ', tenant);
     alert('Tapped: ' + tenant?.first_name + ' ' + tenant?.last_name);
-  }
+  }  */
+
+  onClickRow(rowData: any) {
+    console.log('Row data:', rowData);
+     let tenantId: string = rowData['id'];
+     console.log('Id of row data:', tenantId);
+     this._router.navigate(['/tenant', tenantId]);
+   }
 
 }

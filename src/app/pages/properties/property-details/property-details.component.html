@@ -98,27 +98,34 @@
     </div>
   </div>
 
-  <div class="info-section">
-    <h2 class="section-title">Metadata</h2>
-    <div class="info-grid">
-      <div class="info-item">
-        <span class="label">Created</span>
-        <span class="value">{{ propertyData.created || "" }}</span>
+  <mat-accordion>
+    <mat-expansion-panel class="info-section metadata-section">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="section-title">
+          Metadata
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="label">Created</span>
+          <span class="value">{{ propertyData.created || "" }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Created By</span>
+          <span class="value">{{ propertyData.created_by || "" }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Updated</span>
+          <span class="value">{{ propertyData.updated || "" }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Updated By</span>
+          <span class="value">{{ propertyData.updated_by || "" }}</span>
+        </div>
       </div>
-      <div class="info-item">
-        <span class="label">Created By</span>
-        <span class="value">{{ propertyData.created_by || "" }}</span>
-      </div>
-      <div class="info-item">
-        <span class="label">Updated</span>
-        <span class="value">{{ propertyData.updated || "" }}</span>
-      </div>
-      <div class="info-item">
-        <span class="label">Updated By</span>
-        <span class="value">{{ propertyData.updated_by || "" }}</span>
-      </div>
-    </div>
-  </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
 
 <div class="btns">

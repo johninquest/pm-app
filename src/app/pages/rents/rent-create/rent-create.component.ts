@@ -50,11 +50,17 @@ export class RentCreateComponent {
   ngOnInit(): void {
     // Fetch data from the shared service
     this.passedPropertyData = this.sharedDataService.getData();
-    console.log('Retrieved property data from shared service:', this.passedPropertyData);
+    // console.log('Retrieved property data from shared service:', this.passedPropertyData);
 
     // Pre-fill form with shared data if available
     if (this.passedPropertyData) {
       this.rentForm.patchValue({ propertyName: this.passedPropertyData.name });
+    }; 
+
+    // If unit ID is not required, remove the validator
+    if (!this.isUnitNumberRequired()) {
+      this.rentForm.get('unitNumber')?.clearValidators();
+      this.rentForm.get('unitNumber')?.updateValueAndValidity();
     }
   }
 
@@ -92,7 +98,13 @@ export class RentCreateComponent {
         });
       }
     });
-  }
+  } 
+
+    // Add this method to TenantCreateComponent class
+    isUnitNumberRequired(): boolean {
+      const requiredTypes = ['multiUnit', 'multiFamily', 'mixedUse'];
+      return requiredTypes.includes(this.passedPropertyData?.type);
+    }
 
   onSubmit() {
     if (this.rentForm.valid) {

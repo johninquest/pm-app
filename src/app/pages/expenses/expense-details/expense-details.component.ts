@@ -8,13 +8,13 @@ import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
   styleUrl: './expense-details.component.scss'
 })
 export class ExpenseDetailsComponent { 
-    constructor(private _aRoute: ActivatedRoute, private _router: Router, private _pbCrudService: PbCrudService) { }
+    constructor(private aRoute: ActivatedRoute, private router: Router, private pbCrudService: PbCrudService) { }
 
   ngOnInit() {
-    this._aRoute.paramMap.subscribe(params => {
+    this.aRoute.paramMap.subscribe(params => {
       let id: string = params.get('id') ?? '';
       if (id) {
-        this._pbCrudService.getExpenseById(id).then(data => this.expenseData = data).catch(err => console.log('Error', err))
+        this.pbCrudService.getExpenseById(id).then(data => this.expenseData = data).catch(err => console.log('Error', err))
       }
       // console.log('Complete row data:', params.get('created_by'))
       // Use the id to fetch property details
@@ -25,7 +25,7 @@ export class ExpenseDetailsComponent {
 
   getPropertyData(propId: string) {
     if (propId) {
-      let req = this._pbCrudService.getPropertyById(propId).then().catch(err => console.log('Error while fetching property details:', err))
+      let req = this.pbCrudService.getPropertyById(propId).then().catch(err => console.log('Error while fetching property details:', err))
     }
 
   }

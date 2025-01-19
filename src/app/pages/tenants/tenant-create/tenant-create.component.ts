@@ -65,15 +65,15 @@ export class TenantCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.pbAuth.getCurrentUser().subscribe((user) => {
-      console.log('Current user at tenant create:', user?.email);
+      // console.log('Current user at tenant create:', user?.email);
       this.currentUser = user?.email;
       this.fetchRelatedProperties(this.currentUser);
     });
     this.passedPropertyData = this.sharedDataService.getData();
-    console.log(
+    /* console.log(
       'Retrieved property data from shared service:',
       this.passedPropertyData
-    );
+    ); */
 
     // Only set the property name if it exists
     if (this.passedPropertyData?.name) {

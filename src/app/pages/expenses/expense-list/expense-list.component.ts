@@ -34,6 +34,7 @@ export class ExpenseListComponent {
   }
 
   fetchExpensesData() {} 
+  
   onClickRow(rowData: any) {
    console.log('Row data:', rowData);
     let expenseId: string = rowData['id'];
