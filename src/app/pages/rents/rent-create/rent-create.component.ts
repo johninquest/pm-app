@@ -4,6 +4,8 @@ import { PbAuthService } from '../../../utils/pocketbase/pb-auth.service';
 import { PbCrudService } from '../../../utils/pocketbase/pb-crud.service';
 import { PropertyListService } from '../../../utils/services/property-list.service';
 import { SharedDataService } from '../../../utils/services/shared-data.service';
+import { Router } from '@angular/router';
+import dayjs from 'dayjs';
 
 @Component({
   selector: 'app-rent-create',
@@ -17,6 +19,7 @@ export class RentCreateComponent {
   passedPropertyData: any;
   propertyId: string = '';
   tenantId: string = '';
+  rentAmountExpected: number = 0;
 
   // Getter for property names
   get propertyList(): string[] {
@@ -43,7 +46,8 @@ export class RentCreateComponent {
     private pbAuth: PbAuthService,
     private pbCrud: PbCrudService,
     private propertyListService: PropertyListService,
-    private sharedDataService: SharedDataService
+    private sharedDataService: SharedDataService,
+    private router: Router
   ) {
     this.initializeForm();
     this.initializeCurrentUser();
@@ -58,7 +62,7 @@ export class RentCreateComponent {
     if (this.passedPropertyData) {
       console.log('Passed property data:', this.passedPropertyData);
       this.rentForm.patchValue({ propertyName: this.passedPropertyData?.name });
-      this.propertyId = this.passedPropertyData?.id; 
+      this.propertyId = this.passedPropertyData?.id;
       if (this.propertyId) {
         this.fetchTenant(this.passedPropertyData?.id);
       }
@@ -76,16 +80,18 @@ export class RentCreateComponent {
    */
   private initializeForm(): void {
     const currentYear = new Date().getFullYear();
+    const today = dayjs().format('YYYY-MM-DD');
     this.rentForm = this.fb.group({
       propertyName: [{ value: '', disabled: true }, Validators.required],
       unitNumber: [''],
       tenantName: ['', Validators.required],
+      paymentDate: [today, Validators.required],
       month: ['', Validators.required],
       year: [
         currentYear,
         [Validators.required, Validators.min(2000), Validators.max(2100)],
       ],
-      rentAmount: [0, [Validators.required, Validators.min(0)]],
+      amountReceived: [0, [Validators.required, Validators.min(0)]],
       paymentStatus: ['', Validators.required],
       rentComment: [''],
     });
@@ -119,11 +125,13 @@ export class RentCreateComponent {
       let tenant = await this.pbCrud.getPropertyTenant(propertyId);
       if (tenant) {
         console.log('Fetched tenant:', tenant);
-        this.tenantId = tenant.id;
+        this.tenantId = tenant?.id;
+        this.rentAmountExpected = tenant['rent_amount'] ?? null;
         // Update the form with the tenant's full name
-        const fullName = `${tenant['first_name']} ${tenant['last_name']}`.trim();
-        this.rentForm.patchValue({ 
-          tenantName: fullName
+        const fullName =
+          `${tenant['first_name']} ${tenant['last_name']}`.trim();
+        this.rentForm.patchValue({
+          tenantName: fullName,
         });
       }
     } catch (error) {
@@ -131,10 +139,37 @@ export class RentCreateComponent {
     }
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.rentForm.valid) {
-      console.log(this.rentForm.value);
-      // Here you would typically send the data to your backend
+      try {
+        const formValues = this.rentForm.value;
+
+        const incomeData = {
+          source: 'rent',
+          amount: formValues.amountReceived,
+          payment_date: formValues.paymentDate,
+          property_id: this.propertyId,
+          property_name: formValues.propertyName,
+          unit_id: formValues.unitNumber ?? '', // changed from || to ??
+          tenant_id: this.tenantId,
+          payment_status: formValues.paymentStatus,
+          rent_month: formValues.month,
+          rent_year: formValues.year,
+          comment: formValues.rentComment ?? '', // changed from || to ??
+          created_by: this.currentUser,
+        };
+
+        const record = await this.pbCrud.createRecord('incomes', incomeData);
+        console.log('Income record created:', record);
+        this.router.navigateByUrl('rents');
+      } catch (error) {
+        console.error('Error creating income record:', error);
+      }
+    } else {
+      Object.keys(this.rentForm.controls).forEach((key) => {
+        const control = this.rentForm.get(key);
+        control?.markAsTouched();
+      });
     }
   }
 }

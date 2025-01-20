@@ -117,9 +117,7 @@ export class PbCrudService {
     try {
       const record = await this.pb
         .collection('tenants')
-        .getFirstListItem(`property_id = "${propertyId}"`, {
-          fields: 'id,first_name,last_name',
-        });
+        .getFirstListItem(`property_id = "${propertyId}"`);
 
       return record;
     } catch (error) {

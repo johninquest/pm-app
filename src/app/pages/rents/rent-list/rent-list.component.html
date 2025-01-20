@@ -1,14 +1,44 @@
-<app-navbar/> 
+<app-navbar />
+<app-page-title title="collected rents"/>
 
-<app-page-title title="rents"/> 
+<!-- <div class="float" matTooltip="Collect rent">
+  <button mat-raised-button color="primary" (click)="onClickAddNewRent()">
+    +
+  </button>
+</div> -->
 
-<!-- <div class="float" matTooltip="Add new rent">
-    <button mat-raised-button color="primary" (click)="onClickAddNewRent()">
-      +
-    </button>
-  </div>
- --> 
-
- <div style="margin: 3rem; text-align: center; color: tomato">
-  {{ collectedRentsData | json }}
+<div
+  style="text-align: center; margin: 3rem; color: salmon"
+  *ngIf="!collectedRentsData"
+>
+  No rent payments found
 </div>
+
+<table
+  border="1"
+  cellpadding="5"
+  cellspacing="0"
+  *ngIf="collectedRentsData"
+  class="rent-table"
+>
+  <thead>
+    <tr>
+      <th>Payment Date</th>
+      <th>Property</th>
+      <th>Amount</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rent of collectedRentsData" (click)="onClickRow(rent)">
+      <td>{{ rent.payment_date | date }}</td>
+      <td>{{ rent.property_name }}</td>
+      <td>{{ rent.amount | currency }}</td>
+      <td>{{ rent.payment_status | paymentStatus }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!--  <div style="margin: 3rem; text-align: center;">
+  {{ collectedRentsData | json }}
+</div> -->

@@ -5,7 +5,7 @@ export const PAYMENT_METHOD = [
 ]; 
 
 export const PAYMENT_STATUS = [
-  { value: 'paid', viewValue: 'Paid' },
+  { value: 'fullyPaid', viewValue: 'Fully Paid' },
   { value: 'partiallyPaid', viewValue: 'Partially Paid' },
   { value: 'unpaid', viewValue: 'Unpaid' },
 ]; 

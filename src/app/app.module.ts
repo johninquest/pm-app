@@ -42,6 +42,7 @@ import { UnitDetailsComponent } from './pages/units/unit-details/unit-details.co
 import { TenantDetailsComponent } from './pages/tenants/tenant-details/tenant-details.component';
 import { PropertyRelatedComponent } from './components/property-related/property-related.component';
 import { PaymentFrequencyPipe } from './shared/pipes/payment-frequency.pipe';
+import { PaymentStatusPipe } from './shared/pipes/payment-status.pipe';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { PaymentFrequencyPipe } from './shared/pipes/payment-frequency.pipe';
     TenantDetailsComponent,
     PropertyRelatedComponent,
     PaymentFrequencyPipe,
+    PaymentStatusPipe,
   ],
   imports: [
     BrowserModule,

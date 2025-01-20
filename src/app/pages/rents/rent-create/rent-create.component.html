@@ -21,16 +21,31 @@
     <input matInput formControlName="tenantName" required />
   </mat-form-field>
 
+  <!--   <mat-form-field appearance="fill">
+    <mat-label>Expected Rent Amount</mat-label>
+    <input matInput [value]="rentAmountExpected" disabled />
+  </mat-form-field> -->
+
   <mat-form-field appearance="fill">
-    <mat-label>Rent amount</mat-label>
-    <input matInput type="number" formControlName="rentAmount" required />
+    <mat-label>Rent amount received</mat-label>
+    <input matInput type="number" formControlName="amountReceived" required />
+    <mat-hint
+      >Expected amount: {{ rentAmountExpected }}
+      {{ passedPropertyData?.address?.country | currency }}</mat-hint
+    >
   </mat-form-field>
+  <br />
 
   <!--     <mat-form-field appearance="fill">
       <mat-label>Rent due date</mat-label>
       <input matInput type="date" formControlName="rentDueDate" required>
     </mat-form-field> -->
   <mat-form-field appearance="fill">
+    <mat-label>Paid on (Date)</mat-label>
+    <input matInput type="date" formControlName="paymentDate" required />
+  </mat-form-field>
+
+<!--   <mat-form-field appearance="fill">
     <mat-label>Month</mat-label>
     <mat-select formControlName="month" required>
       <mat-option *ngFor="let month of months" [value]="month.value">
@@ -42,7 +57,23 @@
   <mat-form-field appearance="fill">
     <mat-label>Year</mat-label>
     <input matInput type="number" formControlName="year" required />
-  </mat-form-field>
+  </mat-form-field> --> 
+
+  <div class="date-row">
+    <mat-form-field appearance="fill">
+      <mat-label>Month</mat-label>
+      <mat-select formControlName="month" required>
+        <mat-option *ngFor="let month of months" [value]="month.value">
+          {{ month.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Year</mat-label>
+      <input matInput type="number" formControlName="year" required />
+    </mat-form-field>
+  </div>
 
   <mat-form-field appearance="fill">
     <mat-label>Payment status</mat-label>
@@ -60,8 +91,8 @@
 
   <!--  <button mat-raised-button color="primary" type="submit" [disabled]="!rentForm.valid">Submit</button> -->
   <button mat-raised-button color="primary" type="submit">SAVE</button>
-</form> 
+</form>
 
 <div style="margin: 5rem; text-align: center; color: red">
   {{ passedPropertyData | json }}
-</div> 
+</div>

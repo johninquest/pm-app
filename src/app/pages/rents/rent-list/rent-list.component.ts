@@ -30,9 +30,9 @@ export class RentListComponent implements OnInit {
   }
 
   // Navigate to rent creation page
-  onClickAddNewRent(): void {
+/*   onClickAddNewRent(): void {
     this.router.navigateByUrl('/rent-create');
-  }
+  } */
 
   // Fetch collected rents data
   private fetchCollectedRents(): void {
@@ -47,5 +47,9 @@ export class RentListComponent implements OnInit {
       .catch((error) => {
         console.error('Error fetching collected rents data:', error);
       });
+  }
+
+  onClickRow(rowData: any) {
+    alert('Row data: ' + JSON.stringify(rowData));
   }
 }
