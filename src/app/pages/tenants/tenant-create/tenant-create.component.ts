@@ -126,7 +126,10 @@ export class TenantCreateComponent implements OnInit {
           postCode: formValue.postCode ?? '',
           city: formValue.city ?? '',
           country: formValue.country ?? '',
-        }),
+        }), 
+        phone: formValue.phone,
+        email: formValue.email, 
+        property: this.passedPropertyData?.id,
         property_id: this.passedPropertyData?.id,
         property_name: this.passedPropertyData?.name,
         unit_id: formValue.unitId,
@@ -141,11 +144,11 @@ export class TenantCreateComponent implements OnInit {
       let _saveRequest = this.pbCrud.createTenant(tenantPayload);
       _saveRequest
         .then((res) => {
-          console.log('Saved data:', res);
+          // console.log('Saved data:', res);
           this.router.navigateByUrl('/tenants');
         })
         .catch((err) => {
-          console.log('Error:', err);
+          // console.log('Error:', err);
           alert(
             'There was an issue. You must be logged in to execute this operation'
           );

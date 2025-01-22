@@ -35,14 +35,17 @@ import { PageTitleComponent } from './components/page-title/page-title.component
 import { RentCreateComponent } from './pages/rents/rent-create/rent-create.component';
 import { RentDetailsComponent } from './pages/rents/rent-details/rent-details.component';
 import { RentListComponent } from './pages/rents/rent-list/rent-list.component';
-import { CountryPipe } from './shared/pipes/country.pipe';
-import { CurrencyPipe } from './shared/pipes/currency.pipe';
 import { UnitCreateComponent } from './pages/units/unit-create/unit-create.component';
 import { UnitDetailsComponent } from './pages/units/unit-details/unit-details.component';
 import { TenantDetailsComponent } from './pages/tenants/tenant-details/tenant-details.component';
-import { PropertyRelatedComponent } from './components/property-related/property-related.component';
+import { PropertyRelatedComponent } from './components/property-related/property-related.component'; 
+
+/* Pipes */ 
+import { CountryPipe } from './shared/pipes/country.pipe';
+import { CurrencyPipe } from './shared/pipes/currency.pipe';
 import { PaymentFrequencyPipe } from './shared/pipes/payment-frequency.pipe';
 import { PaymentStatusPipe } from './shared/pipes/payment-status.pipe';
+import { MonthNamePipe } from './shared/pipes/month-name.pipe';
 
 @NgModule({
   declarations: [
@@ -79,6 +82,7 @@ import { PaymentStatusPipe } from './shared/pipes/payment-status.pipe';
     PropertyRelatedComponent,
     PaymentFrequencyPipe,
     PaymentStatusPipe,
+    MonthNamePipe,
   ],
   imports: [
     BrowserModule,

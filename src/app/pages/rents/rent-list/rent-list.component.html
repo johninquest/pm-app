@@ -1,5 +1,5 @@
 <app-navbar />
-<app-page-title title="collected rents"/>
+<app-page-title title="collected rents" />
 
 <!-- <div class="float" matTooltip="Collect rent">
   <button mat-raised-button color="primary" (click)="onClickAddNewRent()">
@@ -23,7 +23,8 @@
 >
   <thead>
     <tr>
-      <th>Payment Date</th>
+      <!-- <th>Payment Date</th> -->
+      <th>Rent for</th>
       <th>Property</th>
       <th>Amount</th>
       <th>Status</th>
@@ -31,9 +32,12 @@
   </thead>
   <tbody>
     <tr *ngFor="let rent of collectedRentsData" (click)="onClickRow(rent)">
-      <td>{{ rent.payment_date | date }}</td>
-      <td>{{ rent.property_name }}</td>
-      <td>{{ rent.amount | currency }}</td>
+      <td>{{ rent?.rent_month | monthName }} {{ rent?.rent_year }}</td>
+      <td>{{ rent?.expand?.property?.name }}</td>
+      <td>
+        {{ rent?.expand?.property?.address?.country | currency }}
+        {{ rent.amount | currency }}
+      </td>
       <td>{{ rent.payment_status | paymentStatus }}</td>
     </tr>
   </tbody>

@@ -145,12 +145,13 @@ export class RentCreateComponent {
         const formValues = this.rentForm.value;
 
         const incomeData = {
-          source: 'rent',
           amount: formValues.amountReceived,
-          payment_date: formValues.paymentDate,
+          payment_date: formValues.paymentDate, 
+          property: this.propertyId,
           property_id: this.propertyId,
           property_name: formValues.propertyName,
-          unit_id: formValues.unitNumber ?? '', // changed from || to ??
+          unit_id: formValues.unitNumber ?? '', 
+          tenant: this.tenantId,
           tenant_id: this.tenantId,
           payment_status: formValues.paymentStatus,
           rent_month: formValues.month,
@@ -159,7 +160,7 @@ export class RentCreateComponent {
           created_by: this.currentUser,
         };
 
-        const record = await this.pbCrud.createRecord('incomes', incomeData);
+        const record = await this.pbCrud.createRecord('rents', incomeData);
         console.log('Income record created:', record);
         this.router.navigateByUrl('rents');
       } catch (error) {

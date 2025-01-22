@@ -16,7 +16,12 @@ export class TenantDetailsComponent {
       if (id) {
         console.log('Tenant Id:', id)
         // this.pbCrudService.getExpenseById(id).then(data => this.tenantData = data).catch(err => console.log('Error', err)) 
-        this.pbCrudService.getRecordById('tenants', id).then(data => {this.tenantData = data}).catch(err => console.log('Error', err));
+        this.pbCrudService.getRecordById('tenants', id, {expand: 'property'})
+        .then(data => {
+          console.log('Fetched tenant data:', data);
+          this.tenantData = data;
+        })
+        .catch(err => console.log('Error', err));
       }
       // console.log('Complete row data:', params.get('created_by'))
       // Use the id to fetch property details

@@ -22,7 +22,8 @@ export class TenantListComponent {
       // this.currentUserUid = res?.uid;
     });
     // Fetch tenants data
-    this.pbCrud.getAllTenantsAsList(this.currentUser).then((tenants) => {
+    this.pbCrud.getAllRecordsAsList('tenants', {sort: '-created', filter: `created_by = "${this.currentUser}"`, expand: 'property'}).then((tenants) => {
+      console.log('Fetched tenants data:', tenants);
       this.tenantsData = tenants;
     });
   }

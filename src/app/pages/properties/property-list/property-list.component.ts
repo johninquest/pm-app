@@ -24,14 +24,14 @@ export class PropertyListComponent {
       /* console.log('User:', user);
       console.log('User email:', user?.['email']); */
       this.currentUser = user?.['email'];
-      this.pbCrudService.getAllPropertyAsList(this.currentUser).then(data => this.propertiesData = data).catch(err => console.log('Error fetching properties list:', err))
+      this.pbCrudService.getAllRecordsAsList('properties', {filter: `created_by = "${this.currentUser}"`}).then(data => this.propertiesData = data).catch(err => console.log('Error fetching properties list:', err))
     });
   }
 
   onClickRow(rowData: any) {
-    console.log('Row data:', rowData);
+    // console.log('Row data:', rowData);
     let propertyId: string = rowData['id'];
-    console.log('Id of row data:', propertyId);
+    // console.log('Id of row data:', propertyId);
     this.router.navigate(['/property', propertyId]);
   }
 

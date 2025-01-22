@@ -12,7 +12,7 @@
   </div>
 
   <div class="info-section">
-    <h2 class="section-title">Personal Information</h2>
+    <h2 class="section-title">Personal information</h2>
     <div class="info-grid">
       <div class="info-item">
         <span class="label">First Name</span>
@@ -34,9 +34,21 @@
   </div>
 
   <div class="info-section">
-    <h2 class="section-title">Contact Information</h2>
+    <h2 class="section-title">Contact information</h2>
     <div class="info-grid" *ngIf="tenantData.address">
       <div class="info-item">
+        <span class="label">Phone</span>
+        <span class="value">{{
+          tenantData?.phone || "Not specified"
+        }}</span>
+      </div> 
+      <div class="info-item">
+        <span class="label">Email</span>
+        <span class="value">{{
+          tenantData?.email || "Not specified"
+        }}</span>
+      </div>
+      <!-- <div class="info-item">
         <span class="label">Street</span>
         <span class="value">{{
           tenantData.address.street || "Not specified"
@@ -59,45 +71,45 @@
         <span class="value">{{
           tenantData.address.country || "Not specified"
         }}</span>
-      </div>
+      </div> -->
     </div>
   </div>
 
   <div class="info-section">
-    <h2 class="section-title">Rental Information</h2>
+    <h2 class="section-title">Rental information</h2>
     <div class="info-grid">
       <div class="info-item">
         <span class="label">Property Name</span>
         <span class="value">{{
-          tenantData.property_name || "Not specified"
+          tenantData?.expand?.property?.name ?? ""
         }}</span>
       </div>
       <div class="info-item">
         <span class="label">Unit ID</span>
-        <span class="value">{{ tenantData.unit_id || "Not specified" }}</span>
+        <span class="value">{{ tenantData.unit_id ?? "" }}</span>
       </div>
       <div class="info-item">
         <span class="label">Lease Start Date</span>
         <span class="value">{{
-          tenantData.lease_start_date || "Not specified"
+          tenantData.lease_start_date || ""
         }}</span>
       </div>
       <div class="info-item">
         <span class="label">Lease End Date</span>
         <span class="value">{{
-          tenantData.lease_end_date || "Not specified"
+          tenantData.lease_end_date ?? ""
         }}</span>
       </div>
     </div>
   </div>
 
   <div class="info-section">
-    <h2 class="section-title">Payment Information</h2>
+    <h2 class="section-title">Payment information</h2>
     <div class="info-grid">
       <div class="info-item">
         <span class="label">Rent Amount</span>
-        <span class="value">{{
-          tenantData.rent_amount || "Not specified"
+        <span class="value">{{ tenantData?.expand?.property?.address?.country | currency }} {{
+          tenantData.rent_amount || "0"
         }}</span>
       </div>
       <div class="info-item">
@@ -145,4 +157,5 @@
   <button mat-raised-button color="warn" (click)="onDelete()">delete</button>
 </div>
 
-<!-- <div style="margin: 3rem; text-align: center">{{ tenantData | json }}</div> -->
+<!--  <div style="margin: 3rem; text-align: center">{{ tenantData | json }}</div>
+ -->

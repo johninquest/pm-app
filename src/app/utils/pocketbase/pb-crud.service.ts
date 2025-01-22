@@ -17,13 +17,17 @@ export class PbCrudService {
     return await this.pb.collection(collectionName).create(data);
   }
 
-  async getRecordById(collectionName: string, recordId: string) {
-    return await this.pb.collection(collectionName).getOne(recordId);
+  async getRecordById(
+    collectionName: string, 
+    recordId: string,
+    query: { expand?: string } = {}
+  ) {
+    return await this.pb.collection(collectionName).getOne(recordId, query);
   }
 
   async getAllRecordsAsList(
     collectionName: string,
-    query: { sort?: string; filter?: string } = {}
+    query: { sort?: string; filter?: string; expand?: string } = {}
   ) {
     return await this.pb.collection(collectionName).getFullList(query);
   }

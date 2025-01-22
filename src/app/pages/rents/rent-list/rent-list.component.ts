@@ -37,11 +37,13 @@ export class RentListComponent implements OnInit {
   // Fetch collected rents data
   private fetchCollectedRents(): void {
     this.pbCrud
-      .getAllRecordsAsList('incomes', {
+      .getAllRecordsAsList('rents', {
         sort: '-created',
-        filter: `created_by = "${this.currentUser}"`,
+        filter: `created_by = "${this.currentUser}"`, 
+        expand: 'property,unit,tenant'
       })
       .then((rents) => {
+        console.log('Fetched collected rents data:', rents);
         this.collectedRentsData = rents;
       })
       .catch((error) => {
