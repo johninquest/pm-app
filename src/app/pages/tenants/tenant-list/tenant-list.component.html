@@ -1,5 +1,5 @@
 <app-navbar />
-<app-page-title title="tenants"/>
+<app-page-title title="tenants" />
 
 <!-- <div class="float" matTooltip="Add new tenant">
   <button mat-raised-button color="primary" (click)="onClickAddNewTenant()">
@@ -28,19 +28,20 @@
   <thead>
     <tr>
       <!-- <th>Date</th> -->
+      <th>Tenant name</th>
       <th>Property</th>
-      <th>Tenant</th> 
       <th>Rent</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let tenant of tenantsData" (click)="onClickRow(tenant)">
       <!-- <td>{{ tenant.created | date}}</td>  -->
+      <td>{{ tenant?.last_name }}, {{ tenant?.first_name }}</td>
       <td>{{ tenant?.expand?.property?.name }}</td>
-      <td>{{ tenant?.last_name}}, {{ tenant.first_name}}</td>
-      <td>{{ tenant?.rent_amount }} / {{ tenant.payment_frequency | paymentFrequency}}</td>
+      <td>
+       {{ tenant?.expand?.property?.address?.country | currency }}
+        {{ tenant?.rent_amount }} / {{ tenant?.payment_frequency | paymentFrequency }}
+      </td>
     </tr>
   </tbody>
 </table>
-
-
