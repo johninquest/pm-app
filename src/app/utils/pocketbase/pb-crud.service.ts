@@ -38,7 +38,15 @@ export class PbCrudService {
 
   async deleteRecord(collectionName: string, recordId: string) {
     return await this.pb.collection(collectionName).delete(recordId);
-  }
+  } 
+
+  async getAllRecordsAsListSize(
+    collectionName: string,
+    query: { sort?: string; filter?: string; expand?: string } = {}
+   ): Promise<number> {
+    const records = await this.getAllRecordsAsList(collectionName, query);
+    return records.length;
+   }
 
   /* Property operations */
   propertiesCollection: string = 'properties';

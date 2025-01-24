@@ -1,40 +1,50 @@
-<app-navbar /> 
+<app-navbar />
 
 <div class="dashboard">
   <!-- General Stats Section -->
   <div class="stats-grid">
     <div class="stat-card">
       <h5>Total Properties</h5>
-      <p>12</p>
+      <p>{{ totalProperties }}</p>
     </div>
     <div class="stat-card">
       <h5>Total Units</h5>
-      <p>34</p>
+      <p>0</p>
     </div>
     <div class="stat-card">
+      <h5>Total Tenants</h5>
+      <p>{{ totalTenants }}</p>
+    </div>
+    <!--     <div class="stat-card">
       <h5>Occupied Units</h5>
-      <p>29</p>
+      <p>0</p>
     </div>
     <div class="stat-card">
       <h5>Vacant Units</h5>
-      <p>5</p>
-    </div>
+      <p>0</p>
+    </div> -->
     <div class="stat-card">
       <h5>Total Revenue (YTD)</h5>
-      <p>XOF 120,000</p>
+      <p>XOF 0</p>
     </div>
-    <div class="stat-card">
+    <!-- <div class="stat-card">
       <h5>Pending Maintenance</h5>
-      <p>8 Requests</p>
-    </div>
+      <p>0 Requests</p>
+    </div> -->
   </div>
 
   <!-- Navigation Buttons Section -->
   <div class="nav-buttons">
     <button mat-flat-button color="primary" routerLink="/rents">Rents</button>
-    <button mat-flat-button color="primary" routerLink="/expenses">Expenses</button>
-    <button mat-flat-button color="primary" routerLink="/properties">Properties</button>
-    <button mat-flat-button color="primary" routerLink="/tenants">Tenants</button>
+    <button mat-flat-button color="primary" routerLink="/expenses">
+      Expenses
+    </button>
+    <button mat-flat-button color="primary" routerLink="/properties">
+      Properties
+    </button>
+    <button mat-flat-button color="primary" routerLink="/tenants">
+      Tenants
+    </button>
   </div>
 
   <!-- User Profile Section -->
@@ -51,4 +61,3 @@
     </div>
   </div>
 </div>
-
