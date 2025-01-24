@@ -1,0 +1,54 @@
+<app-navbar /> 
+
+<div class="dashboard">
+  <!-- General Stats Section -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h5>Total Properties</h5>
+      <p>12</p>
+    </div>
+    <div class="stat-card">
+      <h5>Total Units</h5>
+      <p>34</p>
+    </div>
+    <div class="stat-card">
+      <h5>Occupied Units</h5>
+      <p>29</p>
+    </div>
+    <div class="stat-card">
+      <h5>Vacant Units</h5>
+      <p>5</p>
+    </div>
+    <div class="stat-card">
+      <h5>Total Revenue (YTD)</h5>
+      <p>XOF 120,000</p>
+    </div>
+    <div class="stat-card">
+      <h5>Pending Maintenance</h5>
+      <p>8 Requests</p>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons Section -->
+  <div class="nav-buttons">
+    <button mat-flat-button color="primary" routerLink="/rents">Rents</button>
+    <button mat-flat-button color="primary" routerLink="/expenses">Expenses</button>
+    <button mat-flat-button color="primary" routerLink="/properties">Properties</button>
+    <button mat-flat-button color="primary" routerLink="/tenants">Tenants</button>
+  </div>
+
+  <!-- User Profile Section -->
+  <div class="user-profile">
+    <div style="text-align: center; margin: 1rem">
+      <ng-container *ngIf="currentUser; else noUser">
+        <mat-icon>account_circle</mat-icon>
+        <p>Welcome, {{ currentUser?.firstname }}</p>
+      </ng-container>
+      <ng-template #noUser>
+        <mat-icon>person_off</mat-icon>
+        <p>No user logged in</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
+

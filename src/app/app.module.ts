@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-/* import { StartComponent } from './pages/start/start.component'; */
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserComponent } from './pages/user/user.component';
@@ -46,12 +45,12 @@ import { CurrencyPipe } from './shared/pipes/currency.pipe';
 import { PaymentFrequencyPipe } from './shared/pipes/payment-frequency.pipe';
 import { PaymentStatusPipe } from './shared/pipes/payment-status.pipe';
 import { MonthNamePipe } from './shared/pipes/month-name.pipe';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    /* StartComponent, */
     NavbarComponent,
     UserComponent,
     InfoComponent,
@@ -83,6 +82,7 @@ import { MonthNamePipe } from './shared/pipes/month-name.pipe';
     PaymentFrequencyPipe,
     PaymentStatusPipe,
     MonthNamePipe,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

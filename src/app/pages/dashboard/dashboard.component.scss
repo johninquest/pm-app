@@ -1,0 +1,80 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: var(--bg-color);
+    margin-top: 5rem; // Add spacing below the navbar
+  
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+  
+      .stat-card {
+        background: var(--primary-color);
+        color: var(--txt-black-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center; 
+        cursor: pointer;
+  
+        h5 {
+          margin: 0 0 0.5rem 0;
+          font-weight: 500;
+        }
+  
+        p {
+          margin: 0;
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+      }
+    }
+  
+    .nav-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+  
+      button {
+        width: 10rem;
+        height: 3rem;
+        font-size: 1rem;
+        text-transform: uppercase;
+      }
+    }
+  
+    .user-profile {
+      text-align: center;
+      mat-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+      }
+  
+      p {
+        margin: 0.5rem 0 0 0;
+        font-size: 1rem;
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard {
+      padding: 1rem;
+      margin-top: 6rem; // Adjust for smaller screens if necessary
+  
+      .stats-grid {
+        grid-template-columns: 1fr; // Stack cards vertically on small screens
+      }
+  
+      .nav-buttons {
+        button {
+          width: 100%; // Full width on small screens
+        }
+      }
+    }
+  }
+  

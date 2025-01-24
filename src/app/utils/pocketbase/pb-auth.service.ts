@@ -74,7 +74,7 @@ export class PbAuthService {
   async login(email: string, password: string) {
     try {
       const authData = await this.pb.collection('users').authWithPassword(email, password);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/dashboard']);
       return authData;
     } catch (err: any) {
       throw new Error(`Login failed: ${err?.message || 'Unknown error'}`);
@@ -103,7 +103,7 @@ export class PbAuthService {
 
       if (authData) {
         console.log('Google login successful for:', authData),
-        this.router.navigate(['/home']);
+        this.router.navigate(['/dashboard']);
       }
       return authData;
     } catch (err: any) {

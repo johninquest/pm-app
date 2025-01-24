@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-/* import { StartComponent } from './pages/start/start.component'; */
 import { UserComponent } from './pages/user/user.component';
 import { InfoComponent } from './pages/info/info.component';
 import { PropertyListComponent } from './pages/properties/property-list/property-list.component';
@@ -22,6 +21,7 @@ import { RentCreateComponent } from './pages/rents/rent-create/rent-create.compo
 import { RentDetailsComponent } from './pages/rents/rent-details/rent-details.component';
 import { UnitCreateComponent } from './pages/units/unit-create/unit-create.component'; 
 import { UnitDetailsComponent } from './pages/units/unit-details/unit-details.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -35,6 +35,14 @@ const routes: Routes = [
     path: 'auth/email',
     component: EmailComponent,
     data: { title: 'Login via Email' },
+  }, 
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    data: {
+      title: 'Dashboard',
+    },
+    canActivate: [authGuard]
   },
   {
     path: 'home',
