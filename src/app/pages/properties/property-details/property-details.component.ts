@@ -99,7 +99,8 @@ export class PropertyDetailsComponent {
 
     // Expense actions
     onViewExpenses() {
-      this.underConstructionButton();
+      // this.underConstructionButton(); 
+      this.router.navigate(['/expenses']);
     }
     onAddExpense() {
       // this.underConstructionButton(); 
