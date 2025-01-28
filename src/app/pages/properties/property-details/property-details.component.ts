@@ -95,7 +95,18 @@ export class PropertyDetailsComponent {
     // let navigationExtras: NavigationExtras = {}; 
     this.sharedDataService.setData(this.propertyData);
     this.router.navigate(['/rent-create']);
-  }
+  } 
+
+    // Expense actions
+    onViewExpenses() {
+      this.underConstructionButton();
+    }
+    onAddExpense() {
+      // this.underConstructionButton(); 
+      // let navigationExtras: NavigationExtras = {}; 
+      this.sharedDataService.setData(this.propertyData);
+      this.router.navigate(['/expense-create']);
+    }
 
   private multiUnitTypes = [
     'multiUnit',

@@ -53,15 +53,11 @@
       </div>
       <div class="info-item">
         <span class="label">State</span>
-        <span class="value">{{
-          propertyData.address.state || ""
-        }}</span>
+        <span class="value">{{ propertyData.address.state || "" }}</span>
       </div>
       <div class="info-item">
         <span class="label">Postcode</span>
-        <span class="value">{{
-          propertyData.address.postcode || ""
-        }}</span>
+        <span class="value">{{ propertyData.address.postcode || "" }}</span>
       </div>
       <div class="info-item">
         <span class="label">Country</span>
@@ -101,11 +97,9 @@
   <mat-accordion>
     <mat-expansion-panel class="info-section metadata-section">
       <mat-expansion-panel-header>
-        <mat-panel-title class="section-title">
-          Metadata
-        </mat-panel-title>
+        <mat-panel-title class="section-title"> Metadata </mat-panel-title>
       </mat-expansion-panel-header>
-      
+
       <div class="info-grid">
         <div class="info-item">
           <span class="label">Created</span>
@@ -147,41 +141,15 @@
     </button>
   </div>
 </div>
-<!-- 
-<div class="info-section">
-  <h2 class="section-title">Tenant(s)</h2>
-  <div class="list-container">
-    <div class="placeholder-text">No tenant(s) added yet</div>
-  </div>
-  <div class="section-actions">
-    <button mat-raised-button (click)="onViewTenants()">View Tenant(s)</button>
-    <button mat-raised-button color="primary" (click)="onAddTenant()">
-      Add Tenant
-    </button>
-  </div>
-</div> 
 
-<div class="info-section">
-  <h2 class="section-title">Rents</h2>
-  <div class="list-container">
-    <div class="placeholder-text">No rents collected</div>
-  </div>
-  <div class="section-actions">
-    <button mat-raised-button (click)="onViewTenants()">view rents</button>
-    <button mat-raised-button color="primary" (click)="onCollectRent()">
-      collect rent
-    </button>
-  </div>
-</div> 
- -->
- <app-property-related
- title="Rents"
- placeholderText="No rents collected yet"
- viewButtonText="View rents"
- addButtonText="collect rent"
- [onView]="onViewRents"
- [onAdd]="onAddRent.bind(this)">
-</app-property-related>
+<app-property-related
+  title="Rents"
+  placeholderText="No rents collected yet"
+  viewButtonText="View rents"
+  addButtonText="collect rent"
+  [onView]="onViewRents"
+  [onAdd]="onAddRent.bind(this)"
+/>
 
 <app-property-related
   title="Tenant(s)"
@@ -189,5 +157,15 @@
   viewButtonText="View Tenant(s)"
   addButtonText="Add Tenant"
   [onView]="onViewTenants.bind(this)"
-  [onAdd]="onAddTenant.bind(this)">
-</app-property-related>
+  [onAdd]="onAddTenant.bind(this)"
+/>
+
+<app-property-related
+  title="Expenses"
+  placeholderText="No expense were added yet"
+  viewButtonText="View Expenses"
+  addButtonText="Add Expense"
+  [onView]="onViewExpenses.bind(this)"
+  [onAdd]="onAddExpense.bind(this)" 
+/>
+
