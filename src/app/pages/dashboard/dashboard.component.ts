@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   constructor(private pbAuth: PbAuthService, private pbCrud: PbCrudService) {}
 
   ngOnInit(): void {
+    window.scrollTo(0, 0); // Scroll to top of page
     this.pbAuth.getCurrentUser().subscribe((user) => {
       this.currentUser = user;
       this.loadRecordsCount(); // Move here to ensure currentUser is set
