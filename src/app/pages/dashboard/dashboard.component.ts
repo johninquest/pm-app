@@ -10,6 +10,8 @@ import { PbCrudService } from '../../utils/pocketbase/pb-crud.service';
 export class DashboardComponent implements OnInit {
   totalProperties: number = 0;
   totalTenants: number = 0;
+  expensesTotal: number = 0;
+  rentsTotal: number = 0;
   currentUser: any;
 
   constructor(private pbAuth: PbAuthService, private pbCrud: PbCrudService) {}
@@ -30,6 +32,23 @@ export class DashboardComponent implements OnInit {
     this.totalTenants = await this.pbCrud.getAllRecordsAsListSize(
       'tenants',
       queryParams
+    );
+
+    // Calculate expensesTotal
+    const expenses = await this.pbCrud.getAllRecordsAsList(
+      'expenses',
+      queryParams
+    );
+    this.expensesTotal = expenses.reduce(
+      (total, expense: any) => total + (expense.amount || 0),
+      0
+    );
+
+    // Calculate rentsTotal
+    const rents = await this.pbCrud.getAllRecordsAsList('rents', queryParams);
+    this.rentsTotal = rents.reduce(
+      (total, rent: any) => total + (rent.amount || 0),
+      0
     );
   }
 
