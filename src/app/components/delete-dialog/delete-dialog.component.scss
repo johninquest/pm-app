@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  min-width: 300px;
+}
+
+.warning-text {
+  color: var(--warn-color, #f44336);
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+mat-dialog-actions {
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+h3, p {
+  text-align: center;
+}

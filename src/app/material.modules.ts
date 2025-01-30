@@ -61,7 +61,6 @@ import { from } from 'rxjs';
         MatListModule,
         MatTableModule,
         MatStepperModule,
-        MatDialogModule,
         MatTooltipModule,
         MatExpansionModule,
         MatCardModule,

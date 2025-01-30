@@ -1,18 +1,11 @@
-<!-- <app-navbar />
-<app-page-title title="expense details"/>  
-
-<div style="margin: 3rem; text-align: center;">{{expenseData | json}}</div>
-
- --> 
-
- <app-navbar></app-navbar>
+<app-navbar></app-navbar>
 <app-page-title title="expense details"></app-page-title>
 
 <div class="expense-card" *ngIf="expenseData">
   <div class="expense-header">
-    <h1 class="expense-title">
+    <!--  <h1 class="expense-title">
       {{ expenseData.description || "Expense Details" }}
-    </h1>
+    </h1> -->
   </div>
 
   <div class="info-section">
@@ -32,7 +25,9 @@
       </div>
       <div class="info-item">
         <span class="label">Property</span>
-        <span class="value">{{ expenseData.property_name || "Not specified" }}</span>
+        <span class="value">{{
+          expenseData.property_name || "Not specified"
+        }}</span>
       </div>
       <div class="info-item">
         <span class="label">Vendor</span>
@@ -40,7 +35,9 @@
       </div>
       <div class="info-item">
         <span class="label">Description</span>
-        <span class="value">{{ expenseData.description || "Not specified" }}</span>
+        <span class="value">{{
+          expenseData.description || "Not specified"
+        }}</span>
       </div>
     </div>
   </div>
@@ -54,7 +51,9 @@
       </div>
       <div class="info-item">
         <span class="label">Created By</span>
-        <span class="value">{{ expenseData.created_by || "Not specified" }}</span>
+        <span class="value">{{
+          expenseData.created_by || "Not specified"
+        }}</span>
       </div>
       <div class="info-item">
         <span class="label">Updated</span>

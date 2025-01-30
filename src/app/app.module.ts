@@ -46,6 +46,7 @@ import { PaymentFrequencyPipe } from './shared/pipes/payment-frequency.pipe';
 import { PaymentStatusPipe } from './shared/pipes/payment-status.pipe';
 import { MonthNamePipe } from './shared/pipes/month-name.pipe';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     PaymentStatusPipe,
     MonthNamePipe,
     DashboardComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -19,7 +19,8 @@ export class PropertyListComponent {
   propertiesData: any;
   currentUser: string = '';
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    window.scrollTo(0, 0); // Scroll to top of page
     this.pbAuthService.getCurrentUser().subscribe((user) => {
       /* console.log('User:', user);
       console.log('User email:', user?.['email']); */

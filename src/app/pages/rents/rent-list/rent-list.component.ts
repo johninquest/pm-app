@@ -18,7 +18,8 @@ export class RentListComponent implements OnInit {
     private pbCrud: PbCrudService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    window.scrollTo(0, 0); // Scroll to top of page
     // Fetch the current user
     this.pbAuth.getCurrentUser().subscribe((user) => {
       this.currentUser = user?.email || '';
@@ -51,7 +52,13 @@ export class RentListComponent implements OnInit {
       });
   }
 
-  onClickRow(rowData: any) {
+/*   onClickRow(rowData: any) {
     alert('Row data: ' + JSON.stringify(rowData));
-  }
+  } */ 
+    onClickRow(rowData: any) {
+      console.log('Row data:', rowData);
+       let tenantId: string = rowData['id'];
+       console.log('Id of row data:', tenantId);
+       this.router.navigate(['/rent', tenantId]);
+     }
 }

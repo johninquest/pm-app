@@ -16,6 +16,7 @@ export class TenantListComponent {
   tenantsData: any; 
 
   ngOnInit() {
+    window.scrollTo(0, 0); // Scroll to top of page
     this.pbAuth.getCurrentUser().subscribe((res) => {
       this.currentUser = res?.email;
       console.log('Current user on tenant list page:', this.currentUser);
@@ -32,15 +33,10 @@ export class TenantListComponent {
     this._router.navigateByUrl('/tenant-create');
   } 
 
-/*   onClickRow(tenant: any){
-    console.log('Tapped: ', tenant);
-    alert('Tapped: ' + tenant?.first_name + ' ' + tenant?.last_name);
-  }  */
-
   onClickRow(rowData: any) {
-    console.log('Row data:', rowData);
+    // console.log('Row data:', rowData);
      let tenantId: string = rowData['id'];
-     console.log('Id of row data:', tenantId);
+     // console.log('Id of row data:', tenantId);
      this._router.navigate(['/tenant', tenantId]);
    }
 

@@ -3,15 +3,15 @@
 <div class="dashboard">
   <!-- General Stats Section -->
   <div class="stats-grid">
-    <div class="stat-card">
+    <div class="stat-card" routerLink="/properties">
       <h5>Properties (Total)</h5>
       <p>{{ totalProperties }}</p>
     </div>
-<!--     <div class="stat-card">
+    <!--     <div class="stat-card">
       <h5>Total Units</h5>
       <p>0</p>
     </div> -->
-    <div class="stat-card">
+    <div class="stat-card" routerLink="/tenants">
       <h5>Tenants (Total)</h5>
       <p>{{ totalTenants }}</p>
     </div>
@@ -22,7 +22,7 @@
     <div class="stat-card">
       <h5>Vacant Units</h5>
       <p>0</p>
-    </div> -->
+    </div>
     <div class="stat-card">
       <h5>Rents collected (Total)</h5>
       <p>XAF {{rentsTotal}}</p>
@@ -30,10 +30,7 @@
     <div class="stat-card">
       <h5>Expenses (Total)</h5>
       <p>XAF {{expensesTotal}}</p></div>
-    <!-- <div class="stat-card">
-      <h5>Pending Maintenance</h5>
-      <p>0 Requests</p>
-    </div> -->
+ -->
   </div>
 
   <!-- Navigation Buttons Section -->

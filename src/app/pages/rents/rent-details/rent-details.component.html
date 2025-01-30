@@ -1,1 +1,122 @@
-<p>rent-details works!</p>
+<app-navbar />
+<app-page-title title="rent details" />
+
+<div class="rent-card" *ngIf="rentData">
+  <div class="rent-header">
+    <h1 class="rent-title">
+      Rent Payment Details - {{ rentData.expand?.tenant?.first_name }}
+      {{ rentData.expand?.tenant?.last_name }}
+    </h1>
+  </div>
+
+  <div class="info-section">
+    <h2 class="section-title">Payment Details</h2>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="label">Amount Paid</span>
+        <span class="value"
+          >{{ rentData.expand?.property?.address?.country | currency }}
+          {{ rentData.amount }}</span
+        >
+      </div>
+      <div class="info-item">
+        <span class="label">Payment Received Date</span>
+        <span class="value">{{
+          rentData.payment_date | date : "mediumDate"
+        }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Payment Status</span>
+        <span class="value">{{ rentData.payment_status | paymentStatus }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Rent Period (MM/YYYY)</span>
+        <span class="value"
+          >{{ rentData.rent_month }}/{{ rentData.rent_year }}</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <h2 class="section-title">Property Information</h2>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="label">Property Name</span>
+        <span class="value">{{ rentData.expand?.property?.name }}</span>
+      </div>
+      <!--       <div class="info-item">
+        <span class="label">Property Type</span>
+        <span class="value">{{ rentData.expand?.property?.type | propertyType }}</span>
+      </div> -->
+      <div class="info-item">
+        <span class="label">Unit ID</span>
+        <span class="value">{{ rentData.unit_id || "" }}</span>
+      </div>
+      <!--       <div class="info-item">
+        <span class="label">Property Address</span>
+        <span class="value">
+          {{ rentData.expand?.property?.address?.street }}, 
+          {{ rentData.expand?.property?.address?.city }},
+          {{ rentData.expand?.property?.address?.state }}
+        </span>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="info-section">
+    <h2 class="section-title">Tenant Information</h2>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="label">Tenant Name</span>
+        <span class="value">
+          {{ rentData.expand?.tenant?.first_name }}
+          {{ rentData.expand?.tenant?.last_name }}
+        </span>
+      </div>
+      <!-- <div class="info-item">
+        <span class="label">Contact Number</span>
+        <span class="value">{{ rentData.expand?.tenant?.phone }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Email</span>
+        <span class="value">{{ rentData.expand?.tenant?.email }}</span>
+      </div>
+      <div class="info-item">
+        <span class="label">Payment Method</span>
+        <span class="value">{{ rentData.expand?.tenant?.payment_method | titlecase }}</span>
+      </div> -->
+    </div>
+  </div>
+
+  <mat-accordion>
+    <mat-expansion-panel class="metadata-panel">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h2 class="metadata-title">Metadata</h2>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="label">Created</span>
+          <span class="value">{{ rentData.created | date : "medium" }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Created By</span>
+          <span class="value">{{ rentData.created_by }}</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Updated</span>
+          <span class="value">{{ rentData.updated | date : "medium" }}</span>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<div class="btns">
+  <button mat-raised-button (click)="onBack()">back</button>
+  <button mat-raised-button color="primary" (click)="onEdit()">edit</button>
+  <button mat-raised-button color="warn" (click)="onDelete()">delete</button>
+</div>
