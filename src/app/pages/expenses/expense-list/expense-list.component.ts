@@ -20,23 +20,24 @@ export class ExpenseListComponent {
 
   ngOnInit(): void {
     this._pbAuth.getCurrentUser().subscribe((user) => {
-      /* console.log('User:', user);
-      console.log('User email:', user?.['email']); */
       this.currentUser = user?.['email'];
-      this._pbCrud
-        .getAllExpensesAsList(this.currentUser)
-        .then((data) => {
-          console.log('Expenses data:', data)
-          this.expensesData = data;
-        })
-        .catch((err) => console.log('Error fetching list of expenses:', err));
     });
+    this._pbCrud
+      .getAllRecordsAsList('expenses', {
+        filter: `created_by = "${this.currentUser}"`,
+        expand: 'property',
+      })
+      .then((data) => {
+        console.log('Expenses Data 2:', data);
+        this.expensesData = data; 
+      })
+      .catch((err) => console.log('Error fetching expenses list:', err));
   }
 
-  fetchExpensesData() {} 
-  
+  fetchExpensesData() {}
+
   onClickRow(rowData: any) {
-   console.log('Row data:', rowData);
+    console.log('Row data:', rowData);
     let expenseId: string = rowData['id'];
     console.log('Id of row data:', expenseId);
     this._router.navigate(['/expense', expenseId]);

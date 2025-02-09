@@ -21,16 +21,13 @@ export class ExpenseDetailsComponent {
     this.aRoute.paramMap.subscribe((params) => {
       let id: string = params.get('id') ?? '';
       if (id) {
-        this.pbCrud
-          .getExpenseById(id)
-          .then((data) => {
+          this.pbCrud.getRecordById('expenses', id, {expand: 'property'}).then(data => {
             // console.log('Fetched expense data:', data);
             this.expenseData = data;
-          })
-          .catch((err) => console.log('Error', err));
+          }).catch(err => {
+            // console.log('Error fetching expense data:', err);
+          });
       }
-      // console.log('Complete row data:', params.get('created_by'))
-      // Use the id to fetch property details
     });
   }
 

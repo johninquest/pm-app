@@ -1,5 +1,5 @@
 <app-navbar />
-<app-page-title title="expenses"/>
+<app-page-title title="expenses" />
 
 <!-- <div style="margin: 5rem; text-align: center;">
   {{ expensesData | json }}
@@ -9,7 +9,7 @@
   <button mat-raised-button color="primary" (click)="onClickAddNewExpense()">
     +
   </button>
-</div> 
+</div>
 
 <div
   style="text-align: center; margin: 3rem; color: salmon"
@@ -29,18 +29,19 @@
     <tr>
       <th>Date</th>
       <th>Property</th>
-      <th>Expense type</th> 
+      <th>Expense type</th>
       <th>Amount</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let expense of expensesData" (click)="onClickRow(expense)">
-      <td>{{ expense.date_of_expense | date}}</td> 
-      <td>{{ expense.property_name }}</td>
-      <td>{{ expense.expense_type}}</td>
-      <td>{{ expense.amount }}</td>
+      <td>{{ expense.date_of_expense | date }}</td>
+      <td>{{ expense?.expand?.property?.name }}</td>
+      <td>{{ expense.expense_type }}</td>
+      <td>
+        {{ expense?.expand?.property?.address?.country | currency }}
+        {{ expense.amount }}
+      </td>
     </tr>
   </tbody>
 </table>
-
-
