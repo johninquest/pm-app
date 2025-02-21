@@ -1,6 +1,6 @@
 {
-  "name": "proma",
-  "version": "0.2.9",
+  "name": "pm-app",
+  "version": "0.2.21",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

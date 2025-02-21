@@ -2,7 +2,8 @@
 
 ### <div align="center">A simple property management app</div>
 
-<!--
+<!-- 
+Translation lib -> https://www.npmjs.com/package/@jsverse/transloco
 
 Packages -> https://www.npmjs.com/package/idb
 
